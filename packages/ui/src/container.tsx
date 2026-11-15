@@ -7,12 +7,12 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
-  ({ className, size = '2xl', ...props }, ref) => {
+  ({ className, size = 'xl', ...props }, ref) => {
     const maxWidths = {
       sm: 'max-w-screen-sm',
       md: 'max-w-screen-md',
       lg: 'max-w-screen-lg',
-      xl: 'max-w-screen-xl',
+      xl: 'max-w-7xl',
       '2xl': 'max-w-[1440px]',
       full: 'max-w-full',
     }[size];
@@ -20,7 +20,7 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
     return (
       <div
         ref={ref}
-        className={twMerge(clsx('mx-auto w-full px-4 sm:px-6 lg:px-8', maxWidths, className))}
+        className={twMerge(clsx('mx-auto w-full px-6 sm:px-8 lg:px-12', maxWidths, className))}
         {...props}
       />
     );

@@ -3,6 +3,8 @@
  * Direction C: Shared Foundation, Distinct Personalities
  */
 
+@source "../../ui/src/**/*.{ts,tsx}";
+
 @theme {
   /* Brand Foundation */
   --color-foundry-orange: #FF5A1F;
@@ -14,6 +16,8 @@
   --color-foundry-canvas: #FBFBF9;
   --color-foundry-pure: #FFFFFF;
   --color-foundry-muted: #F3F4F6;
+  --color-foundry-border: #E5E7EB;
+  --color-foundry-secondary: #6B7280;
 
   /* Corporate Personality */
   --color-foundry-dark: #111215;

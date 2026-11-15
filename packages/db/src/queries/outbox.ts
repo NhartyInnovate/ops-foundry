@@ -1,6 +1,6 @@
 import { sql, eq, and, gt } from 'drizzle-orm';
-import { db } from '../client';
-import { notificationOutbox } from '../schema';
+import { getWorkerDb, DatabaseInstance } from '../client.js';
+import { notificationOutbox } from '../schema.js';
 
 export interface ClaimOptions {
   workerId: string;
@@ -8,31 +8,30 @@ export interface ClaimOptions {
   leaseDurationSeconds?: number;
 }
 
+/**
+ * Minimized job payload returned to the worker.
+ * Omits application_id and audit timestamps to maintain least-privilege boundary.
+ */
 export interface ClaimedOutboxJob {
   id: string;
   channel: string;
   recipient: string;
   payload: Record<string, unknown>;
-  status: string;
-  worker_id: string | null;
   claim_id: string;
-  lease_expires_at: Date | string | null;
   attempts: number;
   max_attempts: number;
-  last_attempt_at: Date | string | null;
-  scheduled_for: Date | string;
-  error_message: string | null;
-  completed_at: Date | string | null;
-  application_id: string | null;
-  created_at: Date | string;
-  updated_at: Date | string;
 }
 
 /**
  * Phase 1: Atomically claims eligible pending or expired processing jobs.
  * Commits immediately, releasing DB row locks while stamping a logical lease.
+ * Returns ONLY the columns necessary for notification delivery and execution management.
  */
-export async function claimOutboxJobs(options: ClaimOptions): Promise<ClaimedOutboxJob[]> {
+export async function claimOutboxJobs(
+  options: ClaimOptions,
+  dbClient?: DatabaseInstance
+): Promise<ClaimedOutboxJob[]> {
+  const db = dbClient || getWorkerDb();
   const batchSize = options.batchSize || 15;
   const leaseSeconds = options.leaseDurationSeconds || 120; // 2 minutes
 
@@ -56,7 +55,7 @@ export async function claimOutboxJobs(options: ClaimOptions): Promise<ClaimedOut
         updated_at = NOW()
     FROM eligible_jobs ej
     WHERE o.id = ej.id
-    RETURNING o.*;
+    RETURNING o.id, o.channel, o.recipient, o.payload, o.claim_id, o.attempts, o.max_attempts;
   `;
 
   const result = await db.execute(query);
@@ -67,7 +66,13 @@ export async function claimOutboxJobs(options: ClaimOptions): Promise<ClaimedOut
  * Issues a heartbeat to renew an active lease while a worker is still processing.
  * Only succeeds if the current claim_id matches AND the lease has not already expired.
  */
-export async function heartbeatOutboxJob(jobId: string, claimId: string, extensionSeconds = 120) {
+export async function heartbeatOutboxJob(
+  jobId: string,
+  claimId: string,
+  extensionSeconds = 120,
+  dbClient?: DatabaseInstance
+): Promise<boolean> {
+  const db = dbClient || getWorkerDb();
   const result = await db
     .update(notificationOutbox)
     .set({
@@ -91,7 +96,12 @@ export async function heartbeatOutboxJob(jobId: string, claimId: string, extensi
  * Marks a claimed job as completed.
  * Requires matching claim_id to prevent stale workers from overwriting newer runs.
  */
-export async function completeOutboxJob(jobId: string, claimId: string) {
+export async function completeOutboxJob(
+  jobId: string,
+  claimId: string,
+  dbClient?: DatabaseInstance
+): Promise<boolean> {
+  const db = dbClient || getWorkerDb();
   const result = await db
     .update(notificationOutbox)
     .set({
@@ -121,17 +131,22 @@ export async function failOutboxJob(
   claimId: string,
   currentAttempts: number,
   maxAttempts: number,
-  errorMessage: string
-) {
+  errorMessage: string,
+  dbClient?: DatabaseInstance
+): Promise<boolean> {
+  const db = dbClient || getWorkerDb();
   const isPermanent = currentAttempts >= maxAttempts;
   const backoffDelays = [60, 300, 900, 3600]; // 1m, 5m, 15m, 1h
-  const backoffSeconds = backoffDelays[Math.min(currentAttempts - 1, backoffDelays.length - 1)] || 3600;
+  const backoffSeconds =
+    backoffDelays[Math.min(currentAttempts - 1, backoffDelays.length - 1)] || 3600;
 
   const result = await db
     .update(notificationOutbox)
     .set({
       status: isPermanent ? 'dead_letter' : 'pending',
-      scheduledFor: isPermanent ? undefined : sql`NOW() + (${backoffSeconds} * INTERVAL '1 second')`,
+      scheduledFor: isPermanent
+        ? undefined
+        : sql`NOW() + (${backoffSeconds} * INTERVAL '1 second')`,
       leaseExpiresAt: null,
       errorMessage,
       updatedAt: sql`NOW()`,

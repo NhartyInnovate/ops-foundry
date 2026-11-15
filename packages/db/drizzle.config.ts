@@ -5,6 +5,10 @@ export default defineConfig({
   out: './migrations',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.DIRECT_DATABASE_URL || process.env.DATABASE_URL || '',
+    url:
+      process.env.MIGRATION_DATABASE_URL ||
+      process.env.DIRECT_DATABASE_URL ||
+      process.env.DATABASE_URL ||
+      '',
   },
 });

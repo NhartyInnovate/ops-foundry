@@ -19,6 +19,8 @@
     "build": "tsc",
     "clean": "rm -rf dist *.tsbuildinfo",
     "typecheck": "tsc --noEmit",
+    "test": "node tests/client_isolation.test.mjs",
+    "test:integration": "node tests/runtime_integration.test.mjs",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate"
   },
