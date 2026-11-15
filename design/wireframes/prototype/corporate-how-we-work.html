@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry — How We Work (Operating Model)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              dark: '#111215',
+              offwhite: '#FBFBF9',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      <a href="corporate-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="corporate-home.html" class="hover:text-foundry-dark transition">Home</a>
+        <a href="corporate-services.html" class="hover:text-foundry-dark transition">Services</a>
+        <a href="corporate-how-we-work.html" class="text-foundry-orange font-semibold">How We Work</a>
+        <a href="corporate-home.html#about" class="hover:text-foundry-dark transition">About</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="corporate-home.html#intake" class="bg-foundry-dark text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-black transition">
+          Explore a Pilot
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    
+    <!-- Hero -->
+    <div class="max-w-3xl mb-16 space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-foundry-dark tracking-tight">
+        The Foundry Operating Model
+      </h1>
+      <p class="text-lg text-foundry-muted leading-relaxed">
+        How Ops Foundry converts client business backlogs into structured workflows, managed pods, and verified deliverables.
+      </p>
+      <p class="text-xs text-foundry-orange font-medium">
+        * Proposed execution framework subject to final operational review.
+      </p>
+    </div>
+
+    <!-- 4-Phase Phased Roadmap -->
+    <div class="space-y-8">
+      
+      <!-- Phase 1 -->
+      <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-4 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-orange-50 text-foundry-orange font-display font-bold flex items-center justify-center text-xs">1</div>
+          <h2 class="text-2xl font-display font-bold text-foundry-dark">Intake & Scoping</h2>
+          <span class="inline-block text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full text-gray-700">Sprint Week 01</span>
+        </div>
+        <div class="md:col-span-8 space-y-4 text-sm text-foundry-muted leading-relaxed">
+          <p>
+            We audit your operational bottlenecks, document existing processes, and define measurable deliverables. Rather than ambiguous consulting reports, this stage produces an explicit execution agreement detailing sprint objectives, deliverables, and acceptance criteria.
+          </p>
+          <div class="p-4 bg-gray-50 rounded-2xl text-xs text-gray-700 font-medium">
+            Key Output: Operational Sprint Brief & Deliverables Acceptance Checklist.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-4 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-orange-50 text-foundry-orange font-display font-bold flex items-center justify-center text-xs">2</div>
+          <h2 class="text-2xl font-display font-bold text-foundry-dark">Workflow Design</h2>
+          <span class="inline-block text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full text-gray-700">Sprint Week 02</span>
+        </div>
+        <div class="md:col-span-8 space-y-4 text-sm text-foundry-muted leading-relaxed">
+          <p>
+            Work cannot scale on tribal knowledge alone. In this stage, we author Standard Operating Procedures (SOPs), configure the AI prompt templates and automated pipelines, and assemble the tooling environment for human operators.
+          </p>
+          <div class="p-4 bg-gray-50 rounded-2xl text-xs text-gray-700 font-medium">
+            Key Output: Documented SOPs, QA Checkpoints, and Configured AI Toolchains.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-4 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-orange-50 text-foundry-orange font-display font-bold flex items-center justify-center text-xs">3</div>
+          <h2 class="text-2xl font-display font-bold text-foundry-dark">Pod Deployment</h2>
+          <span class="inline-block text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full text-gray-700">Sprint Weeks 02–03</span>
+        </div>
+        <div class="md:col-span-8 space-y-4 text-sm text-foundry-muted leading-relaxed">
+          <p>
+            A dedicated operational pod takes ownership of daily task execution. Operators work within established SOPs, accelerating output with configured AI tools while conducting strict quality reviews at every milestone.
+          </p>
+          <div class="p-4 bg-gray-50 rounded-2xl text-xs text-gray-700 font-medium">
+            Key Output: Active task execution, sprint updates, and weekly milestone demos.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-4 space-y-2">
+          <div class="w-8 h-8 rounded-full bg-orange-50 text-foundry-orange font-display font-bold flex items-center justify-center text-xs">4</div>
+          <h2 class="text-2xl font-display font-bold text-foundry-dark">Review & Handover</h2>
+          <span class="inline-block text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full text-gray-700">Sprint Week 04</span>
+        </div>
+        <div class="md:col-span-8 space-y-4 text-sm text-foundry-muted leading-relaxed">
+          <p>
+            Deliverables are formally verified against the initial acceptance criteria. Complete operational documentation and codebase/platform access are handed over to your internal team, or transitioned to recurring maintenance.
+          </p>
+          <div class="p-4 bg-gray-50 rounded-2xl text-xs text-gray-700 font-medium">
+            Key Output: Final Deliverable Package, System Handover, and Operational Documentation.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pilot CTA -->
+    <div class="mt-16 bg-foundry-dark text-white rounded-3xl p-8 sm:p-12 text-center space-y-6">
+      <h2 class="text-3xl font-display font-bold">
+        Ready to test this model with an operational pilot?
+      </h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-base leading-relaxed">
+        Pilots are structured to deliver a specific operational objective within a defined timeframe.
+      </p>
+      <a href="corporate-home.html#intake" class="inline-block bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-8 py-4 rounded-full transition">
+        Request a Pilot Scoping Call →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-foundry-dark text-white border-t border-gray-800 py-12 mt-20 text-xs text-center text-gray-500">
+    Ops Foundry Operating Model • Proposed Structure Pending Approval
+  </footer>
+
+</body>
+</html>

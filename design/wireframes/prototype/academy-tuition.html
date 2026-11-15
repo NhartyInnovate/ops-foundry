@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry Academy — Tuition, Scholarships & Sponsorships</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              dark: '#111215',
+              slate: '#1E232E',
+              offwhite: '#F9F9F6',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      <a href="academy-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <div class="flex items-center gap-2">
+          <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-orange-100 text-foundry-orange">
+            Academy
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="academy-home.html" class="hover:text-foundry-dark transition">Home</a>
+        <a href="academy-programmes.html" class="hover:text-foundry-dark transition">Programmes</a>
+        <a href="academy-admissions.html" class="hover:text-foundry-dark transition">Admissions</a>
+        <a href="academy-tuition.html" class="text-foundry-orange font-semibold">Tuition & Scholarships</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="corporate-home.html" class="text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:text-black transition hidden sm:inline-block">
+          Corporate ↗
+        </a>
+        <a href="academy-admissions.html" class="bg-foundry-orange text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-foundry-orange-hover transition">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    
+    <!-- Hero -->
+    <div class="max-w-3xl mb-16 space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-foundry-dark tracking-tight">
+        Transparent Tuition & Scholarships
+      </h1>
+      <p class="text-lg text-foundry-muted leading-relaxed">
+        Ops Foundry Academy is committed to accessible practical education. We provide transparent tuition structures, flexible payment options, and scholarship funding.
+      </p>
+    </div>
+
+    <!-- Tuition Placeholder Matrix -->
+    <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-12 mb-12 shadow-sm space-y-8">
+      <div class="border-b border-gray-100 pb-4">
+        <h2 class="text-2xl font-display font-bold text-foundry-dark">Programme Tuition Structure</h2>
+        <p class="text-xs text-gray-500 mt-1">[Official tuition amounts and regional pricing to be confirmed]</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+        
+        <div class="p-6 bg-foundry-offwhite rounded-2xl border border-gray-100 space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Course One</h3>
+          <div class="text-2xl font-bold font-display text-foundry-dark">[To be confirmed]</div>
+          <p class="text-xs text-foundry-muted leading-relaxed">Workplace simulation curriculum and capstone project evaluation.</p>
+        </div>
+
+        <div class="p-6 bg-foundry-offwhite rounded-2xl border border-gray-100 space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Course Two</h3>
+          <div class="text-2xl font-bold font-display text-foundry-dark">[To be confirmed]</div>
+          <p class="text-xs text-foundry-muted leading-relaxed">Workplace simulation curriculum and capstone project evaluation.</p>
+        </div>
+
+        <div class="p-6 bg-foundry-offwhite rounded-2xl border border-gray-100 space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Course Three</h3>
+          <div class="text-2xl font-bold font-display text-foundry-dark">[To be confirmed]</div>
+          <p class="text-xs text-foundry-muted leading-relaxed">Workplace simulation curriculum and capstone project evaluation.</p>
+        </div>
+
+      </div>
+
+      <div class="pt-4 border-t border-gray-100 text-xs text-foundry-muted flex flex-col sm:flex-row justify-between gap-4 font-medium">
+        <span>Payment Options: Upfront Discount / Staged Installments</span>
+        <span>Currencies: Local & International options [Pending]</span>
+      </div>
+    </div>
+
+    <!-- Scholarships Section -->
+    <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-12 mb-12 shadow-sm space-y-6">
+      <div class="space-y-2">
+        <h2 class="text-2xl font-display font-bold text-foundry-dark">Scholarship Opportunities</h2>
+        <p class="text-base text-foundry-muted leading-relaxed">
+          Through institutional and donor partnerships, Ops Foundry Academy offers merit-based and need-based scholarships to ensure motivated talent can participate regardless of economic background.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 text-sm">
+        <div class="p-6 rounded-2xl bg-foundry-offwhite border border-gray-200 space-y-2">
+          <h3 class="font-display font-bold text-foundry-dark text-base">Merit Scholarships</h3>
+          <p class="text-xs text-foundry-muted leading-relaxed">
+            Awarded to high-potential applicants demonstrating exceptional problem-solving acumen and strong dedication to digital operations.
+          </p>
+          <span class="text-xs text-foundry-orange font-semibold inline-block">[Funding terms to be confirmed]</span>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-foundry-offwhite border border-gray-200 space-y-2">
+          <h3 class="font-display font-bold text-foundry-dark text-base">Need-Based Financial Support</h3>
+          <p class="text-xs text-foundry-muted leading-relaxed">
+            Targeted at individuals facing financial constraints who demonstrate clear career commitment and passion for practical execution.
+          </p>
+          <span class="text-xs text-foundry-orange font-semibold inline-block">[Funding terms to be confirmed]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- For Sponsors Section -->
+    <div id="sponsors" class="bg-foundry-slate text-white rounded-3xl p-8 sm:p-12 shadow-sm space-y-6">
+      <h2 class="text-3xl font-display font-bold">
+        Sponsor a Cohort of Operational Talent
+      </h2>
+      <p class="text-gray-300 max-w-2xl text-base leading-relaxed">
+        Corporate foundations, development agencies, and ecosystem partners can fund cohort seats to directly empower local youth and emerging professionals with verifiable digital operational skills.
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+        <a href="mailto:sponsors@domain-placeholder.com" class="w-full sm:w-auto bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-8 py-4 rounded-full text-center transition">
+          Inquire About Cohort Sponsorship →
+        </a>
+        <span class="text-xs text-gray-400">Direct Contact: sponsors@domain-placeholder.com</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-foundry-slate text-white border-t border-gray-800 py-12 mt-20 text-xs text-center text-gray-400">
+    Ops Foundry Academy Tuition & Scholarships • Provisional Wireframe Prototype
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry — Service Detail Specification</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              dark: '#111215',
+              offwhite: '#FBFBF9',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      <a href="corporate-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="corporate-home.html" class="hover:text-foundry-dark transition">Home</a>
+        <a href="corporate-services.html" class="text-foundry-orange font-semibold">Services</a>
+        <a href="corporate-how-we-work.html" class="hover:text-foundry-dark transition">How We Work</a>
+        <a href="corporate-home.html#about" class="hover:text-foundry-dark transition">About</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="corporate-home.html#intake" class="bg-foundry-dark text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-black transition">
+          Explore a Pilot
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    
+    <!-- Service Switcher Tabs -->
+    <div class="flex items-center gap-2 mb-10 overflow-x-auto pb-2 text-sm">
+      <span class="text-gray-500 mr-2 text-xs font-semibold">Service Scope:</span>
+      <button onclick="switchService('online')" id="tab-online" class="px-5 py-2.5 rounded-full bg-foundry-orange text-white font-semibold transition shadow-sm">
+        Get Online
+      </button>
+      <button onclick="switchService('visible')" id="tab-visible" class="px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition">
+        Get Visible
+      </button>
+      <button onclick="switchService('customers')" id="tab-customers" class="px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition">
+        Get Customers
+      </button>
+    </div>
+
+    <!-- Dynamic Content Container -->
+    <div id="serviceContent" class="space-y-12">
+      <!-- Populated via JS below -->
+    </div>
+
+    <!-- Pilot CTA -->
+    <div class="mt-16 bg-foundry-dark text-white rounded-3xl p-8 sm:p-12 text-center space-y-6">
+      <h2 class="text-3xl font-display font-bold">
+        Ready to deploy an operational pilot?
+      </h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-base leading-relaxed">
+        We scope pilots to address specific operational objectives. Submit your requirements and our team will follow up directly to schedule an operational consultation.
+      </p>
+      <a href="corporate-home.html#intake" class="inline-block bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-8 py-4 rounded-full transition">
+        Request Pilot Consultation →
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    const serviceData = {
+      online: {
+        title: 'Get Online',
+        summary: 'Production-grade websites, web platforms, and digital business systems engineered for operational stability and long-term maintainability.',
+        problem: 'Many businesses struggle with fragile DIY website builders or expensive agency retainers that produce static designs with zero operational support. When changes are needed or business processes expand, these systems break down.',
+        delivers: 'Ops Foundry delivers complete, resilient digital systems. We architect, build, and operate your web presence, integrating modern content management and foundational systems so your business has a dependable operational asset.',
+        deliverables: [
+          'Custom responsive production website build',
+          'Modern CMS integration for internal team updates',
+          'Domain DNS, hosting configuration, and security SSL setup',
+          'Core page templates (Home, Services, About, Contact)',
+          'Operational documentation and team handover walkthrough'
+        ],
+        dependencies: [
+          'Client-provided brand assets and logos',
+          'Core company information and product/service descriptions',
+          'Access to domain registrar or technical DNS manager',
+          'Designated point of contact for sprint milestone reviews'
+        ],
+        timeline: 'Structured sprint timeline: Scoping (Week 1) → Build & Integration (Weeks 2-3) → Review & Launch (Week 4).'
+      },
+      visible: {
+        title: 'Get Visible',
+        summary: 'Systematic search discovery architecture, local business directory setup, and structured distribution to ensure buyers discover your organization.',
+        problem: 'Having an excellent website provides little value if prospective customers cannot find it. Without structured search indexing, consistent local business profiles, and organized distribution channels, businesses remain invisible to commercial demand.',
+        delivers: 'Ops Foundry establishes the discovery architecture for your business. We audit search visibility, structure metadata and site taxonomy, claim and optimize local business presence, and configure recurring distribution workflows.',
+        deliverables: [
+          'Technical search discovery audit and crawlability fixes',
+          'Structured page metadata, schema markup, and sitemap configuration',
+          'Local business profile setup and map verification',
+          'Industry directory distribution and citation consistency',
+          'Discovery analytics dashboard and monthly visibility tracking'
+        ],
+        dependencies: [
+          'Access to Google Search Console and web analytics',
+          'Verified physical business address and contact credentials',
+          'List of priority geographic markets and commercial keywords',
+          'Authorization for directory account creation'
+        ],
+        timeline: 'Initial discovery setup: Audit & Architecture (Week 1-2) → Directory & Search Configuration (Weeks 3-4).'
+      },
+      customers: {
+        title: 'Get Customers',
+        summary: 'Inbound customer intake pipelines, inquiry routing, and automated communication workflows to convert commercial interest into business momentum.',
+        problem: 'Inquiries often slip through the cracks due to disorganized inboxes, delayed follow-ups, and manual record-keeping. Slow response times directly translate to lost commercial revenue.',
+        delivers: 'Ops Foundry builds and manages structured customer intake funnels. We connect your inbound contact channels to automated routing, notification systems, and structured follow-up workflows so every prospective customer receives timely attention.',
+        deliverables: [
+          'Optimized customer intake and inquiry capture forms',
+          'Automated lead notification workflows (email and team alerts)',
+          'Central customer inquiry database / CRM pipeline configuration',
+          'Standard operational response templates and follow-up sequences',
+          'Pipeline conversion reporting and weekly inquiry summaries'
+        ],
+        dependencies: [
+          'Defined customer intake criteria and service pricing rules',
+          'Designated team member(s) responsible for final sales closing',
+          'Access to primary business email and communications platform',
+          'Approval of standard customer communication templates'
+        ],
+        timeline: 'Implementation sprint: Workflow Scoping (Week 1) → Pipeline Configuration (Week 2) → Testing & Deployment (Week 3).'
+      }
+    };
+
+    function renderService(key) {
+      const data = serviceData[key];
+      const container = document.getElementById('serviceContent');
+      
+      container.innerHTML = `
+        <div class="space-y-4">
+          <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-foundry-dark tracking-tight">${data.title}</h1>
+          <p class="text-lg text-foundry-muted leading-relaxed max-w-3xl">${data.summary}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-3xl border border-foundry-border space-y-3">
+            <h2 class="font-display font-bold text-lg text-foundry-dark">The Business Problem</h2>
+            <p class="text-sm text-foundry-muted leading-relaxed">${data.problem}</p>
+          </div>
+          <div class="bg-white p-8 rounded-3xl border border-foundry-border space-y-3">
+            <h2 class="font-display font-bold text-lg text-foundry-dark">What Ops Foundry Delivers</h2>
+            <p class="text-sm text-foundry-muted leading-relaxed">${data.delivers}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10">
+          <h2 class="font-display font-bold text-xl text-foundry-dark mb-6">Detailed Scope & Deliverables Matrix</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xs uppercase text-foundry-orange font-bold tracking-wider mb-4">Included in Scope</h3>
+              <ul class="space-y-3 text-xs text-gray-700">
+                ${data.deliverables.map(d => `<li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span> <span>${d}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xs uppercase text-gray-500 font-bold tracking-wider mb-4">Client Inputs & Dependencies</h3>
+              <ul class="space-y-3 text-xs text-gray-700">
+                ${data.dependencies.map(d => `<li class="flex items-start gap-2.5"><span class="text-gray-400 font-bold">•</span> <span>${d}</span></li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 space-y-2">
+          <h2 class="font-display font-bold text-xl text-foundry-dark">Engagement & Delivery Timeline</h2>
+          <p class="text-sm text-foundry-muted leading-relaxed">${data.timeline}</p>
+        </div>
+      `;
+
+      ['online', 'visible', 'customers'].forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (t === key) {
+          btn.className = 'px-5 py-2.5 rounded-full bg-foundry-orange text-white font-semibold transition shadow-sm';
+        } else {
+          btn.className = 'px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition';
+        }
+      });
+    }
+
+    function switchService(key) {
+      renderService(key);
+      const url = new URL(window.location);
+      url.searchParams.set('service', key);
+      window.history.pushState({}, '', url);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const initialService = params.get('service') || 'online';
+    renderService(initialService);
+  </script>
+</body>
+</html>

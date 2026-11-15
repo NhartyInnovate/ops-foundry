@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry — Human-AI Operational Infrastructure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              'orange-subtle': '#FFF5F0',
+              dark: '#111215',
+              slate: '#1E232E',
+              offwhite: '#FBFBF9',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased selection:bg-foundry-orange selection:text-white">
+
+  <!-- Refined Sticky Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border transition-all">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Lockup -->
+      <a href="corporate-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="corporate-home.html" class="text-foundry-orange font-semibold">Home</a>
+        
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-foundry-dark transition py-2">
+            <span>Services</span>
+            <svg class="w-4 h-4 text-gray-400 group-hover:text-foundry-dark group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div class="absolute left-0 mt-2 w-72 rounded-2xl bg-white border border-foundry-border shadow-xl p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="corporate-services.html" class="block p-3 rounded-xl hover:bg-gray-50 transition">
+              <div class="text-sm font-bold text-foundry-dark">Services Overview</div>
+              <div class="text-xs text-foundry-muted mt-0.5">Explore our operational delivery model</div>
+            </a>
+            <div class="my-1 border-t border-gray-100"></div>
+            <a href="corporate-service-detail.html?service=online" class="block p-3 rounded-xl hover:bg-orange-50/50 transition">
+              <div class="text-sm font-semibold text-foundry-dark">Get Online</div>
+              <div class="text-xs text-foundry-muted mt-0.5">Web platforms & digital systems</div>
+            </a>
+            <a href="corporate-service-detail.html?service=visible" class="block p-3 rounded-xl hover:bg-orange-50/50 transition">
+              <div class="text-sm font-semibold text-foundry-dark">Get Visible</div>
+              <div class="text-xs text-foundry-muted mt-0.5">Search discovery & distribution</div>
+            </a>
+            <a href="corporate-service-detail.html?service=customers" class="block p-3 rounded-xl hover:bg-orange-50/50 transition">
+              <div class="text-sm font-semibold text-foundry-dark">Get Customers</div>
+              <div class="text-xs text-foundry-muted mt-0.5">Inbound intake & revenue workflows</div>
+            </a>
+          </div>
+        </div>
+
+        <a href="corporate-how-we-work.html" class="hover:text-foundry-dark transition">How We Work</a>
+        <a href="#about" class="hover:text-foundry-dark transition">About</a>
+        <a href="#partners" class="hover:text-foundry-dark transition">Partnerships</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="academy-home.html" class="text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-black transition">
+          Ops Foundry Academy ↗
+        </a>
+        <a href="#intake" class="bg-foundry-dark hover:bg-black text-white text-xs font-semibold px-5 py-2.5 rounded-full transition shadow-sm">
+          Explore a Pilot
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100" aria-label="Toggle navigation menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-foundry-border bg-white px-6 py-6 space-y-4">
+      <div class="space-y-3">
+        <a href="corporate-home.html" class="block font-semibold text-foundry-dark">Home</a>
+        <a href="corporate-services.html" class="block text-gray-700">Services Overview</a>
+        <div class="pl-3 border-l-2 border-orange-200 space-y-2 my-2">
+          <a href="corporate-service-detail.html?service=online" class="block text-sm text-gray-600">Get Online</a>
+          <a href="corporate-service-detail.html?service=visible" class="block text-sm text-gray-600">Get Visible</a>
+          <a href="corporate-service-detail.html?service=customers" class="block text-sm text-gray-600">Get Customers</a>
+        </div>
+        <a href="corporate-how-we-work.html" class="block text-gray-700">How We Work</a>
+        <a href="#about" class="block text-gray-700">About</a>
+      </div>
+
+      <div class="pt-4 border-t border-gray-100 space-y-3">
+        <a href="academy-home.html" class="block text-center text-xs font-semibold py-2.5 rounded-full border border-gray-300 text-gray-800">
+          Ops Foundry Academy ↗
+        </a>
+        <a href="#intake" class="block text-center bg-foundry-dark text-white text-xs font-semibold py-3 rounded-full">
+          Explore a Pilot
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. Hero Section (Editorial Photographic Split Composition) -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Value Proposition -->
+        <div class="lg:col-span-7 space-y-8">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-foundry-dark tracking-tight leading-[1.12]">
+            Your business has work to do. <br>
+            <span class="text-foundry-orange">We help you get it done.</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-foundry-muted leading-relaxed max-w-xl font-normal">
+            Ops Foundry builds and operates the operational infrastructure modern businesses need to execute. We combine managed teams, structured workflows, and AI-enabled tools to take you from operational backlog to finished outcomes.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#intake" class="bg-foundry-orange hover:bg-foundry-orange-hover text-white text-sm font-semibold px-8 py-4 rounded-full text-center transition shadow-md shadow-orange-500/10">
+              Explore a Pilot →
+            </a>
+            <a href="corporate-how-we-work.html" class="border border-gray-300 hover:border-foundry-dark bg-white text-foundry-dark text-sm font-semibold px-8 py-4 rounded-full text-center transition">
+              See How We Work
+            </a>
+          </div>
+
+          <!-- Editorial Trust Metrics -->
+          <div class="pt-8 border-t border-gray-200 grid grid-cols-3 gap-6 text-sm text-foundry-muted">
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">Managed Pods</span>
+              <span class="text-xs">Accountable teams</span>
+            </div>
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">Structured SOPs</span>
+              <span class="text-xs">Repeatable processes</span>
+            </div>
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">AI Acceleration</span>
+              <span class="text-xs">Modern execution tools</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Authentic Business Operations Photography Component -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 aspect-[4/5] bg-gray-100">
+            <img 
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" 
+              alt="Project and operations team collaborating in an active business setting" 
+              class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 backdrop-blur-sm bg-black/40 p-4 rounded-2xl text-white">
+              <p class="font-display font-semibold text-sm">Human expertise powered by structured workflows.</p>
+              <p class="text-xs text-gray-300 mt-0.5">Dedicated operational teams coordinating directly with your business.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Why Ops Foundry Exists (Storytelling & Editorial Contrast) -->
+  <section id="about" class="py-24 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark leading-tight">
+            Most businesses don't lack ideas. They lack execution capacity.
+          </h2>
+          <p class="text-foundry-muted text-base leading-relaxed">
+            The fundamental bottleneck to growth is rarely strategy. It is the complex, day-to-day discipline of executing work reliably.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6 text-foundry-muted text-base sm:text-lg leading-relaxed">
+          <p>
+            Modern businesses face an operational paradox. Software tools have never been more abundant, yet completing work remains slow, fragmented, and difficult to manage.
+          </p>
+          <p>
+            Software alone doesn't execute work. Unmanaged freelancers lack operational consistency. And integrating artificial intelligence isn't merely about buying subscriptions—it requires structured operating procedures and trained human operators who know how to produce dependable results.
+          </p>
+          <div class="p-6 bg-foundry-offwhite rounded-2xl border-l-4 border-foundry-orange text-foundry-dark font-medium text-base">
+            Ops Foundry bridges this gap. We assemble, manage, and operate dedicated delivery infrastructure, turning your operational backlog into finished business outcomes.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. The Three Operating Pillars -->
+  <section class="py-24 bg-foundry-offwhite">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="max-w-2xl mb-16 space-y-4">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark">
+          The Three Pillars of the Foundry Model
+        </h2>
+        <p class="text-foundry-muted text-base">
+          Our operational infrastructure unites human capability, documented processes, and intelligent tooling.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1 -->
+        <div class="bg-white rounded-2xl border border-foundry-border p-8 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center font-display font-bold text-foundry-dark text-base">
+            1
+          </div>
+          <h3 class="text-xl font-display font-bold text-foundry-dark">Managed Teams</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Dedicated operational specialists embedded to handle execution, quality assurance, and ongoing business tasks with direct accountability.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-white rounded-2xl border border-foundry-border p-8 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-orange-50 text-foundry-orange flex items-center justify-center font-display font-bold text-base">
+            2
+          </div>
+          <h3 class="text-xl font-display font-bold text-foundry-dark">Structured Workflows</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Standard Operating Procedures engineered to remove ambiguity, eliminate recurring errors, and ensure consistent deliverables every sprint.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-white rounded-2xl border border-foundry-border p-8 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center font-display font-bold text-foundry-dark text-base">
+            3
+          </div>
+          <h3 class="text-xl font-display font-bold text-foundry-dark">AI-Enabled Tools</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Custom automation pipelines and modern language model workflows configured to accelerate delivery speed and expand capacity.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. What We Do: The Three Core Services (Editorial Row Layout) -->
+  <section id="services" class="py-24 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="space-y-4 max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark">
+            Three Ways We Get Work Done
+          </h2>
+          <p class="text-foundry-muted text-base">
+            Structured operational solutions tailored to the foundational stages of commercial growth.
+          </p>
+        </div>
+        <a href="corporate-services.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-orange hover:underline">
+          <span>View All Service Scopes</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="space-y-8">
+        
+        <!-- Service 1: Get Online -->
+        <div class="bg-foundry-offwhite rounded-3xl border border-foundry-border p-8 sm:p-12 hover:border-gray-400 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-foundry-dark">
+              Get Online
+            </h3>
+            <p class="text-base text-foundry-muted leading-relaxed max-w-2xl">
+              Establish a robust digital foundation. We engineer and operate production-grade websites, web platforms, and foundational business operating systems built for reliability.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-700 font-medium">
+              <span class="flex items-center gap-2">• Production Web Systems</span>
+              <span class="flex items-center gap-2">• Digital Content Management</span>
+              <span class="flex items-center gap-2">• Domain, DNS & System Setup</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex justify-start lg:justify-end">
+            <a href="corporate-service-detail.html?service=online" class="bg-white hover:bg-foundry-dark hover:text-white border border-gray-300 text-foundry-dark text-xs font-semibold px-6 py-3.5 rounded-full transition shadow-sm">
+              Explore Get Online Scope →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Get Visible -->
+        <div class="bg-foundry-offwhite rounded-3xl border border-foundry-border p-8 sm:p-12 hover:border-gray-400 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-foundry-dark">
+              Get Visible
+            </h3>
+            <p class="text-base text-foundry-muted leading-relaxed max-w-2xl">
+              Ensure your business is discoverable. We organize structured workflows for search discovery, market positioning, and systematic digital distribution.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-700 font-medium">
+              <span class="flex items-center gap-2">• Search Discovery Architecture</span>
+              <span class="flex items-center gap-2">• Local Map & Business Presence</span>
+              <span class="flex items-center gap-2">• Directory Distribution Workflows</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex justify-start lg:justify-end">
+            <a href="corporate-service-detail.html?service=visible" class="bg-white hover:bg-foundry-dark hover:text-white border border-gray-300 text-foundry-dark text-xs font-semibold px-6 py-3.5 rounded-full transition shadow-sm">
+              Explore Get Visible Scope →
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Get Customers -->
+        <div class="bg-foundry-offwhite rounded-3xl border border-foundry-border p-8 sm:p-12 hover:border-gray-400 transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-foundry-dark">
+              Get Customers
+            </h3>
+            <p class="text-base text-foundry-muted leading-relaxed max-w-2xl">
+              Build dependable revenue operations. We implement and manage lead capture pipelines, customer inquiry routing, and systematic conversion follow-up workflows.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-700 font-medium">
+              <span class="flex items-center gap-2">• Inbound Intake Pipelines</span>
+              <span class="flex items-center gap-2">• Customer Inquiry Routing</span>
+              <span class="flex items-center gap-2">• Conversion Follow-up Procedures</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex justify-start lg:justify-end">
+            <a href="corporate-service-detail.html?service=customers" class="bg-white hover:bg-foundry-dark hover:text-white border border-gray-300 text-foundry-dark text-xs font-semibold px-6 py-3.5 rounded-full transition shadow-sm">
+              Explore Get Customers Scope →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. How We Work: Proposed Operating Model (Dark Editorial Section) -->
+  <section id="how-we-work" class="py-24 bg-foundry-dark text-white">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="max-w-3xl mb-16 space-y-4">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight">
+          How Work Gets Done at Ops Foundry
+        </h2>
+        <p class="text-gray-400 text-base leading-relaxed">
+          Our proposed execution framework organizes work into four disciplined phases designed to deliver verified outcomes.
+        </p>
+        <p class="text-xs text-foundry-orange">
+          * Note: Proposed execution framework subject to final operational review.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="border-t border-gray-800 pt-6 space-y-3">
+          <span class="text-xs font-bold text-foundry-orange">Phase 1</span>
+          <h3 class="text-lg font-display font-bold text-white">Intake & Scoping</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            We evaluate your operational requirements, define measurable deliverables, and establish clear completion criteria.
+          </p>
+        </div>
+
+        <div class="border-t border-gray-800 pt-6 space-y-3">
+          <span class="text-xs font-bold text-foundry-orange">Phase 2</span>
+          <h3 class="text-lg font-display font-bold text-white">Workflow Design</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            We document the standard operating procedures, configure AI toolchains, and set quality assurance checkpoints.
+          </p>
+        </div>
+
+        <div class="border-t border-gray-800 pt-6 space-y-3">
+          <span class="text-xs font-bold text-foundry-orange">Phase 3</span>
+          <h3 class="text-lg font-display font-bold text-white">Pod Deployment</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            A trained operational pod executes the structured tasks in focused sprints with regular progress updates.
+          </p>
+        </div>
+
+        <div class="border-t border-gray-800 pt-6 space-y-3">
+          <span class="text-xs font-bold text-foundry-orange">Phase 4</span>
+          <h3 class="text-lg font-display font-bold text-white">Review & Handover</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Finished deliverables are validated against the initial scope and operational documentation is handed over for ongoing stability.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-800 flex justify-end">
+        <a href="corporate-how-we-work.html" class="text-sm font-semibold text-foundry-orange hover:underline flex items-center gap-1.5">
+          <span>Read detailed execution methodology</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. Who We Help (Target Audiences) -->
+  <section class="py-24 bg-foundry-offwhite">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="max-w-2xl mb-16 space-y-4">
+        <h2 class="text-3xl font-display font-bold text-foundry-dark">
+          Built for Businesses That Value Execution
+        </h2>
+        <p class="text-foundry-muted text-base">
+          Our managed operational infrastructure supports organizations at critical phases of operational demand.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Growing Small Businesses</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Companies needing dedicated digital presence and automated customer inquiry handling without hiring large internal teams.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Established Companies</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Organizations seeking to modernize operational backlogs, systematize workflows, and integrate AI into recurring business tasks.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Expanding Teams</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Businesses scaling into new markets requiring reliable digital infrastructure and structured customer acquisition support.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. The Academy Bridge (Talent Development Connection) -->
+  <section class="py-16 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="bg-foundry-offwhite rounded-3xl border border-gray-200 p-8 sm:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-8 space-y-4">
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-foundry-dark">
+              Ops Foundry Academy: Practical Operational Training
+            </h2>
+            <p class="text-foundry-muted text-base leading-relaxed">
+              Ops Foundry Academy represents the talent-development arm of our ecosystem. Through hands-on workplace simulations, the Academy prepares ambitious learners to master modern AI tools and structured operational execution.
+            </p>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+            <a href="academy-home.html" class="bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-6 py-3.5 rounded-full text-center transition shadow-sm">
+              Visit Ops Foundry Academy ↗
+            </a>
+            <a href="academy-programmes.html" class="border border-gray-300 hover:border-gray-900 bg-white text-foundry-dark text-xs font-semibold px-6 py-3.5 rounded-full text-center transition">
+              View Academy Programmes
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Project Consultation / Intake Form -->
+  <section id="intake" class="py-24 bg-foundry-offwhite">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left: Context -->
+        <div class="lg:col-span-5 space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark leading-tight">
+            Ready to explore an operational pilot?
+          </h2>
+          <p class="text-foundry-muted text-base leading-relaxed">
+            Tell us about your business priorities and the operational bottlenecks you need solved. Our team reviews project submissions and will follow up directly regarding your requirements.
+          </p>
+
+          <div class="space-y-4 pt-6 border-t border-gray-200 text-sm text-gray-600">
+            <div>
+              <span class="block font-semibold text-foundry-dark">Direct Coordination:</span>
+              <span>hello@domain-placeholder.com</span>
+            </div>
+            <div>
+              <span class="block font-semibold text-foundry-dark">Engagement Model:</span>
+              <span>Structured pilot scoping & phased deployment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Intake Form -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm">
+            <form onsubmit="event.preventDefault(); alert('Form demonstration: In a production build, this submits your project brief.');" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">Your Name *</label>
+                  <input type="text" required placeholder="e.g. Alex Morgan" class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-foundry-orange">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">Business Email *</label>
+                  <input type="email" required placeholder="alex@company.com" class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-foundry-orange">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">Company Name *</label>
+                  <input type="text" required placeholder="Company name" class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-foundry-orange">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1.5">Primary Service Interest *</label>
+                  <select class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-foundry-orange bg-white">
+                    <option value="online">Get Online (Websites & Systems)</option>
+                    <option value="visible">Get Visible (Search & Discovery)</option>
+                    <option value="customers">Get Customers (Lead Workflows)</option>
+                    <option value="custom">General Operational Pilot Scoping</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Describe the work to be done *</label>
+                <textarea rows="4" required placeholder="Outline the operational goals, bottlenecks, or specific deliverables required..." class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-foundry-orange"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-foundry-orange hover:bg-foundry-orange-hover text-white font-semibold py-4 rounded-full transition text-sm shadow-sm">
+                Submit Consultation Request →
+              </button>
+
+              <p class="text-xs text-gray-500 text-center">
+                Submissions are reviewed directly by our operations team.
+              </p>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Corporate Footer -->
+  <footer class="bg-foundry-dark text-white border-t border-gray-800 pt-16 pb-12 font-sans">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-gray-800">
+        
+        <!-- Col 1: Brand & Positioning -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-foundry-orange"></span>
+            <span class="font-display font-bold text-xl text-white">Ops Foundry</span>
+          </div>
+          <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+            Human-AI operational infrastructure. We combine managed teams, structured workflows, and AI-enabled tools to help businesses get work done.
+          </p>
+        </div>
+
+        <!-- Col 2: Services -->
+        <div class="md:col-span-3 space-y-3 text-sm">
+          <div class="font-semibold text-white">Services</div>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="corporate-services.html" class="hover:text-white transition">Services Overview</a></li>
+            <li><a href="corporate-service-detail.html?service=online" class="hover:text-white transition">Get Online</a></li>
+            <li><a href="corporate-service-detail.html?service=visible" class="hover:text-white transition">Get Visible</a></li>
+            <li><a href="corporate-service-detail.html?service=customers" class="hover:text-white transition">Get Customers</a></li>
+            <li><a href="corporate-how-we-work.html" class="hover:text-white transition">How We Work</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Ecosystem -->
+        <div class="md:col-span-4 space-y-3 text-sm">
+          <div class="font-semibold text-white">Ecosystem</div>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="academy-home.html" class="hover:text-foundry-orange text-gray-300 transition">Ops Foundry Academy ↗</a></li>
+            <li><a href="academy-programmes.html" class="hover:text-white transition">Academy Programmes</a></li>
+            <li><a href="design-system.html" class="hover:text-white transition">Shared Design System Preview</a></li>
+            <li><span class="text-gray-500">Coordination: hello@domain-placeholder.com</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div>© 2026 Ops Foundry. All rights reserved. [Provisional Wireframe Prototype]</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+          <a href="#" class="hover:text-gray-400">Terms of Engagement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTarget = urlParams.get('scroll');
+    if (scrollTarget) {
+      document.documentElement.style.scrollBehavior = 'auto';
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+    }
+  </script>
+</body>
+</html>

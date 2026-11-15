@@ -1,0 +1,40 @@
+/**
+ * Ops Foundry Design Tokens — Tailwind CSS v4 @theme Stylesheet
+ * Direction C: Shared Foundation, Distinct Personalities
+ */
+
+@theme {
+  /* Brand Foundation */
+  --color-foundry-orange: #FF5A1F;
+  --color-foundry-orange-hover: #E04810;
+  --color-foundry-orange-light: #FFF4EE;
+  --color-foundry-orange-border: #FFD7C2;
+
+  /* Surfaces */
+  --color-foundry-canvas: #FBFBF9;
+  --color-foundry-pure: #FFFFFF;
+  --color-foundry-muted: #F3F4F6;
+
+  /* Corporate Personality */
+  --color-foundry-dark: #111215;
+  --color-foundry-dark-hover: #0B0C0E;
+  --color-foundry-dark-card: #18191E;
+  --color-foundry-dark-border: #282A30;
+
+  /* Academy Personality */
+  --color-foundry-slate: #1E232E;
+  --color-foundry-slate-hover: #151922;
+  --color-foundry-slate-card: #252B38;
+  --color-foundry-slate-border: #323B4C;
+
+  /* Typography Families */
+  --font-display: var(--font-manrope), 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-plus-jakarta), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Border Radii */
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* Max Widths */
+  --width-container: 1440px;
+}

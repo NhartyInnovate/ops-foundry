@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry — Visual Design System (Direction C)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              'orange-subtle': '#FFF5F0',
+              dark: '#111215',
+              slate: '#1E232E',
+              offwhite: '#FBFBF9',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased min-h-screen">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-foundry-border bg-white px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-foundry-orange"></span>
+        <span class="font-display font-bold text-lg text-foundry-dark">Ops Foundry Design System</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="corporate-home.html" class="text-foundry-muted hover:text-foundry-dark transition">Corporate Website</a>
+        <a href="academy-home.html" class="text-foundry-muted hover:text-foundry-dark transition">Academy Website</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    
+    <div class="max-w-3xl mb-16 space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-display font-bold text-foundry-dark tracking-tight">
+        Visual Design System
+      </h1>
+      <p class="text-lg text-foundry-muted leading-relaxed">
+        Direction C: Shared Foundation, Distinct Personalities. A human, editorial design language engineered for an established operations company.
+      </p>
+    </div>
+
+    <!-- 1. Design Principles -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-display font-bold text-foundry-dark mb-6">Core Design Principles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Human & Credible</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            We avoid generic SaaS tropes, fake dashboards, and decorative technical jargon. Real photography, disciplined typography, and clear business communication take center stage.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Clean Typographic Hierarchy</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Headings stand proudly without decorative eyebrow labels. Natural letterforms (Manrope + Plus Jakarta Sans) establish effortless authority across all screen sizes.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-3">
+          <h3 class="font-display font-bold text-lg text-foundry-dark">Intentional Accents</h3>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Foundry Orange is applied with restraint to guide user action and highlight critical focal points, maintaining high visual contrast and executive elegance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Color Tokens -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-display font-bold text-foundry-dark mb-6">Color System</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-[#FF5A1F] mb-3 shadow-sm"></div>
+          <div class="text-xs font-bold text-foundry-dark">Foundry Orange</div>
+          <div class="text-xs text-foundry-muted">#FF5A1F</div>
+          <div class="text-[11px] text-gray-500 mt-2">Primary accent & key CTAs</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-[#111215] mb-3 shadow-sm"></div>
+          <div class="text-xs font-bold text-foundry-dark">Industrial Black</div>
+          <div class="text-xs text-foundry-muted">#111215</div>
+          <div class="text-[11px] text-gray-500 mt-2">Corporate dark sections & footers</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-[#1E232E] mb-3 shadow-sm"></div>
+          <div class="text-xs font-bold text-foundry-dark">Scholastic Slate</div>
+          <div class="text-xs text-foundry-muted">#1E232E</div>
+          <div class="text-[11px] text-gray-500 mt-2">Academy dark sections</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-[#FBFBF9] mb-3 border border-gray-200"></div>
+          <div class="text-xs font-bold text-foundry-dark">Warm Off-White</div>
+          <div class="text-xs text-foundry-muted">#FBFBF9</div>
+          <div class="text-[11px] text-gray-500 mt-2">Base page ground</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-white mb-3 border border-gray-200"></div>
+          <div class="text-xs font-bold text-foundry-dark">Pure White</div>
+          <div class="text-xs text-foundry-muted">#FFFFFF</div>
+          <div class="text-[11px] text-gray-500 mt-2">Content containers & cards</div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-foundry-border">
+          <div class="h-16 rounded-lg bg-[#6B7280] mb-3"></div>
+          <div class="text-xs font-bold text-foundry-dark">Muted Gray</div>
+          <div class="text-xs text-foundry-muted">#6B7280</div>
+          <div class="text-[11px] text-gray-500 mt-2">Subtitles & secondary body</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Typography -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-display font-bold text-foundry-dark mb-6">Typography Scale</h2>
+      <div class="bg-white p-8 sm:p-10 rounded-2xl border border-foundry-border space-y-8">
+        <div>
+          <span class="text-xs text-foundry-muted block mb-2 font-medium">Display H1 (Manrope Extra Bold / 56px)</span>
+          <p class="text-4xl sm:text-5xl font-display font-extrabold text-foundry-dark tracking-tight leading-tight">
+            Your business has work to do. We help you get it done.
+          </p>
+        </div>
+        <hr class="border-gray-100">
+        <div>
+          <span class="text-xs text-foundry-muted block mb-2 font-medium">Section Heading H2 (Manrope Bold / 36px)</span>
+          <p class="text-3xl font-display font-bold text-foundry-dark tracking-tight">
+            Three Ways We Get Work Done
+          </p>
+        </div>
+        <hr class="border-gray-100">
+        <div>
+          <span class="text-xs text-foundry-muted block mb-2 font-medium">Card Heading H3 (Manrope SemiBold / 22px)</span>
+          <p class="text-xl font-display font-semibold text-foundry-dark">
+            Managed Teams Accountable for Execution
+          </p>
+        </div>
+        <hr class="border-gray-100">
+        <div>
+          <span class="text-xs text-foundry-muted block mb-2 font-medium">Body Text (Plus Jakarta Sans / 16px / Leading 1.6)</span>
+          <p class="text-base text-foundry-muted leading-relaxed max-w-3xl">
+            Ops Foundry builds and operates the operational infrastructure modern businesses need to execute. We combine managed teams, structured workflows, and AI-enabled tools to take organizations from operational backlog to finished outcomes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Components -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-display font-bold text-foundry-dark mb-6">Interactive Buttons & Controls</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Light Theme -->
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-6">
+          <h3 class="font-display font-bold text-base text-foundry-dark">Light Background Variants</h3>
+          <div class="flex flex-wrap gap-4 items-center">
+            <button class="bg-foundry-orange hover:bg-foundry-orange-hover text-white text-sm font-semibold px-7 py-3.5 rounded-full transition shadow-sm">
+              Primary Solid →
+            </button>
+            <button class="border border-gray-300 hover:border-gray-900 bg-white text-foundry-dark text-sm font-medium px-7 py-3.5 rounded-full transition">
+              Secondary Ghost
+            </button>
+          </div>
+        </div>
+
+        <!-- Dark Theme -->
+        <div class="bg-foundry-dark p-8 rounded-2xl text-white space-y-6">
+          <h3 class="font-display font-bold text-base text-white">Dark Background Variants</h3>
+          <div class="flex flex-wrap gap-4 items-center">
+            <button class="bg-white hover:bg-gray-100 text-foundry-dark text-sm font-semibold px-7 py-3.5 rounded-full transition shadow-sm">
+              Inverted Solid →
+            </button>
+            <button class="border border-gray-700 hover:border-gray-400 bg-transparent text-white text-sm font-medium px-7 py-3.5 rounded-full transition">
+              Dark Outline
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Experience Specialization -->
+    <section>
+      <h2 class="text-2xl font-display font-bold text-foundry-dark mb-6">Direction C: Personality Matrix</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display font-bold text-xl text-foundry-dark">Corporate Website</h3>
+            <span class="text-xs px-2.5 py-1 bg-gray-100 text-gray-800 rounded-full font-medium">B2B Commercial</span>
+          </div>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Confident, authoritative, structured, and commercially credible. Focuses on operational delivery, managed teams, and business pilots.
+          </p>
+          <div class="pt-4 border-t border-gray-100 text-xs text-gray-600 space-y-2">
+            <div>• Dark Section Ground: Industrial Black (#111215)</div>
+            <div>• Imagery: Modern offices, collaborative working teams, authentic executive moments</div>
+            <div>• Primary Call to Action: "Explore a Pilot"</div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-foundry-border space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display font-bold text-xl text-foundry-dark">Ops Foundry Academy</h3>
+            <span class="text-xs px-2.5 py-1 bg-orange-50 text-foundry-orange rounded-full font-medium">Learning & Talent</span>
+          </div>
+          <p class="text-sm text-foundry-muted leading-relaxed">
+            Welcoming, aspirational, practical, and professionally empowering. Focuses on career transformation, workplace simulations, and skills mastery.
+          </p>
+          <div class="pt-4 border-t border-gray-100 text-xs text-gray-600 space-y-2">
+            <div>• Dark Section Ground: Scholastic Slate (#1E232E)</div>
+            <div>• Imagery: Collaborative workshops, practical mentorship, dedicated learners</div>
+            <div>• Primary Call to Action: "Apply for Admission"</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-foundry-border py-8 text-center text-xs text-foundry-muted">
+    Ops Foundry Design System • Direction C: Shared Foundation, Distinct Personalities
+  </footer>
+
+</body>
+</html>

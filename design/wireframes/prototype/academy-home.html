@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry Academy — Build the Skills to Do Real Business Work</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              'orange-subtle': '#FFF5F0',
+              dark: '#111215',
+              slate: '#1E232E',
+              offwhite: '#F9F9F6',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased selection:bg-foundry-orange selection:text-white">
+
+  <!-- Academy Top Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border transition-all">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Lockup -->
+      <a href="academy-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <div class="flex items-center gap-2">
+          <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-orange-100 text-foundry-orange">
+            Academy
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="academy-home.html" class="text-foundry-orange font-semibold">Home</a>
+        <a href="academy-programmes.html" class="hover:text-foundry-dark transition">Programmes</a>
+        <a href="#how-it-works" class="hover:text-foundry-dark transition">How It Works</a>
+        <a href="academy-admissions.html" class="hover:text-foundry-dark transition">Admissions</a>
+        <a href="academy-tuition.html" class="hover:text-foundry-dark transition">Tuition & Scholarships</a>
+      </nav>
+
+      <!-- Right CTAs & Corporate Gateway Switcher -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="corporate-home.html" class="text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-gray-900 text-gray-700 hover:text-black transition">
+          Ops Foundry Corporate ↗
+        </a>
+        <a href="academy-admissions.html" class="bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-5 py-2.5 rounded-full transition shadow-sm">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100" aria-label="Toggle navigation menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-foundry-border bg-white px-6 py-6 space-y-4">
+      <div class="space-y-3">
+        <a href="academy-home.html" class="block font-semibold text-foundry-dark">Home</a>
+        <a href="academy-programmes.html" class="block text-gray-700">Programmes (Courses 1, 2, 3)</a>
+        <a href="#how-it-works" class="block text-gray-700">How It Works</a>
+        <a href="academy-admissions.html" class="block text-gray-700">Admissions Process</a>
+        <a href="academy-tuition.html" class="block text-gray-700">Tuition & Scholarships</a>
+      </div>
+
+      <div class="pt-4 border-t border-gray-100 space-y-3">
+        <a href="corporate-home.html" class="block text-center text-xs font-semibold py-2.5 rounded-full border border-gray-300 text-gray-800">
+          Ops Foundry Corporate ↗
+        </a>
+        <a href="academy-admissions.html" class="block text-center bg-foundry-orange text-white text-xs font-semibold py-3 rounded-full">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. Hero Section (Welcoming, Human, Photographic Editorial) -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Value Proposition -->
+        <div class="lg:col-span-7 space-y-8">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-foundry-dark tracking-tight leading-[1.12]">
+            Build the skills to do <br>
+            <span class="text-foundry-orange">real business work.</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-foundry-muted leading-relaxed max-w-xl font-normal">
+            Ops Foundry Academy trains individuals in practical operational execution. Master structured workflows, leverage modern AI tools, and develop verified competencies through hands-on workplace simulations.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="academy-programmes.html" class="bg-foundry-orange hover:bg-foundry-orange-hover text-white text-sm font-semibold px-8 py-4 rounded-full text-center transition shadow-md shadow-orange-500/10">
+              Explore Programmes →
+            </a>
+            <a href="#how-it-works" class="border border-gray-300 hover:border-gray-900 bg-white text-foundry-dark text-sm font-semibold px-8 py-4 rounded-full text-center transition">
+              How Learning Works
+            </a>
+          </div>
+
+          <!-- Key Commitments -->
+          <div class="pt-8 border-t border-gray-200 grid grid-cols-3 gap-6 text-sm text-foundry-muted">
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">3 Programmes</span>
+              <span class="text-xs">Structured tracks</span>
+            </div>
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">Simulated Sprints</span>
+              <span class="text-xs">Practical business tasks</span>
+            </div>
+            <div>
+              <span class="block font-display font-bold text-foundry-dark text-base">Scholarships</span>
+              <span class="text-xs">Financial aid options</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Authentic Learning Photography Component -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 aspect-[4/5] bg-gray-100">
+            <img 
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80" 
+              alt="Practical collaborative training session in an active workshop" 
+              class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 backdrop-blur-sm bg-black/40 p-4 rounded-2xl text-white">
+              <p class="font-display font-semibold text-sm">Practical learning through workplace simulations.</p>
+              <p class="text-xs text-gray-300 mt-0.5">Solve real-world operational challenges in collaborative sprints.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Practical Learning Methodology -->
+  <section class="py-24 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark leading-tight">
+            No passive lectures. You learn by doing real operational work.
+          </h2>
+          <p class="text-foundry-muted text-base leading-relaxed">
+            The modern economy does not reward theoretical knowledge alone; it rewards individuals who can take a business objective and execute it dependably.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6 text-foundry-muted text-base sm:text-lg leading-relaxed">
+          <p>
+            Ops Foundry Academy was founded on a simple principle: operational capability is built through hands-on practice. Traditional educational models focus on memorization and passive video watching.
+          </p>
+          <p>
+            Inside the Academy, learners operate in replicated workplace simulations. You handle realistic customer requirements, write and execute Standard Operating Procedures, leverage AI tools to increase speed, and receive actionable feedback on your deliverables.
+          </p>
+          <div class="p-6 bg-foundry-offwhite rounded-2xl border-l-4 border-foundry-orange text-foundry-dark font-medium text-base">
+            The Result: You graduate with a demonstrable portfolio of finished work and practical operational skills that speak directly to employers.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Available Programmes (Neutral Placeholders: Course One, Two, Three) -->
+  <section id="programmes" class="py-24 bg-foundry-offwhite">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="space-y-4 max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark">
+            Our Learning Pathways
+          </h2>
+          <p class="text-foundry-muted text-base">
+            We currently plan three structured courses. Final programme names, detailed syllabi, and schedules will be confirmed prior to cohort commencement.
+          </p>
+        </div>
+        <a href="academy-programmes.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-orange hover:underline">
+          <span>Compare All Programmes</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Course One -->
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm flex flex-col justify-between hover:border-gray-400 transition-all space-y-6">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-display font-bold text-foundry-dark">
+              Course One
+            </h3>
+            <p class="text-xs text-gray-500 font-medium">
+              [Provisional focus: Web Systems & Digital Operations — Official title to be announced]
+            </p>
+            <p class="text-sm text-foundry-muted leading-relaxed">
+              Provides practical training in digital presence management, web content operations, and modern operational workflows.
+            </p>
+
+            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-600 font-medium">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Duration:</span>
+                <span>[To be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Format:</span>
+                <span>[Format to be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Prerequisites:</span>
+                <span>[To be confirmed]</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="academy-programme-detail.html?course=one" class="block w-full text-center bg-foundry-offwhite hover:bg-foundry-dark hover:text-white border border-gray-200 text-foundry-dark text-xs font-semibold py-3.5 rounded-full transition">
+              View Course One Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- Course Two -->
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm flex flex-col justify-between hover:border-gray-400 transition-all space-y-6">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-display font-bold text-foundry-dark">
+              Course Two
+            </h3>
+            <p class="text-xs text-gray-500 font-medium">
+              [Provisional focus: Search, Discovery & Content Workflows — Official title to be announced]
+            </p>
+            <p class="text-sm text-foundry-muted leading-relaxed">
+              Equips learners with structured approaches to search discovery, directory distribution, and systematic online visibility.
+            </p>
+
+            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-600 font-medium">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Duration:</span>
+                <span>[To be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Format:</span>
+                <span>[Format to be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Prerequisites:</span>
+                <span>[To be confirmed]</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="academy-programme-detail.html?course=two" class="block w-full text-center bg-foundry-offwhite hover:bg-foundry-dark hover:text-white border border-gray-200 text-foundry-dark text-xs font-semibold py-3.5 rounded-full transition">
+              View Course Two Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- Course Three -->
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 shadow-sm flex flex-col justify-between hover:border-gray-400 transition-all space-y-6">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-display font-bold text-foundry-dark">
+              Course Three
+            </h3>
+            <p class="text-xs text-gray-500 font-medium">
+              [Provisional focus: Customer Operations & Inbound Workflows — Official title to be announced]
+            </p>
+            <p class="text-sm text-foundry-muted leading-relaxed">
+              Focuses on customer intake workflows, inquiry management, and automated operational communication pipelines.
+            </p>
+
+            <div class="pt-4 border-t border-gray-100 space-y-2 text-xs text-gray-600 font-medium">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Duration:</span>
+                <span>[To be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Format:</span>
+                <span>[Format to be confirmed]</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Prerequisites:</span>
+                <span>[To be confirmed]</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="academy-programme-detail.html?course=three" class="block w-full text-center bg-foundry-offwhite hover:bg-foundry-dark hover:text-white border border-gray-200 text-foundry-dark text-xs font-semibold py-3.5 rounded-full transition">
+              View Course Three Details →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-8 p-4 bg-gray-100 rounded-2xl text-xs text-gray-600 text-center font-medium">
+        * Note: Applicants will be able to select their preferred course during application, subject to final programme configuration.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. How Learning Works (Scholastic Slate Dark Theme) -->
+  <section id="how-it-works" class="py-24 bg-foundry-slate text-white">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      
+      <div class="max-w-3xl mb-16 space-y-4">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold tracking-tight">
+          How You Learn Inside the Academy
+        </h2>
+        <p class="text-gray-300 text-base leading-relaxed">
+          Our curriculum is engineered around three pillars of practical competence.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-gray-800/60 rounded-3xl border border-gray-700 p-8 space-y-4">
+          <span class="text-xs font-bold text-foundry-orange">Pillar 1</span>
+          <h3 class="text-xl font-display font-bold text-white">Workplace Simulations</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Train inside simulated business environments with realistic task backlogs, deadlines, and quality requirements.
+          </p>
+        </div>
+
+        <div class="bg-gray-800/60 rounded-3xl border border-gray-700 p-8 space-y-4">
+          <span class="text-xs font-bold text-foundry-orange">Pillar 2</span>
+          <h3 class="text-xl font-display font-bold text-white">AI-Augmented Execution</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Master prompting, workflow automation, and modern software tools to accelerate your execution speed and quality.
+          </p>
+        </div>
+
+        <div class="bg-gray-800/60 rounded-3xl border border-gray-700 p-8 space-y-4">
+          <span class="text-xs font-bold text-foundry-orange">Pillar 3</span>
+          <h3 class="text-xl font-display font-bold text-white">Output-Based Review</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            No multiple-choice testing. Assessments evaluate the accuracy, completeness, and professionalism of your delivered output.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Accessible Tuition & Scholarships Preview -->
+  <section id="tuition" class="py-24 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-8 space-y-4">
+          <h2 class="text-3xl font-display font-bold text-foundry-dark">
+            Tuition, Financial Support & Scholarships
+          </h2>
+          <p class="text-foundry-muted text-base leading-relaxed">
+            We believe practical operational education should be accessible to motivated candidates. Complete details on tuition rates, installment plans, and scholarship opportunities are being finalized.
+          </p>
+          <p class="text-xs text-gray-500 font-medium">
+            * Tuition rates and scholarship funding quotas: [To be confirmed].
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col gap-3">
+          <a href="academy-tuition.html" class="bg-foundry-dark hover:bg-black text-white text-xs font-semibold py-4 px-6 rounded-full text-center transition">
+            Review Tuition & Funding Options →
+          </a>
+          <a href="academy-admissions.html" class="border border-gray-300 hover:border-gray-900 text-foundry-dark text-xs font-semibold py-4 px-6 rounded-full text-center transition">
+            Check Admissions Criteria
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Career Outcomes & Practical Competency -->
+  <section class="py-24 bg-foundry-offwhite">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="max-w-3xl space-y-4">
+        <h2 class="text-3xl font-display font-bold text-foundry-dark">
+          Equipped for Real Business Operations
+        </h2>
+        <p class="text-foundry-muted text-base leading-relaxed">
+          Academy graduates develop practical operational capabilities aligned with modern business demands. By completing hands-on workplace simulations, you build a verified portfolio of work to demonstrate your competence to prospective employers.
+        </p>
+        <div class="p-6 bg-white rounded-2xl border border-gray-200 text-xs text-gray-600 font-medium">
+          Programme completion equips graduates with verifiable operational competencies. Career pathways depend on individual performance, track selection, and market opportunities.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. For Sponsors & Institutional Partners -->
+  <section class="py-16 bg-white border-y border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="p-8 sm:p-12 rounded-3xl bg-gray-50 border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+          <h3 class="text-2xl font-display font-bold text-foundry-dark">Partner with Ops Foundry Academy</h3>
+          <p class="text-sm text-foundry-muted max-w-xl">
+            We collaborate with corporate partners, development agencies, and foundations to sponsor cohorts and support talent development.
+          </p>
+        </div>
+        <a href="academy-tuition.html#sponsors" class="bg-foundry-dark text-white text-xs font-semibold px-6 py-3.5 rounded-full hover:bg-black transition whitespace-nowrap">
+          Sponsor Information →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Admissions Call to Action -->
+  <section id="apply" class="py-24 bg-foundry-offwhite">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-display font-bold text-foundry-dark">
+        Ready to build practical operational skills?
+      </h2>
+      <p class="text-foundry-muted max-w-xl mx-auto text-base leading-relaxed">
+        Submit an application to register your interest for our upcoming cohort. Select your preferred course and our admissions team will be in touch with next steps.
+      </p>
+      <div>
+        <a href="academy-admissions.html" class="inline-block bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-8 py-4 rounded-full transition shadow-sm">
+          Start Your Application →
+        </a>
+      </div>
+      <div class="text-xs text-gray-500 font-medium">
+        * Application review conducted on a rolling basis.
+      </div>
+    </div>
+  </section>
+
+  <!-- Academy Footer -->
+  <footer class="bg-foundry-slate text-white border-t border-gray-800 pt-16 pb-12 font-sans">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-gray-800">
+        
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-foundry-orange"></span>
+            <span class="font-display font-bold text-xl text-white">Ops Foundry Academy</span>
+          </div>
+          <p class="text-sm text-gray-300 max-w-sm leading-relaxed">
+            The practical operational training engine. Building real-world skills through workplace simulations and modern AI-enabled workflows.
+          </p>
+        </div>
+
+        <div class="md:col-span-3 space-y-3 text-sm">
+          <div class="font-semibold text-white">Programmes</div>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="academy-programmes.html" class="hover:text-white transition">Programmes Overview</a></li>
+            <li><a href="academy-programme-detail.html?course=one" class="hover:text-white transition">Course One</a></li>
+            <li><a href="academy-programme-detail.html?course=two" class="hover:text-white transition">Course Two</a></li>
+            <li><a href="academy-programme-detail.html?course=three" class="hover:text-white transition">Course Three</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-3 text-sm">
+          <div class="font-semibold text-white">Admissions & Ecosystem</div>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="academy-admissions.html" class="hover:text-white transition">Admissions Process</a></li>
+            <li><a href="academy-tuition.html" class="hover:text-white transition">Tuition & Financial Support</a></li>
+            <li><a href="corporate-home.html" class="hover:text-foundry-orange transition">Ops Foundry Corporate ↗</a></li>
+            <li><span class="text-gray-400">Admissions: admissions@domain-placeholder.com</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div>© 2026 Ops Foundry Academy. [Provisional Wireframe Prototype]</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gray-300">Student Policy</a>
+          <a href="#" class="hover:text-gray-300">Terms of Participation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTarget = urlParams.get('scroll');
+    if (scrollTarget) {
+      document.documentElement.style.scrollBehavior = 'auto';
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+    }
+  </script>
+</body>
+</html>

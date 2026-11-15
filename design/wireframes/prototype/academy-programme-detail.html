@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ops Foundry Academy — Course Detail Specification</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            foundry: {
+              orange: '#FF5A1F',
+              'orange-hover': '#E04B14',
+              dark: '#111215',
+              slate: '#1E232E',
+              offwhite: '#F9F9F6',
+              border: '#E5E7EB',
+              text: '#111827',
+              muted: '#6B7280'
+            }
+          },
+          fontFamily: {
+            display: ['Manrope', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-foundry-offwhite text-foundry-text font-body antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-foundry-border">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
+      <a href="academy-home.html" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-foundry-orange"></span>
+        <div class="flex items-center gap-2">
+          <span class="font-display font-extrabold text-xl tracking-tight text-foundry-dark">Ops Foundry</span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-orange-100 text-foundry-orange">
+            Academy
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-gray-700">
+        <a href="academy-home.html" class="hover:text-foundry-dark transition">Home</a>
+        <a href="academy-programmes.html" class="text-foundry-orange font-semibold">Programmes</a>
+        <a href="academy-admissions.html" class="hover:text-foundry-dark transition">Admissions</a>
+        <a href="academy-tuition.html" class="hover:text-foundry-dark transition">Tuition & Scholarships</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="academy-admissions.html" class="bg-foundry-orange text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-foundry-orange-hover transition">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    
+    <!-- Course Switcher Tabs -->
+    <div class="flex items-center gap-2 mb-10 overflow-x-auto pb-2 text-sm">
+      <span class="text-gray-500 mr-2 text-xs font-semibold">Select Course:</span>
+      <button onclick="switchCourse('one')" id="tab-one" class="px-5 py-2.5 rounded-full bg-foundry-orange text-white font-semibold transition shadow-sm">
+        Course One
+      </button>
+      <button onclick="switchCourse('two')" id="tab-two" class="px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition">
+        Course Two
+      </button>
+      <button onclick="switchCourse('three')" id="tab-three" class="px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition">
+        Course Three
+      </button>
+    </div>
+
+    <!-- Dynamic Course Content -->
+    <div id="courseContent" class="space-y-12">
+      <!-- Populated via JS below -->
+    </div>
+
+    <!-- Application CTA -->
+    <div class="mt-16 bg-foundry-slate text-white rounded-3xl p-8 sm:p-12 text-center space-y-6">
+      <h2 class="text-3xl font-display font-bold">
+        Ready to apply for this programme?
+      </h2>
+      <p class="text-gray-300 max-w-xl mx-auto text-base leading-relaxed">
+        Submit your application to be considered for our upcoming cohort. Applications are reviewed on a rolling basis.
+      </p>
+      <a id="applyBtn" href="academy-admissions.html?selected=one" class="inline-block bg-foundry-orange hover:bg-foundry-orange-hover text-white text-xs font-semibold px-8 py-4 rounded-full transition">
+        Proceed to Application →
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    const courseData = {
+      one: {
+        title: 'Course One',
+        placeholderNote: '[Official course title, detailed syllabus, and cohort start dates to be supplied]',
+        summary: 'A structured, practical programme training learners in the deployment, management, and continuous operation of production digital web systems.',
+        duration: '[To be confirmed]',
+        format: '[Format to be confirmed]',
+        prereqs: '[To be confirmed — Basic computer literacy expected]',
+        modules: [
+          { title: 'Phase 1: Operational Foundations & Standard Operating Procedures', desc: 'Understanding business workflows, ticket management, task decomposition, and QA acceptance standards.' },
+          { title: 'Phase 2: Digital Platform Management & Publishing Workflows', desc: 'Configuring modern web content management systems, domain basics, and digital publishing pipelines.' },
+          { title: 'Phase 3: AI Prompting & Operational Acceleration', desc: 'Using modern AI models for content structuring, documentation authoring, and workflow efficiency.' },
+          { title: 'Phase 4: Capstone Workplace Simulation', desc: 'Executing a realistic client digital deployment simulation under workplace conditions.' }
+        ]
+      },
+      two: {
+        title: 'Course Two',
+        placeholderNote: '[Official course title, detailed syllabus, and cohort start dates to be supplied]',
+        summary: 'Equips learners with practical methodologies for search engine structure, local business directory management, and systematic online distribution.',
+        duration: '[To be confirmed]',
+        format: '[Format to be confirmed]',
+        prereqs: '[To be confirmed — Basic computer literacy expected]',
+        modules: [
+          { title: 'Phase 1: Search Engine Architecture & Site Taxonomy', desc: 'Understanding crawlability, search indexing, page metadata, and technical site structure.' },
+          { title: 'Phase 2: Local Business Discovery & Directory Workflows', desc: 'Managing map listings, business citations, and regional discovery presence.' },
+          { title: 'Phase 3: Automated Content Distribution Pipelines', desc: 'Configuring structured publishing schedules, syndication tools, and distribution workflows.' },
+          { title: 'Phase 4: Capstone Workplace Simulation', desc: 'Conducting a discovery audit and implementing an optimization plan for a simulated business.' }
+        ]
+      },
+      three: {
+        title: 'Course Three',
+        placeholderNote: '[Official course title, detailed syllabus, and cohort start dates to be supplied]',
+        summary: 'Focuses on building and operating customer intake pipelines, automated inquiry routing, and systematic conversion follow-up workflows.',
+        duration: '[To be confirmed]',
+        format: '[Format to be confirmed]',
+        prereqs: '[To be confirmed — Basic computer literacy expected]',
+        modules: [
+          { title: 'Phase 1: Inbound Lead Intake & Funnel Architecture', desc: 'Designing high-conversion intake forms, inquiry capture points, and routing logic.' },
+          { title: 'Phase 2: CRM Configuration & Customer Communication', desc: 'Setting up customer databases, status stages, and automated email/message notifications.' },
+          { title: 'Phase 3: Standard Operating Response Procedures', desc: 'Authoring response templates, managing follow-up cadences, and tracking customer inquiries.' },
+          { title: 'Phase 4: Capstone Workplace Simulation', desc: 'Building and testing a live simulated customer intake and follow-up pipeline from scratch.' }
+        ]
+      }
+    };
+
+    function renderCourse(key) {
+      const data = courseData[key];
+      const container = document.getElementById('courseContent');
+      const applyBtn = document.getElementById('applyBtn');
+      applyBtn.href = `academy-admissions.html?selected=${key}`;
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-foundry-dark tracking-tight">${data.title}</h1>
+          <p class="text-xs text-gray-500 font-medium">${data.placeholderNote}</p>
+          <p class="text-lg text-foundry-muted leading-relaxed max-w-3xl">${data.summary}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white p-6 rounded-2xl border border-foundry-border">
+            <span class="text-xs text-gray-500 uppercase font-semibold block mb-1">Duration</span>
+            <span class="font-display font-bold text-foundry-dark text-base">${data.duration}</span>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-foundry-border">
+            <span class="text-xs text-gray-500 uppercase font-semibold block mb-1">Format</span>
+            <span class="font-display font-bold text-foundry-dark text-base">${data.format}</span>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-foundry-border">
+            <span class="text-xs text-gray-500 uppercase font-semibold block mb-1">Prerequisites</span>
+            <span class="font-display font-bold text-foundry-dark text-base">${data.prereqs}</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-foundry-border p-8 sm:p-10 space-y-6">
+          <h2 class="font-display font-bold text-xl text-foundry-dark">Curriculum Modules</h2>
+          <div class="space-y-4">
+            ${data.modules.map((m, i) => `
+              <div class="p-5 rounded-2xl bg-foundry-offwhite border border-gray-100">
+                <span class="text-xs font-bold text-foundry-orange block mb-1">Phase 0${i+1}</span>
+                <div class="font-display font-bold text-foundry-dark text-base">${m.title}</div>
+                <div class="text-xs text-foundry-muted mt-1 leading-relaxed">${m.desc}</div>
+              </div>
+            `).join('')}
+          </div>
+          <p class="text-xs text-gray-500 pt-2 font-medium">
+            * Note: Complete module hours, practical assignments, and weekly breakdown subject to final syllabus publication.
+          </p>
+        </div>
+      `;
+
+      ['one', 'two', 'three'].forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if (t === key) {
+          btn.className = 'px-5 py-2.5 rounded-full bg-foundry-orange text-white font-semibold transition shadow-sm';
+        } else {
+          btn.className = 'px-5 py-2.5 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-gray-900 transition';
+        }
+      });
+    }
+
+    function switchCourse(key) {
+      renderCourse(key);
+      const url = new URL(window.location);
+      url.searchParams.set('course', key);
+      window.history.pushState({}, '', url);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const initialCourse = params.get('course') || 'one';
+    renderCourse(initialCourse);
+  </script>
+</body>
+</html>

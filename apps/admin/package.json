@@ -1,0 +1,6 @@
+{
+  "name": "@opsfoundry/admin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ops Foundry Admin Dashboard — RESERVED FOR PHASE 4 (DO NOT IMPLEMENT IN PHASE 3A)"
+}
