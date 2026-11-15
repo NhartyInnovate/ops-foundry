@@ -15,6 +15,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_CORPORATE_URL || 'http://localhost:3000'
+  ),
   title: 'Ops Foundry — Human-AI Operational Infrastructure',
   description:
     'Your business has work to do. We help you get it done. Ops Foundry combines managed teams, structured workflows, and AI-enabled tools to help businesses execute.',

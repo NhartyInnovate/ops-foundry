@@ -3,7 +3,6 @@ export interface NavServiceItem {
   title: string;
   summary: string;
   href: string;
-  plannedRoute: string;
 }
 
 export interface OperatingPillar {
@@ -23,7 +22,7 @@ export interface CorporateServiceLine {
   focusAreas: string[];
   ctaLabel: string;
   ctaHref: string;
-  plannedRoute: string;
+  pilotHref: string;
   image: {
     src: string;
     alt: string;
@@ -47,49 +46,42 @@ export interface AudienceProfile {
 export const corporateNavigation = {
   brandName: 'Ops Foundry',
   primaryLinks: [
-    { label: 'Why Ops Foundry', href: '#why-ops-foundry' },
-    { label: 'Operating Pillars', href: '#operating-pillars' },
-    { label: 'How We Work', href: '#how-we-work', plannedRoute: '/how-we-work' },
-    { label: 'Who We Help', href: '#who-we-help' },
-    { label: 'Insights', href: '#insights' },
+    { label: 'How We Work', href: '/how-we-work' },
+    { label: 'About', href: '/about' },
+    { label: 'For Partners', href: '/partners' },
   ],
   servicesOverview: {
     title: 'Services Overview',
     summary: 'How we help businesses execute across digital presence, visibility, and pipeline operations',
-    href: '#services',
-    plannedRoute: '/services',
+    href: '/services',
   },
   serviceItems: [
     {
       id: 'get-online',
       title: 'Get Online',
       summary: 'Establish or improve your digital presence and web foundations',
-      href: '#service-get-online',
-      plannedRoute: '/services/get-online',
+      href: '/services/get-online',
     },
     {
       id: 'get-visible',
       title: 'Get Visible',
       summary: 'Create consistent content, communications, and search discoverability',
-      href: '#service-get-visible',
-      plannedRoute: '/services/get-visible',
+      href: '/services/get-visible',
     },
     {
       id: 'get-customers',
       title: 'Get Customers',
       summary: 'Improve prospecting, lead handling, and pipeline operations',
-      href: '#service-get-customers',
-      plannedRoute: '/services/get-customers',
+      href: '/services/get-customers',
     },
   ] satisfies NavServiceItem[],
   academyBridge: {
     label: 'Ops Foundry Academy',
-    href: '#academy',
+    href: '/#academy',
   },
   primaryCta: {
     label: 'Explore a Pilot',
-    href: '#explore-pilot',
-    plannedRoute: '/pilot',
+    href: '/pilot',
   },
 } as const;
 
@@ -100,11 +92,11 @@ export const heroContent = {
     'Ops Foundry is a human-AI operational infrastructure partner. We combine managed teams, structured workflows, and AI-enabled tools so your business can move important operational work from backlog to completion.',
   primaryCta: {
     label: 'Explore a Pilot',
-    href: '#explore-pilot',
+    href: '/pilot',
   },
   secondaryCta: {
     label: 'See How We Work',
-    href: '#how-we-work',
+    href: '/how-we-work',
   },
   highlights: [
     {
@@ -216,9 +208,9 @@ export const servicesContent = {
         'Clear service and company page organization for prospective buyers',
         'Foundational digital setup, content updates, and operational upkeep',
       ],
-      ctaLabel: 'Explore a Get Online Pilot',
-      ctaHref: '#explore-pilot',
-      plannedRoute: '/services/get-online',
+      ctaLabel: 'Explore Get Online',
+      ctaHref: '/services/get-online',
+      pilotHref: '/pilot?service=get-online',
       image: {
         src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
         alt: 'Clean modern architectural office workspace representing structured digital foundations',
@@ -237,9 +229,9 @@ export const servicesContent = {
         'Search discovery structure and clear business profile maintenance',
         'Repeatable content preparation, formatting, and distribution processes',
       ],
-      ctaLabel: 'Explore a Get Visible Pilot',
-      ctaHref: '#explore-pilot',
-      plannedRoute: '/services/get-visible',
+      ctaLabel: 'Explore Get Visible',
+      ctaHref: '/services/get-visible',
+      pilotHref: '/pilot?service=get-visible',
       image: {
         src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
         alt: 'Team reviewing editorial plans and communication materials at a worktable',
@@ -258,9 +250,9 @@ export const servicesContent = {
         'Inbound inquiry organization, qualification steps, and routing procedures',
         'Pipeline hygiene, follow-up coordination, and operational tracking',
       ],
-      ctaLabel: 'Explore a Get Customers Pilot',
-      ctaHref: '#explore-pilot',
-      plannedRoute: '/services/get-customers',
+      ctaLabel: 'Explore Get Customers',
+      ctaHref: '/services/get-customers',
+      pilotHref: '/pilot?service=get-customers',
       image: {
         src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80',
         alt: 'Commercial team discussing customer pipeline operations in a meeting room',
@@ -357,7 +349,8 @@ export const academyBridgeContent = {
       description: 'Operates as a dedicated educational property within the wider Ops Foundry ecosystem.',
     },
   ],
-  ctaLabel: 'Learn About Ops Foundry Academy',
+  ctaLabel: 'Explore Partner & Talent Collaboration',
+  ctaHref: '/partners',
   image: {
     src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80',
     alt: 'Learners and mentors collaborating around laptops and notes in a bright workshop environment',
@@ -393,8 +386,9 @@ export const finalCtaContent = {
   body:
     'Whether your immediate priority is establishing a stronger digital presence (Get Online), building consistent content and communications (Get Visible), or organizing prospecting and pipeline workflows (Get Customers), a pilot allows us to scope a practical starting point together.',
   primaryCtaLabel: 'Explore a Pilot',
+  primaryCtaHref: '/pilot',
   secondaryCtaLabel: 'Review Our Services',
-  secondaryCtaHref: '#services',
+  secondaryCtaHref: '/services',
   pilotPreparationItems: [
     {
       label: 'Primary Service Area',
@@ -410,5 +404,5 @@ export const finalCtaContent = {
     },
   ],
   phaseNotice:
-    'Online pilot inquiry submission is being connected in the upcoming intake workflow phase. Dedicated service pages and the interactive pilot intake form will be enabled in subsequent Phase 3B/3D milestones.',
+    'Review our full 10-point pilot scoping framework and prepare your consultation brief on the dedicated Explore a Pilot page.',
 } as const;

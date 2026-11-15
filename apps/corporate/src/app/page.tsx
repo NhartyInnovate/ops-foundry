@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../components/corporate-header';
@@ -45,16 +46,16 @@ export default function CorporateHomePage() {
 
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
                   <Button asChild variant="primary" size="lg">
-                    <a href={heroContent.primaryCta.href}>
+                    <Link href={heroContent.primaryCta.href}>
                       <span>{heroContent.primaryCta.label}</span>
                       <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    </a>
+                    </Link>
                   </Button>
 
                   <Button asChild variant="outline" size="lg">
-                    <a href={heroContent.secondaryCta.href}>
+                    <Link href={heroContent.secondaryCta.href}>
                       {heroContent.secondaryCta.label}
-                    </a>
+                    </Link>
                   </Button>
                 </div>
 
@@ -244,9 +245,18 @@ export default function CorporateHomePage() {
                   {servicesContent.intro}
                 </Text>
               </div>
-              <p className="font-body text-xs text-foundry-secondary max-w-xs lg:text-right">
-                {servicesContent.scopeNotice}
-              </p>
+              <div className="flex flex-col lg:items-end gap-3">
+                <p className="font-body text-xs text-foundry-secondary max-w-xs lg:text-right">
+                  {servicesContent.scopeNotice}
+                </p>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange"
+                >
+                  <span>View Services Overview</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
 
             <div className="divide-y divide-foundry-border">
@@ -291,15 +301,17 @@ export default function CorporateHomePage() {
                     </div>
 
                     <div className="pt-3 flex flex-wrap items-center gap-4">
-                      <Button asChild variant="outline" size="md">
-                        <a href={service.ctaHref}>
+                      <Button asChild variant="secondary" size="md">
+                        <Link href={service.ctaHref}>
                           <span>{service.ctaLabel}</span>
                           <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        </a>
+                        </Link>
                       </Button>
-                      <span className="text-xs text-foundry-secondary">
-                        Dedicated service page ({service.plannedRoute}) planned for Phase 3B.2
-                      </span>
+                      <Button asChild variant="outline" size="md">
+                        <Link href={service.pilotHref}>
+                          Explore a Pilot
+                        </Link>
+                      </Button>
                     </div>
                   </div>
 
@@ -369,6 +381,16 @@ export default function CorporateHomePage() {
                 </li>
               ))}
             </ol>
+
+            <div className="mt-12 pt-8 border-t border-foundry-dark-border flex justify-end">
+              <Link
+                href="/how-we-work"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange"
+              >
+                <span>Read Our Full Operating Model &amp; Governance Approach</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </Container>
         </Section>
 
@@ -455,10 +477,10 @@ export default function CorporateHomePage() {
 
                   <div className="pt-2 flex flex-wrap items-center gap-4">
                     <Button asChild variant="secondary" size="md">
-                      <a href="#explore-pilot">
+                      <Link href={academyBridgeContent.ctaHref}>
                         <span>{academyBridgeContent.ctaLabel}</span>
                         <ArrowUpRight className="h-4 w-4 text-foundry-orange" aria-hidden="true" />
-                      </a>
+                      </Link>
                     </Button>
                     <span className="text-xs text-foundry-secondary">
                       Dedicated Ops Foundry Academy web experience scheduled for Phase 3C
@@ -544,16 +566,16 @@ export default function CorporateHomePage() {
 
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                     <Button asChild variant="primary" size="lg">
-                      <a href="#explore-pilot">
+                      <Link href={finalCtaContent.primaryCtaHref}>
                         <span>{finalCtaContent.primaryCtaLabel}</span>
                         <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+                      </Link>
                     </Button>
 
                     <Button asChild variant="inverseOutline" size="lg">
-                      <a href={finalCtaContent.secondaryCtaHref}>
+                      <Link href={finalCtaContent.secondaryCtaHref}>
                         {finalCtaContent.secondaryCtaLabel}
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>
