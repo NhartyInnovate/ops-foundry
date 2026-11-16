@@ -13,75 +13,71 @@ export const howWeWorkPageContent = {
   pillarsIntegration: {
     heading: 'Combining Managed Teams, Structured Workflows, and AI-Enabled Tools',
     intro:
-      'Any one of these three elements in isolation leaves an execution gap. Software tools sit underused without operators; operators work inconsistently without documented procedures; and manual processes move too slowly without modern tooling.',
+      'Effective execution requires people, processes and technology working together. Each supports a different part of the work.',
     items: [
       {
-        title: 'Managed Teams Provide Accountability',
-        body: 'Dedicated operational specialists take ownership of executing tasks, coordinating inputs, and performing human quality checks so work does not stall in a shared backlog.',
+        title: 'Managed Teams',
+        body: 'People accountable for coordinating and completing assigned work.',
       },
       {
-        title: 'Structured Workflows Provide Consistency',
-        body: 'Standard Operating Procedures (SOPs) define the steps, inputs, formatting rules, and review gates required for repeatable output across Get Online, Get Visible, and Get Customers.',
+        title: 'Structured Workflows',
+        body: 'Clear processes, responsibilities and quality checks that keep work consistent.',
       },
       {
-        title: 'AI-Enabled Tools Provide Leverage',
-        body: 'We integrate AI and automation inside the workflow for initial drafting, data organization, and routine preparation—always paired with human review before any work is finalized.',
+        title: 'AI-Enabled Tools',
+        body: 'Practical tools that support research, organization and everyday execution.',
       },
     ],
   },
   operatingModel: {
     heading: 'Proposed Four-Stage Operating Model',
     intro:
-      'To give prospective clients a clear picture of how an engagement can be organized, we use a four-stage framework. Because businesses differ in size, tooling, and urgency, this model is an indicative structure rather than an identical fixed process for every client.',
+      "We organize engagements around four stages, adapting the process to each client's needs, scope and priorities.",
     disclaimer:
-      'Important Notice: This four-stage operating model is a proposed framework subject to final business approval and individual engagement scoping. Not every engagement follows an identical sequence or duration.',
+      'This is an indicative framework. Each engagement is scoped according to its specific requirements.',
     stages: [
       {
         number: 'Stage 1',
         title: 'Intake & Scoping',
-        summary: 'Understand the operational bottleneck and agree on a bounded starting scope.',
-        details:
-          'We begin by reviewing the specific work your business needs done, what systems or materials already exist, and where internal bandwidth is constrained. Together, we define what is included in the engagement—and what is explicitly excluded—before execution starts.',
+        description:
+          'Understand the business need, identify the priority and agree on the scope of work.',
         typicalOutputs: [
-          'Documented problem statement and engagement objectives',
-          'Agreed list of deliverables, exclusions, and client dependencies',
-          'Designated points of contact and communication cadence',
+          'Agreed scope and priorities.',
+          'Defined responsibilities and dependencies.',
+          'Initial execution plan.',
         ],
       },
       {
         number: 'Stage 2',
         title: 'Workflow Architecture',
-        summary: 'Document the operating procedures, review gates, and supporting tools.',
-        details:
-          'Before routine production or implementation begins, we organize the workflow. That includes outlining the step-by-step operating procedure, configuring relevant AI-enabled or productivity tools, and establishing the quality checks required before outputs are shared.',
+        description:
+          'Define how the work will be completed, reviewed and supported by the right tools.',
         typicalOutputs: [
-          'Working Standard Operating Procedure (SOP) for the agreed tasks',
-          'Configured templates, prompts, or workspace structures',
-          'Quality assurance checklist aligned with your requirements',
+          'Documented workflows.',
+          'Assigned responsibilities and checkpoints.',
+          'Supporting tools and templates.',
         ],
       },
       {
         number: 'Stage 3',
         title: 'Pod Deployment',
-        summary: 'Execute the agreed work through a managed operational team.',
-        details:
-          'A managed pod executes the scoped tasks following the agreed workflow. Operators use AI-enabled tools to accelerate preparation while applying human judgment and verification at each step, sharing progress updates at the agreed intervals.',
+        description:
+          'Deploy the agreed team and workflows to carry out the work.',
         typicalOutputs: [
-          'Active execution of scoped deliverables or workflow cycles',
-          'Human review of all tool-assisted drafts and outputs',
-          'Structured progress updates and blocker escalation',
+          'Execution of agreed activities.',
+          'Ongoing quality checks.',
+          'Progress updates.',
         ],
       },
       {
         number: 'Stage 4',
         title: 'Review & Handover',
-        summary: 'Verify completed work against the agreed scope and align on next steps.',
-        details:
-          'Deliverables and workflow outputs are reviewed against the criteria agreed during scoping. Where the engagement is a standalone pilot, we organize a clean handover of materials and documentation; where ongoing support is desired, we agree on the next operational cadence.',
+        description:
+          'Review completed work, confirm deliverables and agree on the next steps.',
         typicalOutputs: [
-          'Review of completed deliverables against agreed scope',
-          'Handover of organized files, documentation, or system updates',
-          'Joint assessment of whether to conclude, adjust, or extend support',
+          'Reviewed deliverables.',
+          'Relevant documentation and updates.',
+          'Handover or continuation plan.',
         ],
       },
     ],
@@ -89,32 +85,34 @@ export const howWeWorkPageContent = {
   governanceAgreements: {
     heading: 'How Engagements Are Governed',
     intro:
-      'Clarity before execution prevents misunderstandings later. Prior to starting a pilot or operational engagement, Ops Foundry and the client align explicitly on five practical areas:',
+      'Before work begins, Ops Foundry and the client agree on expectations, responsibilities and how progress will be reviewed.',
+    pilotNotice: {
+      heading: 'Starting with a Scoped Pilot',
+      body: 'Every engagement begins with a review of the business need and a clearly defined scope.',
+      linkLabel: 'Review Pilot Governance',
+      linkHref: '/pilot',
+    },
     agreements: [
       {
         topic: 'Scope',
-        explanation:
-          'What specific workstream or business problem is being addressed, along with clear boundaries on what is outside the current engagement.',
+        explanation: 'Define the work to be completed and the boundaries of the engagement.',
       },
       {
         topic: 'Deliverables',
-        explanation:
-          'The concrete outputs, pages, content batches, or pipeline operations activities that will be produced or managed during the engagement.',
+        explanation: 'Agree on the expected outputs and what completion looks like.',
       },
       {
         topic: 'Responsibilities & Dependencies',
         explanation:
-          'Which inputs, approvals, credentials, or subject-matter decisions the client team will provide, and what Ops Foundry is responsible for executing.',
+          'Clarify what the client provides and what Ops Foundry is responsible for.',
       },
       {
         topic: 'Quality Checks',
-        explanation:
-          'How drafts, web updates, or prospect records are reviewed internally by Ops Foundry operators and how client sign-off is conducted.',
+        explanation: 'Review work against agreed requirements before delivery.',
       },
       {
         topic: 'Reporting & Communication',
-        explanation:
-          'How progress, completed items, open questions, and dependencies are communicated so your team has visibility without unnecessary meetings.',
+        explanation: 'Share progress, updates, questions and dependencies clearly.',
       },
     ],
   },
@@ -123,7 +121,7 @@ export const howWeWorkPageContent = {
     body: 'Explore a scoped pilot with Ops Foundry to address a practical operational priority across Get Online, Get Visible, or Get Customers.',
     primaryLabel: 'Explore a Pilot',
     primaryHref: '/pilot',
-    secondaryLabel: 'Browse Our Services',
+    secondaryLabel: 'Explore Our Services',
     secondaryHref: '/services',
   },
 } as const;

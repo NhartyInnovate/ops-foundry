@@ -162,12 +162,9 @@ export default function HowWeWorkPage() {
                       </span>
                     </div>
 
-                    <p className="text-base font-semibold text-foundry-dark mb-3 leading-snug">
-                      {stage.summary}
+                    <p className="text-sm sm:text-base text-foundry-secondary mb-6 leading-relaxed">
+                      {stage.description}
                     </p>
-                    <Text size="sm" tone="secondary" className="mb-6 leading-relaxed">
-                      {stage.details}
-                    </Text>
                   </div>
 
                   <div className="pt-5 border-t border-foundry-border">
@@ -208,15 +205,14 @@ export default function HowWeWorkPage() {
                 </Text>
                 <div className="rounded-2xl bg-foundry-canvas p-6 border border-foundry-border">
                   <Heading as="h3" size="sm" className="mb-2 text-foundry-dark">
-                    Starting with a Scoped Pilot
+                    {governanceAgreements.pilotNotice.heading}
                   </Heading>
                   <Text size="sm" tone="secondary" className="mb-5 leading-relaxed">
-                    Every prospective engagement begins by reviewing the ten practical pilot
-                    governance dimensions before any work commences.
+                    {governanceAgreements.pilotNotice.body}
                   </Text>
-                  <Link href="/pilot" className="inline-flex">
+                  <Link href={governanceAgreements.pilotNotice.linkHref} className="inline-flex">
                     <Button variant="secondary" size="md">
-                      Review Pilot Governance
+                      {governanceAgreements.pilotNotice.linkLabel}
                     </Button>
                   </Link>
                 </div>
