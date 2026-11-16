@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { getCorporateSiteUrl } from '../content/site-config';
 
-const BASE_URL = (
-  process.env.NEXT_PUBLIC_CORPORATE_URL || 'http://localhost:3000'
-).replace(/\/$/, '');
+const BASE_URL = getCorporateSiteUrl();
 
 const CORPORATE_ROUTES = [
   { path: '', priority: 1.0 },

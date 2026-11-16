@@ -1,3 +1,5 @@
+import { getAcademySiteUrl } from './site-config';
+
 export interface NavServiceItem {
   id: 'get-online' | 'get-visible' | 'get-customers';
   title: string;
@@ -77,7 +79,7 @@ export const corporateNavigation = {
   ] satisfies NavServiceItem[],
   academyBridge: {
     label: 'Ops Foundry Academy',
-    href: '/#academy',
+    href: getAcademySiteUrl(),
   },
   primaryCta: {
     label: 'Explore a Pilot',

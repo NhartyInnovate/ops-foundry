@@ -94,13 +94,13 @@ export function CorporateFooter() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#academy"
+                <a
+                  href={corporateNavigation.academyBridge.href}
                   className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
                 >
-                  <span>Ops Foundry Academy</span>
+                  <span>{corporateNavigation.academyBridge.label}</span>
                   <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange" aria-hidden="true" />
-                </Link>
+                </a>
               </li>
               <li>
                 <Link

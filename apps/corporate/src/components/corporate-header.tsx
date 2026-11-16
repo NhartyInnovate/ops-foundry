@@ -222,13 +222,13 @@ export function CorporateHeader() {
 
         {/* Desktop Actions */}
         <div className="hidden sm:flex shrink-0 items-center gap-3">
-          <Link
+          <a
             href={corporateNavigation.academyBridge.href}
             className="inline-flex min-h-[40px] shrink-0 whitespace-nowrap items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-800 hover:border-foundry-dark hover:text-foundry-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark transition-colors"
           >
             <span>{corporateNavigation.academyBridge.label}</span>
             <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange shrink-0" aria-hidden="true" />
-          </Link>
+          </a>
 
           <Button
             asChild
@@ -350,14 +350,14 @@ export function CorporateHeader() {
             </div>
 
             <div className="border-t border-gray-100 pt-5 flex flex-col gap-3">
-              <Link
+              <a
                 href={corporateNavigation.academyBridge.href}
                 onClick={closeMenus}
                 className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-foundry-dark hover:border-foundry-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-foundry-dark"
               >
                 <span>{corporateNavigation.academyBridge.label}</span>
                 <ArrowUpRight className="h-4 w-4 text-foundry-orange" aria-hidden="true" />
-              </Link>
+              </a>
 
               <Button asChild variant="primary" size="lg" className="w-full">
                 <Link href={corporateNavigation.primaryCta.href} onClick={closeMenus}>
