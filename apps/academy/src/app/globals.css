@@ -1,13 +1,25 @@
 @import "tailwindcss";
 @import "@opsfoundry/tokens/theme.css";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
 :root {
   --background: #FBFBF9;
   --foreground: #1E232E;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-body);
+}
+
+::selection {
+  background-color: #FF5A1F;
+  color: #FFFFFF;
 }
