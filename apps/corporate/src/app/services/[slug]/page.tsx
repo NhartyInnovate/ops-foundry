@@ -95,7 +95,7 @@ export default async function ServiceDetailPage({
           </Container>
         </div>
 
-        {/* Section 1 — Editorial Hero */}
+        {/* Section 1 — Service Hero */}
         <Section
           tone="canvas"
           spacing="none"
@@ -110,7 +110,7 @@ export default async function ServiceDetailPage({
                 <p className="font-display text-xl sm:text-2xl font-bold text-foundry-orange leading-snug">
                   {service.lead}
                 </p>
-                <Text size="lg" className="text-gray-600 max-w-2xl">
+                <Text size="lg" className="text-gray-600 max-w-2xl leading-relaxed">
                   {service.heroSummary}
                 </Text>
 
@@ -150,32 +150,28 @@ export default async function ServiceDetailPage({
           </Container>
         </Section>
 
-        {/* Section 2 — The Problem & Business Context */}
+        {/* Section 2 — The Business Problem & How Ops Foundry Helps */}
         <Section tone="pure" spacing="lg" border="bottom">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              <div className="lg:col-span-5 space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              {/* Left: The Business Problem */}
+              <div className="lg:col-span-6 space-y-4">
                 <Heading as="h2" size="xl">
                   {service.problemHeading}
                 </Heading>
-                <p className="font-body text-sm text-foundry-secondary">
-                  Why businesses bring in Ops Foundry for {service.title} execution.
-                </p>
+                <Text size="base" className="text-gray-700 leading-relaxed">
+                  {service.problemSummary}
+                </Text>
               </div>
 
-              <div className="lg:col-span-7 space-y-6">
-                {service.problemContext.map((paragraph, idx) => (
-                  <Text key={idx} size="lg" className="text-gray-700">
-                    {paragraph}
-                  </Text>
-                ))}
-
-                <div className="rounded-2xl bg-foundry-canvas border-l-4 border-foundry-orange p-6 space-y-2">
-                  <h3 className="font-display text-base font-bold text-foundry-dark">
-                    What Ops Foundry Helps Your Business Accomplish
-                  </h3>
-                  <p className="font-body text-base text-gray-700 leading-relaxed">
-                    {service.whatWeHelpAccomplish}
+              {/* Right: How Ops Foundry Helps */}
+              <div className="lg:col-span-6">
+                <div className="rounded-2xl bg-foundry-canvas border-l-4 border-foundry-orange p-6 sm:p-7 space-y-3">
+                  <Heading as="h3" size="sm" className="text-foundry-dark">
+                    {service.howWeHelpHeading}
+                  </Heading>
+                  <p className="font-body text-sm sm:text-base text-gray-700 leading-relaxed">
+                    {service.howWeHelp}
                   </p>
                 </div>
               </div>
@@ -183,49 +179,14 @@ export default async function ServiceDetailPage({
           </Container>
         </Section>
 
-        {/* Section 3 — What the Service Involves (Operating Pillars Applied) */}
+        {/* Section 3 — Representative Activities & Deliverables */}
         <Section tone="canvas" spacing="lg" border="bottom">
           <Container>
-            <div className="max-w-3xl space-y-4 mb-12">
-              <Heading as="h2" size="xl">
-                {service.serviceInvolvesHeading}
-              </Heading>
-              <Text size="base" className="text-gray-600">
-                {service.serviceInvolvesIntro}
-              </Text>
-            </div>
-
-            <div className="border-t-2 border-foundry-dark divide-y divide-foundry-border">
-              {service.servicePillars.map((pillar, idx) => (
-                <div
-                  key={pillar.title}
-                  className="py-7 grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-baseline"
-                >
-                  <div className="sm:col-span-4 flex items-baseline gap-3">
-                    <span className="font-display text-lg font-extrabold text-foundry-orange">
-                      0{idx + 1}
-                    </span>
-                    <h3 className="font-display text-lg font-bold text-foundry-dark">
-                      {pillar.title}
-                    </h3>
-                  </div>
-                  <p className="sm:col-span-8 font-body text-sm sm:text-base text-gray-700 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Section 4 — Typical Activities & Deliverables */}
-        <Section tone="pure" spacing="lg" border="bottom">
-          <Container>
-            <div className="max-w-3xl space-y-4 mb-12">
+            <div className="max-w-3xl space-y-4 mb-10">
               <Heading as="h2" size="xl">
                 {service.activitiesHeading}
               </Heading>
-              <p className="rounded-xl border border-foundry-border bg-foundry-canvas px-4 py-3 text-xs text-gray-700 leading-relaxed">
+              <p className="rounded-xl border border-foundry-border bg-white px-4 py-3 text-xs text-gray-700 leading-relaxed">
                 {service.activitiesDisclaimer}
               </p>
             </div>
@@ -234,9 +195,9 @@ export default async function ServiceDetailPage({
               {service.typicalActivities.map((group) => (
                 <div
                   key={group.category}
-                  className="rounded-2xl border border-foundry-border bg-foundry-canvas p-7 space-y-4"
+                  className="rounded-2xl border border-foundry-border bg-white p-7 space-y-4 shadow-xs"
                 >
-                  <h3 className="font-display text-lg font-bold text-foundry-dark">
+                  <h3 className="font-display text-base font-bold text-foundry-dark">
                     {group.category}
                   </h3>
                   <ul className="space-y-3">
@@ -259,51 +220,47 @@ export default async function ServiceDetailPage({
           </Container>
         </Section>
 
-        {/* Section 5 — How the Engagement Could Be Scoped & Client Dependencies */}
-        <Section tone="canvas" spacing="lg">
+        {/* Section 4 — Potential Engagement & Client Dependencies */}
+        <Section tone="pure" spacing="lg">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              {/* Left Column: Engagement Scoping Models */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              {/* Left Column: Potential Engagement Model */}
               <div className="lg:col-span-7 space-y-6">
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <Heading as="h2" size="lg">
-                    {service.scopingHeading}
+                    What a Potential Engagement Could Look Like
                   </Heading>
-                  <Text size="base" className="text-gray-600">
-                    {service.scopingIntro}
+                  <Text size="sm" tone="secondary">
+                    Every engagement is scoped around a defined business problem. Below is an indicative example:
                   </Text>
                 </div>
 
-                <div className="space-y-4">
-                  {service.scopingModels.map((model, idx) => (
-                    <div
-                      key={model.title}
-                      className="rounded-2xl border border-foundry-border bg-white p-6 space-y-2"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-foundry-orange-light font-display text-xs font-bold text-foundry-orange">
-                          {idx + 1}
-                        </span>
-                        <h3 className="font-display text-base font-bold text-foundry-dark">
-                          {model.title}
-                        </h3>
-                      </div>
-                      <p className="font-body text-sm text-gray-700 leading-relaxed">
-                        {model.summary}
-                      </p>
-                      <p className="font-body text-xs text-foundry-secondary pt-1">
-                        {model.suitableWhen}
-                      </p>
-                    </div>
-                  ))}
+                <div className="rounded-2xl border border-foundry-border bg-foundry-canvas p-6 sm:p-7 space-y-3.5">
+                  <div className="flex items-center gap-2.5">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-foundry-orange-light font-display text-xs font-bold text-foundry-orange">
+                      01
+                    </span>
+                    <h3 className="font-display text-base font-bold text-foundry-dark">
+                      {service.potentialEngagement.title}
+                    </h3>
+                  </div>
+                  <p className="font-body text-sm text-gray-700 leading-relaxed">
+                    {service.potentialEngagement.summary}
+                  </p>
+                  <p className="font-body text-xs text-foundry-secondary">
+                    {service.potentialEngagement.suitableWhen}
+                  </p>
+                  <p className="font-body text-xs text-foundry-secondary italic border-t border-foundry-border pt-3">
+                    {service.potentialEngagement.disclaimer}
+                  </p>
                 </div>
               </div>
 
               {/* Right Column: Client Responsibilities & Dependencies */}
               <div className="lg:col-span-5">
-                <div className="rounded-3xl bg-foundry-dark text-white p-8 sm:p-10 space-y-6">
+                <div className="rounded-3xl bg-foundry-dark text-white p-7 sm:p-8 space-y-5">
                   <div className="space-y-2">
-                    <Heading as="h2" size="md" tone="inverse">
+                    <Heading as="h2" size="sm" tone="inverse">
                       {service.dependenciesHeading}
                     </Heading>
                     <p className="font-body text-xs text-gray-300 leading-relaxed">
@@ -311,14 +268,14 @@ export default async function ServiceDetailPage({
                     </p>
                   </div>
 
-                  <ul className="space-y-3.5 border-t border-white/10 pt-5">
+                  <ul className="space-y-3 border-t border-white/10 pt-4">
                     {service.clientDependencies.map((dep) => (
                       <li
                         key={dep}
-                        className="flex items-start gap-3 text-sm text-gray-200 leading-relaxed"
+                        className="flex items-start gap-3 text-xs sm:text-sm text-gray-200 leading-relaxed"
                       >
                         <span
-                          className="mt-1.5 h-2 w-2 rounded-full bg-foundry-orange shrink-0"
+                          className="mt-1.5 h-1.5 w-1.5 rounded-full bg-foundry-orange shrink-0"
                           aria-hidden="true"
                         />
                         <span>{dep}</span>
@@ -331,8 +288,8 @@ export default async function ServiceDetailPage({
           </Container>
         </Section>
 
-        {/* Section 6 — Clear CTA to Explore a Pilot */}
-        <Section tone="pure" spacing="lg" border="top">
+        {/* Section 5 — Clear Closing CTA */}
+        <Section tone="canvas" spacing="lg" border="top">
           <Container>
             <div className="rounded-3xl bg-foundry-dark text-white p-8 sm:p-12 lg:p-16 text-center space-y-6">
               <Heading as="h2" size="xl" tone="inverse" className="max-w-2xl mx-auto">
