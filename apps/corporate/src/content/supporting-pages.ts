@@ -396,8 +396,8 @@ export const pilotPageContent = {
   formSection: {
     heading: 'Prepare Your Pilot Consultation Brief',
     intro:
-      'Use the form below to structure and validate your pilot brief across the key scoping areas. Please review the integration status notice below regarding backend persistence.',
-    backendIntegrationNotice:
-      'Phase 3B.2 Frontend Validation Mode: This form validates your pilot inquiry inputs in the browser using our shared schema rules. Durable PostgreSQL persistence, Cloudflare Turnstile verification, and transactional outbox dispatch are scheduled for Phase 3D integration—submitting this form validates your brief locally and does not transmit or store data on a server yet.',
+      'Use the form below to structure your pilot brief across the key scoping areas.',
+    statusNotice:
+      'Pilot consultation submissions are not yet open. Please check back soon.',
   },
 } as const;

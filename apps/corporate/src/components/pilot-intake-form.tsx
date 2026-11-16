@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Input, Textarea, Heading, Text } from '@opsfoundry/ui';
+import { Button, Input, Textarea } from '@opsfoundry/ui';
 
 type ServiceInterestValue = 'get-online' | 'get-visible' | 'get-customers' | 'all';
 
@@ -60,7 +60,6 @@ export function PilotIntakeForm() {
   });
 
   const [errors, setErrors] = useState<PilotBriefErrors>({});
-  const [validatedSnapshot, setValidatedSnapshot] = useState<PilotBriefValues | null>(null);
 
   function validate(current: PilotBriefValues): PilotBriefErrors {
     const nextErrors: PilotBriefErrors = {};
@@ -90,9 +89,15 @@ export function PilotIntakeForm() {
     value: PilotBriefValues[K]
   ) {
     setValues((prev) => ({ ...prev, [field]: value }));
-    setValidatedSnapshot(null);
-    if (field in errors) {
+    if (field in errors && errors[field as keyof PilotBriefErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  }
+
+  function handleBlur(field: keyof PilotBriefValues) {
+    const validationErrors = validate(values);
+    if (field in validationErrors) {
+      setErrors((prev) => ({ ...prev, [field]: validationErrors[field as keyof PilotBriefErrors] }));
     }
   }
 
@@ -100,21 +105,6 @@ export function PilotIntakeForm() {
     e.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setValidatedSnapshot(null);
-      return;
-    }
-
-    setValidatedSnapshot({
-      ...values,
-      fullName: values.fullName.trim(),
-      email: values.email.trim(),
-      organization: values.organization.trim(),
-      phone: values.phone.trim(),
-      businessProblem: values.businessProblem.trim(),
-      dependenciesAndTimeline: values.dependenciesAndTimeline.trim(),
-    });
   }
 
   function handleReset() {
@@ -128,7 +118,6 @@ export function PilotIntakeForm() {
       dependenciesAndTimeline: '',
     });
     setErrors({});
-    setValidatedSnapshot(null);
   }
 
   const hasErrors = Object.keys(errors).some(
@@ -137,20 +126,17 @@ export function PilotIntakeForm() {
 
   return (
     <div className="rounded-2xl bg-white p-7 sm:p-9 lg:p-11 border border-foundry-border shadow-xs">
-      {/* Explicit Backend Persistence Status Banner */}
+      {/* Submissions Status Notice */}
       <div
         role="status"
         aria-live="polite"
-        className="mb-8 rounded-xl border border-amber-500/40 bg-amber-50/70 px-5 py-4 text-xs sm:text-sm text-foundry-dark leading-relaxed"
+        className="mb-8 rounded-xl border border-foundry-border bg-foundry-canvas px-5 py-4 text-xs sm:text-sm text-foundry-dark leading-relaxed"
       >
         <p className="font-semibold text-foundry-dark mb-1">
-          Frontend Scoping &amp; Client-Side Validation Mode (Phase 3B.2)
+          Consultation Submissions
         </p>
         <p className="text-foundry-secondary">
-          This interface validates your pilot brief structure locally in the browser. Live API
-          submission, Cloudflare Turnstile verification, and durable PostgreSQL persistence
-          with transactional outbox dispatch are scheduled for Phase 3D and are not yet active.
-          No inquiry is transmitted or stored when validating this form.
+          Pilot consultation submissions are not yet open. Please check back soon.
         </p>
       </div>
 
@@ -161,7 +147,7 @@ export function PilotIntakeForm() {
             className="rounded-xl border border-red-300 bg-red-50 px-5 py-4 text-sm text-red-900"
           >
             <p className="font-semibold mb-1">
-              Please review the highlighted fields before validating your pilot brief:
+              Please review the highlighted fields:
             </p>
             <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm">
               {errors.fullName && <li>{errors.fullName}</li>}
@@ -191,6 +177,7 @@ export function PilotIntakeForm() {
               aria-invalid={Boolean(errors.fullName)}
               aria-describedby={errors.fullName ? 'pilot-full-name-error' : undefined}
               onChange={(e) => handleChange('fullName', e.target.value)}
+              onBlur={() => handleBlur('fullName')}
               required
             />
             {errors.fullName && (
@@ -218,6 +205,7 @@ export function PilotIntakeForm() {
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? 'pilot-email-error' : undefined}
               onChange={(e) => handleChange('email', e.target.value)}
+              onBlur={() => handleBlur('email')}
               required
             />
             {errors.email && (
@@ -247,6 +235,7 @@ export function PilotIntakeForm() {
               aria-invalid={Boolean(errors.organization)}
               aria-describedby={errors.organization ? 'pilot-organization-error' : undefined}
               onChange={(e) => handleChange('organization', e.target.value)}
+              onBlur={() => handleBlur('organization')}
               required
             />
             {errors.organization && (
@@ -343,6 +332,7 @@ export function PilotIntakeForm() {
                 : 'pilot-business-problem-hint'
             }
             onChange={(e) => handleChange('businessProblem', e.target.value)}
+            onBlur={() => handleBlur('businessProblem')}
             required
           />
           {errors.businessProblem && (
@@ -373,92 +363,28 @@ export function PilotIntakeForm() {
           />
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2 border-t border-foundry-border">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-foundry-border">
           <p className="text-xs text-foundry-secondary">
-            Fields marked with <span className="text-foundry-orange font-semibold">*</span> are
-            required for client-side brief validation.
+            Fields marked with <span className="text-foundry-orange font-semibold">*</span> are required.
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Button type="button" variant="secondary" size="md" onClick={handleReset}>
               Clear Brief
             </Button>
-            <Button type="submit" variant="primary" size="lg">
-              Validate Pilot Brief
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              disabled
+              aria-disabled="true"
+              title="Pilot consultation submissions are not yet open"
+              className="cursor-not-allowed opacity-50"
+            >
+              Submissions Not Open
             </Button>
           </div>
         </div>
       </form>
-
-      {/* Validated Local Brief Preview — Strictly Honest About Phase 3D Backend Status */}
-      {validatedSnapshot && (
-        <div
-          role="region"
-          aria-label="Client-side validation summary"
-          className="mt-8 rounded-2xl border border-foundry-border bg-foundry-canvas p-6 sm:p-7"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-foundry-border">
-            <Heading as="h3" size="sm" className="text-foundry-dark">
-              Client-Side Validation Passed — Not Yet Submitted to Server
-            </Heading>
-            <span className="inline-flex items-center self-start rounded-full bg-white px-3 py-1 text-xs font-semibold text-foundry-dark border border-foundry-border">
-              Local Preview Only (Phase 3D Pending)
-            </span>
-          </div>
-
-          <Text size="sm" tone="secondary" className="mb-5 leading-relaxed">
-            Your pilot brief meets all client-side schema requirements. Because backend database
-            persistence and transactional outbox delivery are scheduled for Phase 3D,{' '}
-            <strong className="font-semibold text-foundry-dark">
-              this inquiry has not been sent or recorded
-            </strong>
-            . Below is the structured payload prepared in your browser:
-          </Text>
-
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm bg-white rounded-xl p-5 border border-foundry-border">
-            <div>
-              <dt className="font-semibold text-foundry-dark">Contact</dt>
-              <dd className="text-foundry-secondary mt-0.5">
-                {validatedSnapshot.fullName} ({validatedSnapshot.email})
-              </dd>
-            </div>
-            <div>
-              <dt className="font-semibold text-foundry-dark">Organization</dt>
-              <dd className="text-foundry-secondary mt-0.5">
-                {validatedSnapshot.organization}
-                {validatedSnapshot.phone ? ` · ${validatedSnapshot.phone}` : ''}
-              </dd>
-            </div>
-            <div className="sm:col-span-2">
-              <dt className="font-semibold text-foundry-dark">Selected Service Line</dt>
-              <dd className="text-foundry-secondary mt-0.5">
-                {
-                  SERVICE_OPTIONS.find(
-                    (opt) => opt.value === validatedSnapshot.serviceInterest
-                  )?.label
-                }
-              </dd>
-            </div>
-            <div className="sm:col-span-2">
-              <dt className="font-semibold text-foundry-dark">
-                Business Problem &amp; Proposed Scope
-              </dt>
-              <dd className="text-foundry-secondary mt-0.5 whitespace-pre-line">
-                {validatedSnapshot.businessProblem}
-              </dd>
-            </div>
-            {validatedSnapshot.dependenciesAndTimeline && (
-              <div className="sm:col-span-2">
-                <dt className="font-semibold text-foundry-dark">
-                  Dependencies &amp; Timeline Notes
-                </dt>
-                <dd className="text-foundry-secondary mt-0.5 whitespace-pre-line">
-                  {validatedSnapshot.dependenciesAndTimeline}
-                </dd>
-              </div>
-            )}
-          </dl>
-        </div>
-      )}
     </div>
   );
 }
