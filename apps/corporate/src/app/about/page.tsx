@@ -8,11 +8,11 @@ import { aboutPageContent } from '../../content/supporting-pages';
 export const metadata: Metadata = {
   title: 'About Ops Foundry — Human-AI Operational Infrastructure',
   description:
-    'Learn what Ops Foundry is, why it exists, the business execution problems it solves, and its human-plus-AI operational philosophy.',
+    'Learn what Ops Foundry is, why it exists, and its human-plus-AI operational philosophy.',
   openGraph: {
     title: 'About Ops Foundry — Human-AI Operational Infrastructure',
     description:
-      'Learn what Ops Foundry is, why it exists, the business execution problems it solves, and its human-plus-AI operational philosophy.',
+      'Learn what Ops Foundry is, why it exists, and its human-plus-AI operational philosophy.',
     type: 'website',
   },
 };
@@ -21,7 +21,6 @@ export default function AboutPage() {
   const {
     hero,
     whatWeAreAndWhyWeExist,
-    problemsWeSolve,
     philosophy,
     companyProfileNotice,
     cta,
@@ -64,16 +63,12 @@ export default function AboutPage() {
                   {hero.supporting}
                 </Text>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-                  <Link href="/pilot" className="inline-flex">
-                    <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                      Explore a Pilot
-                    </Button>
-                  </Link>
-                  <Link href="/how-we-work" className="inline-flex">
-                    <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                      See How We Work
-                    </Button>
-                  </Link>
+                  <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
+                    <Link href="/pilot">Explore a Pilot</Link>
+                  </Button>
+                  <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                    <Link href="/how-we-work">See How We Work</Link>
+                  </Button>
                 </div>
               </div>
 
@@ -121,53 +116,8 @@ export default function AboutPage() {
           </Container>
         </Section>
 
-        {/* 3. The Operational Problems We Help Businesses Solve */}
+        {/* 3. Our Human + AI Operational Philosophy */}
         <Section tone="canvas" spacing="lg" border="bottom">
-          <Container>
-            <div className="max-w-3xl mb-12">
-              <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
-                {problemsWeSolve.heading}
-              </Heading>
-              <Text size="lg" tone="secondary" className="leading-relaxed">
-                {problemsWeSolve.intro}
-              </Text>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {problemsWeSolve.items.map((item, idx) => (
-                <article
-                  key={item.title}
-                  className="flex flex-col justify-between rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs"
-                >
-                  <div>
-                    <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-foundry-canvas border border-foundry-border text-foundry-dark font-display font-bold text-sm">
-                      0{idx + 1}
-                    </div>
-                    <Heading as="h3" size="sm" className="mb-3 text-foundry-dark">
-                      {item.title}
-                    </Heading>
-                    <Text size="sm" tone="secondary" className="mb-6 leading-relaxed">
-                      {item.description}
-                    </Text>
-                  </div>
-
-                  <div className="pt-4 border-t border-foundry-border">
-                    <Link
-                      href={item.href}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-foundry-dark hover:text-foundry-orange transition-colors"
-                    >
-                      <span>View Service Details</span>
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* 4. Our Human + AI Operational Philosophy */}
-        <Section tone="pure" spacing="lg" border="bottom">
           <Container>
             <div className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
@@ -182,8 +132,11 @@ export default function AboutPage() {
               {philosophy.principles.map((principle) => (
                 <article
                   key={principle.title}
-                  className="rounded-2xl bg-foundry-canvas p-7 lg:p-8 border border-foundry-border"
+                  className="rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs"
                 >
+                  <span className="font-display text-xs font-bold text-foundry-orange tracking-wider uppercase block mb-2.5">
+                    {principle.number}
+                  </span>
                   <Heading as="h3" size="sm" className="mb-3 text-foundry-dark">
                     {principle.title}
                   </Heading>
@@ -194,8 +147,8 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Company Profile & Factual Governance Notice */}
-            <div className="rounded-2xl bg-foundry-canvas p-6 lg:p-8 border border-foundry-border">
+            {/* Company Profile & Governance Note */}
+            <div className="rounded-2xl bg-white p-6 lg:p-8 border border-foundry-border shadow-xs">
               <Heading as="h3" size="sm" className="mb-2 text-foundry-dark">
                 {companyProfileNotice.heading}
               </Heading>
@@ -206,7 +159,7 @@ export default function AboutPage() {
           </Container>
         </Section>
 
-        {/* 5. Conversion CTA */}
+        {/* 4. Conversion CTA */}
         <Section tone="dark" spacing="lg">
           <Container>
             <div className="rounded-3xl bg-[#181A1F] border border-white/10 p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">

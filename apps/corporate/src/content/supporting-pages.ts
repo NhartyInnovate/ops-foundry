@@ -129,9 +129,9 @@ export const howWeWorkPageContent = {
 export const aboutPageContent = {
   hero: {
     title: 'About Ops Foundry',
-    lead: 'Ops Foundry is a human-AI operational infrastructure company built to help businesses get important work done.',
+    lead: 'Ops Foundry is a human-AI operational infrastructure company helping businesses move important work from backlog to completion.',
     supporting:
-      'We focus on the practical middle ground between strategy and software: combining managed teams, structured workflows, and AI-enabled tools so organizations can execute consistently.',
+      'We bring together accountable people, structured workflows and practical technology to help businesses execute consistently.',
     image: {
       src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=80',
       alt: 'Two business operators reviewing workflow documentation and project priorities in an office workspace',
@@ -141,66 +141,45 @@ export const aboutPageContent = {
   whatWeAreAndWhyWeExist: {
     heading: 'Why Ops Foundry Exists',
     paragraphs: [
-      'Across industries, businesses face a familiar operational gap. Leaders know they need a clear digital presence, consistent market communications, and organized customer pipeline operations—yet day-to-day execution repeatedly falls behind.',
-      'The market typically offers two incomplete answers: buy another software subscription that your team still has to configure and run, or hire ad-hoc contractors that your team still has to coordinate and supervise every day.',
-      'Ops Foundry exists to provide a third option: a practical execution partner that brings together accountable human operators, documented workflows, and modern AI-enabled tools to carry operational work through to completion.',
-    ],
-  },
-  problemsWeSolve: {
-    heading: 'The Operational Problems We Help Businesses Solve',
-    intro:
-      'We concentrate on three foundational areas where execution bottlenecks most frequently hold businesses back:',
-    items: [
-      {
-        title: 'Stalled Digital Presence (Get Online)',
-        description:
-          'Helping businesses replace outdated, incomplete, or hard-to-maintain websites with structured, reliable digital foundations.',
-        href: '/services/get-online',
-      },
-      {
-        title: 'Inconsistent Communications & Visibility (Get Visible)',
-        description:
-          'Helping businesses turn irregular updates and scattered knowledge into repeatable content, communication, and search-discovery workflows.',
-        href: '/services/get-visible',
-      },
-      {
-        title: 'Fragmented Pipeline Operations (Get Customers)',
-        description:
-          'Helping businesses organize prospect research, inbound inquiry handling, and pipeline follow-up so commercial interest is managed systematically.',
-        href: '/services/get-customers',
-      },
+      'Growing businesses often have important work that remains unfinished because people, processes and tools are not properly coordinated.',
+      'Buying more software or hiring disconnected contractors does not always solve the problem.',
+      'Ops Foundry exists to bridge that execution gap by bringing together accountable human operators, documented workflows and practical AI-enabled tools.',
     ],
   },
   philosophy: {
     heading: 'Our Human + AI Operational Philosophy',
     intro:
-      'We view artificial intelligence as a practical operational multiplier—not a replacement for human accountability or clear process design.',
+      'We use AI to improve operational efficiency, while keeping people accountable for decisions, quality and delivery.',
     principles: [
       {
+        number: '01',
         title: 'Process Before Automation',
         description:
-          'Automating an undocumented or broken process only produces errors faster. We structure the workflow and quality standards first, then apply tooling where it genuinely helps.',
+          'Clear workflows come first. Automation supports processes that are already understood.',
       },
       {
+        number: '02',
         title: 'Human-in-the-Loop Accountability',
         description:
-          'AI tools can accelerate research, initial drafting, and data organization, but human operators remain responsible for context, accuracy, brand alignment, and final verification.',
+          'People remain responsible for reviewing outputs, making decisions and maintaining quality.',
       },
       {
+        number: '03',
         title: 'Scoped, Transparent Execution',
         description:
-          'We do not rely on vague promises or black-box automation. Every engagement starts with a clear discussion of the problem, proposed scope, deliverables, and client dependencies.',
+          'Every engagement begins with agreed expectations, deliverables and responsibilities.',
       },
       {
+        number: '04',
         title: 'Connected to Talent Development',
         description:
-          'Through Ops Foundry Academy—the learning and talent-development side of our ecosystem—we are building an environment dedicated to training practical operational skills.',
+          'Through Ops Foundry Academy, we support practical skills development and professional growth.',
       },
     ],
   },
   companyProfileNotice: {
     heading: 'Company Profile & Governance Note',
-    body: 'Ops Foundry maintains a strict policy of factual accuracy across its corporate materials. We do not publish fabricated client logos, unverified performance statistics, or placeholder executive biographies. Official corporate registration details, leadership profiles, and verified case notes are published in this Git-managed profile as they are formally approved for public release.',
+    body: 'Ops Foundry is committed to accurate, verifiable corporate information. We do not publish fabricated client logos, performance statistics, awards or unverified partnerships. Official company information and approved public claims are published only after verification.',
   },
   cta: {
     heading: 'Have operational work that needs to get done?',
