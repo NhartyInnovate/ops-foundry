@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../components/corporate-header';
 import { CorporateFooter } from '../components/corporate-footer';
 import {
@@ -10,10 +10,6 @@ import {
   whyOpsFoundryContent,
   operatingPillarsContent,
   servicesContent,
-  howWeWorkContent,
-  whoWeHelpContent,
-  academyBridgeContent,
-  insightsContent,
   finalCtaContent,
 } from '../content/homepage';
 
@@ -103,7 +99,7 @@ export default function CorporateHomePage() {
           </Container>
         </Section>
 
-        {/* Section 2 — Why Ops Foundry Exists */}
+        {/* Section 2 — The Execution Capacity Problem */}
         <Section id="why-ops-foundry" tone="pure" spacing="lg" border="both">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -134,22 +130,13 @@ export default function CorporateHomePage() {
                 </figure>
               </div>
 
-              {/* Right Column: Operational Analysis & Resolution */}
+              {/* Right Column: Three Concise Problem/Solution Statements & Concluding Statement */}
               <div className="lg:col-span-7 space-y-8">
-                <div className="space-y-5">
-                  {whyOpsFoundryContent.narrativeParagraphs.map((paragraph, idx) => (
-                    <Text key={idx} size="lg" className="text-gray-700">
-                      {paragraph}
-                    </Text>
-                  ))}
-                </div>
-
-                {/* Editorial Operational Contrasts */}
                 <div className="border-t border-foundry-border divide-y divide-foundry-border">
                   {whyOpsFoundryContent.contrasts.map((item) => (
                     <div
                       key={item.challenge}
-                      className="py-5 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6 items-baseline"
+                      className="py-6 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6 items-baseline"
                     >
                       <h3 className="sm:col-span-5 font-display text-base font-bold text-foundry-dark">
                         {item.challenge}
@@ -171,81 +158,52 @@ export default function CorporateHomePage() {
           </Container>
         </Section>
 
-        {/* Section 3 — Our Operating Pillars (Editorial Architectural Ledger) */}
+        {/* Section 3 — Three Pillars */}
         <Section id="operating-pillars" tone="canvas" spacing="lg">
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              {/* Left Column: Section Thesis & System Integration Explanation */}
-              <div className="lg:col-span-4 space-y-6">
-                <Heading as="h2" size="xl">
-                  {operatingPillarsContent.headline}
-                </Heading>
-                <Text size="base" className="text-gray-600">
-                  {operatingPillarsContent.intro}
-                </Text>
-                <div className="rounded-2xl bg-foundry-dark text-white p-6 space-y-2">
-                  <p className="font-display text-sm font-bold text-white">
-                    Integrated Execution
-                  </p>
-                  <p className="font-body text-xs text-gray-300 leading-relaxed">
-                    {operatingPillarsContent.systemNote}
-                  </p>
-                </div>
-              </div>
+            <div className="max-w-3xl mb-12">
+              <Heading as="h2" size="xl">
+                {operatingPillarsContent.headline}
+              </Heading>
+            </div>
 
-              {/* Right Column: Editorial Stacked Pillar Ledger (Non-Card Layout) */}
-              <div className="lg:col-span-8 border-t-2 border-foundry-dark divide-y divide-foundry-border">
-                {operatingPillarsContent.pillars.map((pillar) => (
-                  <article
-                    key={pillar.number}
-                    className="py-8 sm:py-10 first:pt-8 last:pb-2 grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 items-start"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {operatingPillarsContent.pillars.map((pillar) => (
+                <article
+                  key={pillar.number}
+                  className="rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border space-y-4"
+                >
+                  <span
+                    className="block font-display text-2xl font-extrabold text-foundry-orange"
+                    aria-hidden="true"
                   >
-                    <div className="sm:col-span-3 flex sm:flex-col items-baseline sm:items-start gap-3">
-                      <span
-                        className="font-display text-2xl sm:text-3xl font-extrabold text-foundry-orange"
-                        aria-hidden="true"
-                      >
-                        {pillar.number}
-                      </span>
-                      <h3 className="font-display text-xl font-bold text-foundry-dark">
-                        {pillar.title}
-                      </h3>
-                    </div>
-
-                    <div className="sm:col-span-9 space-y-3">
-                      <p className="font-display text-base sm:text-lg font-semibold text-foundry-dark leading-snug">
-                        {pillar.summary}
-                      </p>
-                      <Text size="sm" className="text-gray-600">
-                        {pillar.detail}
-                      </Text>
-                      <p className="pt-1 font-body text-xs font-medium text-gray-700">
-                        <span className="font-semibold text-foundry-dark">
-                          How it connects:{' '}
-                        </span>
-                        {pillar.interplay}
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+                    {pillar.number}
+                  </span>
+                  <h3 className="font-display text-xl font-bold text-foundry-dark">
+                    {pillar.title}
+                  </h3>
+                  <Text size="base" className="text-gray-600">
+                    {pillar.summary}
+                  </Text>
+                </article>
+              ))}
             </div>
           </Container>
         </Section>
 
-        {/* Section 4 — Our Services */}
-        <Section id="services" tone="pure" spacing="lg" border="both">
+        {/* Section 4 — Three Service Lines */}
+        <Section id="services" tone="pure" spacing="lg" border="top">
           <Container>
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-foundry-border">
-              <div className="max-w-2xl space-y-4">
+              <div className="max-w-2xl space-y-3">
                 <Heading as="h2" size="xl">
                   {servicesContent.headline}
                 </Heading>
-                <Text size="base" className="text-gray-600">
+                <Text size="lg" className="text-gray-600">
                   {servicesContent.intro}
                 </Text>
               </div>
-              <div className="flex flex-col lg:items-end gap-3">
+              <div className="flex flex-col lg:items-end gap-3 shrink-0">
                 <p className="font-body text-xs text-foundry-secondary max-w-xs lg:text-right">
                   {servicesContent.scopeNotice}
                 </p>
@@ -264,21 +222,17 @@ export default function CorporateHomePage() {
                 <article
                   key={service.id}
                   id={service.anchorId}
-                  className="py-12 sm:py-16 first:pt-12 last:pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-mt-24"
+                  className="py-12 sm:py-14 first:pt-12 last:pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-mt-24"
                 >
                   <div className="lg:col-span-7 space-y-5">
                     <div className="space-y-2">
                       <Heading as="h3" size="lg">
                         {service.title}
                       </Heading>
-                      <p className="font-display text-base sm:text-lg font-semibold text-gray-800">
-                        {service.lead}
-                      </p>
+                      <Text size="lg" className="text-gray-700 font-medium">
+                        {service.description}
+                      </Text>
                     </div>
-
-                    <Text size="base" className="text-gray-600 max-w-2xl">
-                      {service.description}
-                    </Text>
 
                     <div className="space-y-2.5 pt-1">
                       <p className="font-display text-xs font-bold text-foundry-dark">
@@ -337,214 +291,7 @@ export default function CorporateHomePage() {
           </Container>
         </Section>
 
-        {/* Section 5 — How We Work */}
-        <Section id="how-we-work" tone="dark" spacing="lg">
-          <Container>
-            <div className="max-w-3xl space-y-4 mb-14">
-              <Heading as="h2" size="xl" tone="inverse">
-                {howWeWorkContent.headline}
-              </Heading>
-              <Text size="base" tone="inverseMuted">
-                {howWeWorkContent.intro}
-              </Text>
-              <p className="inline-block rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-xs text-gray-300 leading-relaxed">
-                {howWeWorkContent.approvalNotice}
-              </p>
-            </div>
-
-            <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {howWeWorkContent.stages.map((stage) => (
-                <li
-                  key={stage.stage}
-                  className="border-t border-foundry-dark-border pt-6 flex flex-col justify-between space-y-6"
-                >
-                  <div className="space-y-3">
-                    <span className="font-display text-xs font-bold text-foundry-orange">
-                      {stage.stage}
-                    </span>
-                    <h3 className="font-display text-xl font-bold text-white">
-                      {stage.title}
-                    </h3>
-                    <p className="font-body text-sm text-gray-300 leading-relaxed">
-                      {stage.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-white/10">
-                    <span className="block text-[11px] text-gray-400">
-                      Stage Focus
-                    </span>
-                    <span className="font-body text-xs font-medium text-gray-200">
-                      {stage.focusOutput}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <div className="mt-12 pt-8 border-t border-foundry-dark-border flex justify-end">
-              <Link
-                href="/how-we-work"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange"
-              >
-                <span>Read Our Full Operating Model &amp; Governance Approach</span>
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </Container>
-        </Section>
-
-        {/* Section 6 — Who We Help */}
-        <Section id="who-we-help" tone="canvas" spacing="lg">
-          <Container>
-            <div className="max-w-2xl space-y-4 mb-14">
-              <Heading as="h2" size="xl">
-                {whoWeHelpContent.headline}
-              </Heading>
-              <Text size="base" className="text-gray-600">
-                {whoWeHelpContent.intro}
-              </Text>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {whoWeHelpContent.profiles.map((profile) => (
-                <article
-                  key={profile.title}
-                  className="rounded-2xl border border-foundry-border bg-white p-8 flex flex-col justify-between space-y-6"
-                >
-                  <div className="space-y-4">
-                    <Heading as="h3" size="sm">
-                      {profile.title}
-                    </Heading>
-                    <div className="space-y-1.5">
-                      <p className="font-display text-xs font-bold text-gray-500">
-                        Operational Challenge
-                      </p>
-                      <Text size="sm" className="text-gray-600">
-                        {profile.challenge}
-                      </Text>
-                    </div>
-                  </div>
-
-                  <div className="pt-5 border-t border-gray-100 space-y-1.5">
-                    <p className="font-display text-xs font-bold text-foundry-dark">
-                      How Ops Foundry Helps
-                    </p>
-                    <p className="font-body text-sm text-gray-700 leading-relaxed">
-                      {profile.howWeHelp}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
-        {/* Section 7 — Academy Introduction */}
-        <Section id="academy" tone="pure" spacing="lg" border="top">
-          <Container>
-            <div className="rounded-3xl border border-foundry-border bg-foundry-canvas p-8 sm:p-12 lg:p-14">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="space-y-3">
-                    <Heading as="h2" size="lg">
-                      {academyBridgeContent.headline}
-                    </Heading>
-                    <p className="font-display text-base sm:text-lg font-semibold text-gray-800 leading-snug">
-                      {academyBridgeContent.lead}
-                    </p>
-                  </div>
-
-                  <Text size="base" className="text-gray-600">
-                    {academyBridgeContent.body}
-                  </Text>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                    {academyBridgeContent.ecosystemPoints.map((point) => (
-                      <div
-                        key={point.title}
-                        className="rounded-xl bg-white border border-foundry-border p-4 space-y-1.5"
-                      >
-                        <h3 className="font-display text-sm font-bold text-foundry-dark">
-                          {point.title}
-                        </h3>
-                        <p className="font-body text-xs text-foundry-secondary leading-relaxed">
-                          {point.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-2 flex flex-wrap items-center gap-4">
-                    <Button asChild variant="secondary" size="md">
-                      <Link href={academyBridgeContent.ctaHref}>
-                        <span>{academyBridgeContent.ctaLabel}</span>
-                        <ArrowUpRight className="h-4 w-4 text-foundry-orange" aria-hidden="true" />
-                      </Link>
-                    </Button>
-                    <span className="text-xs text-foundry-secondary">
-                      Dedicated Ops Foundry Academy web experience scheduled for Phase 3C
-                    </span>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-5">
-                  <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-sm">
-                    <div className="relative aspect-[4/3] w-full bg-gray-100">
-                      <Image
-                        src={academyBridgeContent.image.src}
-                        alt={academyBridgeContent.image.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 38vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <figcaption className="p-4 text-xs text-foundry-secondary border-t border-foundry-border">
-                      {academyBridgeContent.image.caption}
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* Section 8 — Insights */}
-        <Section id="insights" tone="pure" spacing="md" border="top">
-          <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-              <div className="lg:col-span-5 space-y-4">
-                <Heading as="h2" size="lg">
-                  {insightsContent.headline}
-                </Heading>
-                <Text size="base" className="text-gray-600">
-                  {insightsContent.lead}
-                </Text>
-                <p className="font-body text-xs text-foundry-secondary pt-1">
-                  {insightsContent.statusNote}
-                </p>
-              </div>
-
-              <div className="lg:col-span-7 border-t border-foundry-border divide-y divide-foundry-border">
-                {insightsContent.themes.map((theme) => (
-                  <div
-                    key={theme.title}
-                    className="py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6"
-                  >
-                    <h3 className="font-display text-base font-bold text-foundry-dark shrink-0">
-                      {theme.title}
-                    </h3>
-                    <p className="font-body text-sm text-foundry-secondary sm:text-right">
-                      {theme.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        {/* Section 9 — Final CTA (Explore a Pilot) */}
+        {/* Section 5 — Final CTA (Explore a Pilot) */}
         <Section id="explore-pilot" tone="canvas" spacing="lg" border="top">
           <Container>
             <div className="rounded-3xl bg-foundry-dark text-white p-8 sm:p-12 lg:p-16">
@@ -621,7 +368,6 @@ export default function CorporateHomePage() {
         </Section>
       </main>
 
-      {/* Section 10 — Footer */}
       <CorporateFooter />
     </div>
   );
