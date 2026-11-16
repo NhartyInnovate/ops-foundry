@@ -217,20 +217,21 @@ export default function AboutPage() {
                 {cta.body}
               </Text>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-                <Link href={cta.primaryHref} className="inline-flex justify-center">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
+                  <Link href={cta.primaryHref}>
                     {cta.primaryLabel}
-                  </Button>
-                </Link>
-                <Link href={cta.secondaryHref} className="inline-flex justify-center">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full sm:w-auto border-white/25 text-white hover:bg-white hover:text-foundry-dark"
-                  >
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto bg-white text-[#111215] border-[#E5E7EB] hover:bg-gray-50 hover:text-[#111215] hover:border-gray-300 active:bg-gray-100 focus-visible:outline-white shadow-sm"
+                >
+                  <Link href={cta.secondaryHref}>
                     {cta.secondaryLabel}
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
           </Container>

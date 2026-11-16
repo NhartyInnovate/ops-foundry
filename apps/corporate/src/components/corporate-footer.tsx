@@ -86,14 +86,6 @@ export function CorporateFooter() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/partners"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
-                >
-                  For Partners
-                </Link>
-              </li>
-              <li>
                 <a
                   href={corporateNavigation.academyBridge.href}
                   className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"

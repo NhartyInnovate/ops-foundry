@@ -319,7 +319,12 @@ export default function CorporateHomePage() {
                       </Link>
                     </Button>
 
-                    <Button asChild variant="inverseOutline" size="lg">
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="w-full sm:w-auto bg-white text-[#111215] border-[#E5E7EB] hover:bg-gray-50 hover:text-[#111215] hover:border-gray-300 active:bg-gray-100 focus-visible:outline-white shadow-sm"
+                    >
                       <Link href={finalCtaContent.secondaryCtaHref}>
                         {finalCtaContent.secondaryCtaLabel}
                       </Link>

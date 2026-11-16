@@ -34,7 +34,6 @@ export const corporateNavigation = {
   primaryLinks: [
     { label: 'How We Work', href: '/how-we-work' },
     { label: 'About', href: '/about' },
-    { label: 'For Partners', href: '/partners' },
   ],
   servicesOverview: {
     title: 'Services Overview',
@@ -239,7 +238,7 @@ export const finalCtaContent = {
     'Whether your immediate priority is establishing a stronger digital presence (Get Online), building consistent content and communications (Get Visible), or organizing prospecting and pipeline workflows (Get Customers), a pilot allows us to scope a practical starting point together.',
   primaryCtaLabel: 'Explore a Pilot',
   primaryCtaHref: '/pilot',
-  secondaryCtaLabel: 'Review Our Services',
+  secondaryCtaLabel: 'Explore Our Services',
   secondaryCtaHref: '/services',
   pilotPreparationItems: [
     {

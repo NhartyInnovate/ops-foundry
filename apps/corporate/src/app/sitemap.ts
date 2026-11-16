@@ -11,7 +11,6 @@ const CORPORATE_ROUTES = [
   { path: '/services/get-customers', priority: 0.85 },
   { path: '/how-we-work', priority: 0.85 },
   { path: '/about', priority: 0.8 },
-  { path: '/partners', priority: 0.8 },
   { path: '/pilot', priority: 0.9 },
 ] as const;
 
