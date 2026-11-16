@@ -1,22 +1,8 @@
-export const CORPORATE_WEBSITE_URL = (
-  process.env.NEXT_PUBLIC_CORPORATE_URL || 'http://localhost:3000'
-).replace(/\/$/, '');
-
-export const ACADEMY_WEBSITE_URL = (
-  process.env.NEXT_PUBLIC_ACADEMY_URL || 'http://localhost:3001'
-).replace(/\/$/, '');
+import { getCorporateWebsiteLink } from './site-config';
 
 export interface AcademyNavItem {
   label: string;
-  /**
-   * Active destination in Phase 3C.1 so all public navigation links resolve
-   * to meaningful sections without 404s prior to Phase 3C.2 supporting pages.
-   */
   href: string;
-  /**
-   * Dedicated route path reserved for Phase 3C.2 supporting pages.
-   */
-  plannedRoute: string;
 }
 
 export const academyNavigation = {
@@ -27,38 +13,29 @@ export const academyNavigation = {
     {
       label: 'Home',
       href: '/',
-      plannedRoute: '/',
     },
     {
       label: 'Programmes',
-      href: '/#programmes',
-      plannedRoute: '/programmes',
+      href: '/programmes',
     },
     {
       label: 'How We Learn',
-      href: '/#how-we-learn',
-      plannedRoute: '/how-we-learn',
+      href: '/how-we-learn',
     },
     {
       label: 'Admissions',
-      href: '/#admissions',
-      plannedRoute: '/admissions',
+      href: '/admissions',
     },
     {
       label: 'About',
-      href: '/#about',
-      plannedRoute: '/about',
+      href: '/about',
     },
   ] satisfies AcademyNavItem[],
   primaryCta: {
     label: 'Apply Now',
-    href: '/#admissions',
-    plannedRoute: '/admissions#apply',
+    href: '/admissions',
   },
-  corporateCrossLink: {
-    label: 'Corporate Website',
-    href: CORPORATE_WEBSITE_URL,
-  },
+  corporateCrossLink: getCorporateWebsiteLink(),
 } as const;
 
 export const academyHeroContent = {
@@ -67,11 +44,11 @@ export const academyHeroContent = {
     'Ops Foundry Academy helps people develop relevant, practical skills through structured learning, hands-on application and a focus on the demands of modern work.',
   primaryCta: {
     label: 'Explore Programmes',
-    href: '/#programmes',
+    href: '/programmes',
   },
   secondaryCta: {
     label: 'How Learning Works',
-    href: '/#how-we-learn',
+    href: '/how-we-learn',
   },
   highlights: [
     {
@@ -168,8 +145,7 @@ export const programmesPreviewContent = {
     'Programme Publication Status: Three courses are planned for the Academy. Official course titles, detailed curricula, durations, prerequisites, tuition details, and schedules are currently undergoing final confirmation and will be published here once approved.',
   cta: {
     label: 'View All Programmes',
-    href: '/#programmes',
-    plannedRoute: '/programmes',
+    href: '/programmes',
   },
 } as const;
 
@@ -228,8 +204,7 @@ export const admissionsPreviewContent = {
     'Applicants choose their preferred programme directly during the application process. Any programme-specific admissions requirements will be clearly stated once final course details are published.',
   cta: {
     label: 'Explore Admissions',
-    href: '/#admissions',
-    plannedRoute: '/admissions',
+    href: '/admissions',
   },
 } as const;
 
@@ -239,11 +214,11 @@ export const finalCtaContent = {
     'Explore how Ops Foundry Academy helps learners build practical capabilities, structured habits, and readiness for real-world work.',
   primaryCta: {
     label: 'Explore the Academy',
-    href: '/#programmes',
+    href: '/programmes',
   },
   secondaryCta: {
     label: 'Explore Admissions',
-    href: '/#admissions',
+    href: '/admissions',
   },
 } as const;
 

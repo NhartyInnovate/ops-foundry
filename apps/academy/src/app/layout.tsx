@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Manrope, Plus_Jakarta_Sans } from 'next/font/google';
+import { getAcademyMetadataBase } from '../content/site-config';
 import './globals.css';
 
 const manrope = Manrope({
@@ -15,12 +16,13 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_ACADEMY_URL || 'http://localhost:3001'
-  ),
+  metadataBase: getAcademyMetadataBase(),
   title: 'Ops Foundry Academy — Build Practical Skills for Real Work',
   description:
     'Ops Foundry Academy helps people develop relevant, practical skills through structured learning, hands-on application, and a focus on the demands of modern work.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Ops Foundry Academy — Build Practical Skills for Real Work',
     description:

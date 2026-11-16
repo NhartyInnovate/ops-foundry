@@ -6,6 +6,8 @@ import { academyNavigation, academyFooterContent } from '../content/homepage';
 import { plannedAcademyProgrammes } from '../content/programmes';
 
 export function AcademyFooter() {
+  const { corporateCrossLink } = academyNavigation;
+
   return (
     <footer
       role="contentinfo"
@@ -70,7 +72,7 @@ export function AcademyFooter() {
             <ul className="space-y-2.5 text-sm text-gray-300">
               <li>
                 <Link
-                  href="/#programmes"
+                  href="/programmes"
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
                 >
                   Programmes Overview
@@ -79,7 +81,7 @@ export function AcademyFooter() {
               {plannedAcademyProgrammes.map((programme) => (
                 <li key={programme.courseId}>
                   <Link
-                    href="/#programmes"
+                    href={`/programmes/${programme.slug}`}
                     className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
                   >
                     {programme.slotLabel}
@@ -97,7 +99,7 @@ export function AcademyFooter() {
             <ul className="space-y-2.5 text-sm text-gray-300">
               <li>
                 <Link
-                  href="/#admissions"
+                  href="/admissions"
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
                 >
                   Admissions Overview
@@ -112,16 +114,29 @@ export function AcademyFooter() {
                 </Link>
               </li>
               <li>
-                <a
-                  href={academyNavigation.corporateCrossLink.href}
-                  className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
-                >
-                  <span>{academyNavigation.corporateCrossLink.label}</span>
-                  <ArrowUpRight
-                    className="h-3.5 w-3.5 text-foundry-orange"
-                    aria-hidden="true"
-                  />
-                </a>
+                {corporateCrossLink.isExternal ? (
+                  <a
+                    href={corporateCrossLink.href}
+                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  >
+                    <span>{corporateCrossLink.label}</span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 text-foundry-orange"
+                      aria-hidden="true"
+                    />
+                  </a>
+                ) : (
+                  <Link
+                    href={corporateCrossLink.href}
+                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  >
+                    <span>{corporateCrossLink.label}</span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 text-foundry-orange"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                )}
               </li>
             </ul>
 

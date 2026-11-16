@@ -26,6 +26,10 @@ export function AcademyHeader() {
   }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const { corporateCrossLink } = academyNavigation;
+  const isAdmissionsActive =
+    pathname === academyNavigation.primaryCta.href ||
+    pathname.startsWith(`${academyNavigation.primaryCta.href}/`);
 
   return (
     <header className="sticky top-0 z-40 border-b border-foundry-border bg-white/95 backdrop-blur-md transition-colors">
@@ -55,7 +59,9 @@ export function AcademyHeader() {
         >
           {academyNavigation.items.map((item) => {
             const isActive =
-              item.href === '/' ? pathname === '/' : pathname === item.plannedRoute;
+              item.href === '/'
+                ? pathname === '/'
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
 
             return (
               <Link
@@ -76,16 +82,29 @@ export function AcademyHeader() {
 
         {/* Desktop Cross-Property Link & Primary CTA */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <a
-            href={academyNavigation.corporateCrossLink.href}
-            className="inline-flex min-h-[40px] whitespace-nowrap items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 hover:border-foundry-slate hover:text-foundry-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
-          >
-            <span>{academyNavigation.corporateCrossLink.label}</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange shrink-0" aria-hidden="true" />
-          </a>
+          {corporateCrossLink.isExternal ? (
+            <a
+              href={corporateCrossLink.href}
+              className="inline-flex min-h-[40px] whitespace-nowrap items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 hover:border-foundry-slate hover:text-foundry-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+            >
+              <span>{corporateCrossLink.label}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange shrink-0" aria-hidden="true" />
+            </a>
+          ) : (
+            <Link
+              href={corporateCrossLink.href}
+              className="inline-flex min-h-[40px] whitespace-nowrap items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-700 hover:border-foundry-slate hover:text-foundry-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+            >
+              <span>{corporateCrossLink.label}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange shrink-0" aria-hidden="true" />
+            </Link>
+          )}
 
           <Button asChild variant="primary" size="sm">
-            <Link href={academyNavigation.primaryCta.href}>
+            <Link
+              href={academyNavigation.primaryCta.href}
+              aria-current={isAdmissionsActive ? 'page' : undefined}
+            >
               {academyNavigation.primaryCta.label}
             </Link>
           </Button>
