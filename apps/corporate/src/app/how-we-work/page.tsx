@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
+import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { howWeWorkPageContent } from '../../content/supporting-pages';
 
 export const metadata: Metadata = {
@@ -31,9 +32,10 @@ export default function HowWeWorkPage() {
           tone="canvas"
           spacing="none"
           border="bottom"
-          className="pt-10 pb-14 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24"
+          className="relative pt-10 pb-14 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 overflow-hidden"
         >
-          <Container>
+          <AbstractBrandGeometry variant="subtle" />
+          <Container className="relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               <div className="lg:col-span-7">
                 <Heading
@@ -64,7 +66,7 @@ export default function HowWeWorkPage() {
                     </Button>
                   </Link>
                   <Link href="/services" className="inline-flex">
-                    <Button variant="secondary" size="lg" className="w-full sm:w-auto">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
                       View Service Lines
                     </Button>
                   </Link>
@@ -91,7 +93,7 @@ export default function HowWeWorkPage() {
         </Section>
 
         {/* 2. Combining Managed Teams, Structured Workflows, and AI-Enabled Tools */}
-        <Section tone="pure" spacing="lg" border="bottom">
+        <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
             <div className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
@@ -106,7 +108,7 @@ export default function HowWeWorkPage() {
               {pillarsIntegration.items.map((item, idx) => (
                 <article
                   key={item.title}
-                  className="flex flex-col justify-between rounded-2xl bg-foundry-canvas p-7 lg:p-8 border border-foundry-border"
+                  className="flex flex-col justify-between rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs"
                 >
                   <div>
                     <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-foundry-dark text-white font-display font-bold text-sm">
@@ -126,7 +128,7 @@ export default function HowWeWorkPage() {
         </Section>
 
         {/* 3. Proposed Four-Stage Operating Model */}
-        <Section tone="canvas" spacing="lg" border="bottom">
+        <Section tone="pure" spacing="lg" border="bottom">
           <Container>
             <div className="max-w-3xl mb-8">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
@@ -141,7 +143,7 @@ export default function HowWeWorkPage() {
             <div
               role="note"
               aria-label="Operating model scope notice"
-              className="mb-10 rounded-xl border border-foundry-orange/30 bg-white px-6 py-4 text-sm text-foundry-dark leading-relaxed shadow-xs"
+              className="mb-10 rounded-xl border border-foundry-border bg-foundry-muted px-6 py-4 text-sm text-foundry-dark leading-relaxed shadow-xs"
             >
               {operatingModel.disclaimer}
             </div>
@@ -150,14 +152,14 @@ export default function HowWeWorkPage() {
               {operatingModel.stages.map((stage) => (
                 <article
                   key={stage.title}
-                  className="flex flex-col justify-between rounded-2xl bg-white p-7 lg:p-9 border border-foundry-border shadow-xs"
+                  className="flex flex-col justify-between rounded-2xl bg-foundry-muted p-7 lg:p-9 border border-foundry-border shadow-xs"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-4 pb-4 mb-5 border-b border-foundry-border">
                       <Heading as="h3" size="lg" className="text-foundry-dark">
                         {stage.title}
                       </Heading>
-                      <span className="inline-flex items-center rounded-full bg-foundry-canvas px-3.5 py-1 text-xs font-semibold text-foundry-dark border border-foundry-border">
+                      <span className="inline-flex items-center rounded-full bg-white px-3.5 py-1 text-xs font-semibold text-foundry-dark border border-foundry-border">
                         {stage.number}
                       </span>
                     </div>
@@ -178,7 +180,7 @@ export default function HowWeWorkPage() {
                           className="flex items-start gap-2.5 text-xs text-foundry-secondary leading-relaxed"
                         >
                           <span
-                            className="mt-1.5 h-1.5 w-1.5 rounded-full bg-foundry-orange shrink-0"
+                            className="mt-1.5 h-1.5 w-1.5 rounded-full bg-foundry-dark shrink-0"
                             aria-hidden="true"
                           />
                           <span>{output}</span>
@@ -203,7 +205,7 @@ export default function HowWeWorkPage() {
                 <Text size="base" tone="secondary" className="mb-6 leading-relaxed">
                   {governanceAgreements.intro}
                 </Text>
-                <div className="rounded-2xl bg-foundry-canvas p-6 border border-foundry-border">
+                <div className="rounded-2xl bg-foundry-muted p-6 border border-foundry-border">
                   <Heading as="h3" size="sm" className="mb-2 text-foundry-dark">
                     {governanceAgreements.pilotNotice.heading}
                   </Heading>
@@ -211,7 +213,7 @@ export default function HowWeWorkPage() {
                     {governanceAgreements.pilotNotice.body}
                   </Text>
                   <Link href={governanceAgreements.pilotNotice.linkHref} className="inline-flex">
-                    <Button variant="secondary" size="md">
+                    <Button variant="outline" size="md">
                       {governanceAgreements.pilotNotice.linkLabel}
                     </Button>
                   </Link>
@@ -222,7 +224,7 @@ export default function HowWeWorkPage() {
                 {governanceAgreements.agreements.map((agreement, index) => (
                   <div
                     key={agreement.topic}
-                    className="rounded-2xl bg-foundry-canvas p-6 border border-foundry-border flex flex-col sm:flex-row gap-4 sm:items-start"
+                    className="rounded-2xl bg-foundry-muted p-6 border border-foundry-border flex flex-col sm:flex-row gap-4 sm:items-start"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-foundry-dark text-white font-display font-bold text-xs">
                       0{index + 1}
@@ -243,31 +245,34 @@ export default function HowWeWorkPage() {
         </Section>
 
         {/* 5. Conversion CTA */}
-        <Section tone="dark" spacing="lg">
+        <Section tone="pure" spacing="lg">
           <Container>
-            <div className="rounded-3xl bg-[#181A1F] border border-white/10 p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
-              <Heading as="h2" size="xl" tone="inverse" className="mb-4">
-                {cta.heading}
-              </Heading>
-              <Text size="lg" tone="inverseMuted" className="mb-8 max-w-2xl mx-auto leading-relaxed">
-                {cta.body}
-              </Text>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-                <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href={cta.primaryHref}>
-                    {cta.primaryLabel}
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto bg-white text-[#111215] border-[#E5E7EB] hover:bg-gray-50 hover:text-[#111215] hover:border-gray-300 active:bg-gray-100 focus-visible:outline-white shadow-sm"
-                >
-                  <Link href={cta.secondaryHref}>
-                    {cta.secondaryLabel}
-                  </Link>
-                </Button>
+            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
+              <AbstractBrandGeometry variant="cta" />
+              <div className="relative z-10">
+                <Heading as="h2" size="xl" tone="default" className="mb-4">
+                  {cta.heading}
+                </Heading>
+                <Text size="lg" tone="secondary" className="mb-8 max-w-2xl mx-auto leading-relaxed text-gray-600">
+                  {cta.body}
+                </Text>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+                  <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
+                    <Link href={cta.primaryHref}>
+                      {cta.primaryLabel}
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
+                    <Link href={cta.secondaryHref}>
+                      {cta.secondaryLabel}
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </Container>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Container } from '@opsfoundry/ui';
 import { ArrowUpRight } from 'lucide-react';
 import { corporateNavigation } from '../content/homepage';
@@ -16,14 +17,23 @@ export function CorporateFooter() {
           <div className="md:col-span-5 space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foundry-orange"
+              className="inline-flex items-center gap-3 sm:gap-3.5 transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              aria-label="Ops Foundry by TeleSoftas — Home"
             >
+              <Image
+                src="/images/brand/ops-foundry-logo-dark.svg"
+                alt="Ops Foundry"
+                width={160}
+                height={55}
+                className="h-auto w-[140px] sm:w-[160px] object-contain"
+              />
               <span
-                className="h-3 w-3 rounded-full bg-foundry-orange shrink-0"
+                className="h-6 sm:h-7 w-px bg-white/20"
                 aria-hidden="true"
               />
-              <span className="font-display text-xl font-bold tracking-tight text-white">
-                {corporateNavigation.brandName}
+              <span className="font-body text-xs sm:text-sm tracking-tight text-white whitespace-nowrap select-none">
+                <span className="font-normal text-gray-400">by</span>{' '}
+                <span className="font-semibold text-white">TeleSoftas</span>
               </span>
             </Link>
 
@@ -45,7 +55,7 @@ export function CorporateFooter() {
               <li>
                 <Link
                   href={corporateNavigation.servicesOverview.href}
-                  className="inline-flex items-center gap-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="inline-flex items-center gap-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
                   <span>Services Overview</span>
                 </Link>
@@ -54,7 +64,7 @@ export function CorporateFooter() {
                 <li key={service.id}>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center gap-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                    className="inline-flex items-center gap-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                   >
                     <span>{service.title}</span>
                   </Link>
@@ -72,7 +82,7 @@ export function CorporateFooter() {
               <li>
                 <Link
                   href="/how-we-work"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
                   How We Work
                 </Link>
@@ -80,7 +90,7 @@ export function CorporateFooter() {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
                   About Ops Foundry
                 </Link>
@@ -88,16 +98,16 @@ export function CorporateFooter() {
               <li>
                 <a
                   href={corporateNavigation.academyBridge.href}
-                  className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="inline-flex items-center gap-1.5 text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
                   <span>{corporateNavigation.academyBridge.label}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange" aria-hidden="true" />
+                  <ArrowUpRight className="h-3.5 w-3.5 text-gray-300" aria-hidden="true" />
                 </a>
               </li>
               <li>
                 <Link
                   href="/pilot"
-                  className="inline-flex items-center gap-2 text-foundry-orange font-semibold hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="inline-flex items-center gap-2 text-white font-semibold underline underline-offset-4 hover:text-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
                   <span>Explore a Pilot</span>
                 </Link>

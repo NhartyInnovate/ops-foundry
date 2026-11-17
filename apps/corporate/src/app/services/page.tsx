@@ -6,6 +6,7 @@ import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
+import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { servicesOverviewContent } from '../../content/services';
 
 export const metadata: Metadata = {
@@ -32,9 +33,9 @@ export default function ServicesOverviewPage() {
         <Section
           tone="canvas"
           spacing="none"
-          className="pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 border-b border-foundry-border"
+          className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 border-b border-foundry-border overflow-hidden"
         >
-          <Container>
+          <Container className="relative z-10">
             <div className="max-w-3xl space-y-6">
               <Heading as="h1" size="display">
                 {hero.title}
@@ -63,7 +64,7 @@ export default function ServicesOverviewPage() {
               {categories.map((category) => (
                 <div
                   key={category.slug}
-                  className="flex flex-col justify-between space-y-4 border-l-2 border-foundry-orange pl-5"
+                  className="flex flex-col justify-between space-y-4 border-l-2 border-foundry-dark pl-5"
                 >
                   <div className="space-y-2">
                     <h2 className="font-display text-xl font-bold text-foundry-dark">
@@ -76,7 +77,7 @@ export default function ServicesOverviewPage() {
                   <div>
                     <Link
                       href={category.href}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-dark hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark"
                     >
                       <span>Explore {category.title}</span>
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -121,7 +122,7 @@ export default function ServicesOverviewPage() {
                               className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed"
                             >
                               <CheckCircle2
-                                className="h-4 w-4 text-foundry-orange shrink-0 mt-0.5"
+                                className="h-4 w-4 text-foundry-dark shrink-0 mt-0.5"
                                 aria-hidden="true"
                               />
                               <span>{area}</span>
@@ -167,27 +168,30 @@ export default function ServicesOverviewPage() {
         </Section>
 
         {/* Closing Pilot CTA */}
-        <Section tone="canvas" spacing="lg" border="top">
+        <Section tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="rounded-3xl bg-foundry-dark text-white p-8 sm:p-12 lg:p-16 text-center space-y-6">
-              <Heading as="h2" size="xl" tone="inverse" className="max-w-2xl mx-auto">
-                {finalCta.heading}
-              </Heading>
-              <Text size="base" tone="inverseMuted" className="max-w-xl mx-auto">
-                {finalCta.body}
-              </Text>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2">
-                <Button asChild variant="primary" size="lg">
-                  <Link href={finalCta.primaryHref}>
-                    <span>{finalCta.primaryLabel}</span>
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <Button asChild variant="inverseOutline" size="lg">
-                  <Link href={finalCta.secondaryHref}>
-                    {finalCta.secondaryLabel}
-                  </Link>
-                </Button>
+            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16 text-center space-y-6">
+              <AbstractBrandGeometry variant="cta" />
+              <div className="relative z-10 space-y-6">
+                <Heading as="h2" size="xl" tone="default" className="max-w-2xl mx-auto">
+                  {finalCta.heading}
+                </Heading>
+                <Text size="base" tone="secondary" className="max-w-xl mx-auto text-gray-600">
+                  {finalCta.body}
+                </Text>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2">
+                  <Button asChild variant="primary" size="lg">
+                    <Link href={finalCta.primaryHref}>
+                      <span>{finalCta.primaryLabel}</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg">
+                    <Link href={finalCta.secondaryHref}>
+                      {finalCta.secondaryLabel}
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </Container>

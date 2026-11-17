@@ -5,6 +5,7 @@ import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../components/corporate-header';
 import { CorporateFooter } from '../components/corporate-footer';
+import { AbstractBrandGeometry } from '../components/abstract-brand-geometry';
 import {
   heroContent,
   whyOpsFoundryContent,
@@ -23,15 +24,22 @@ export default function CorporateHomePage() {
         <Section
           tone="canvas"
           spacing="none"
-          className="pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28 overflow-hidden"
+          className="relative pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28 overflow-hidden"
         >
-          <Container>
+          {/* Container-aligned decorative brand gradient and ambient glow */}
+          <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
+            <Container className="relative h-full">
+              <AbstractBrandGeometry variant="hero" />
+            </Container>
+          </div>
+
+          <Container className="relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column: Core Positioning & CTAs */}
               <div className="lg:col-span-7 space-y-8">
                 <Heading as="h1" size="display">
                   {heroContent.headlinePrimary}{' '}
-                  <span className="block mt-1 text-foundry-orange">
+                  <span className="block mt-1 text-foundry-dark">
                     {heroContent.headlineAccent}
                   </span>
                 </Heading>
@@ -70,37 +78,24 @@ export default function CorporateHomePage() {
                 </dl>
               </div>
 
-              {/* Right Column: Documentary Operations Photography */}
-              <div className="lg:col-span-5">
-                <figure className="relative rounded-3xl overflow-hidden border border-foundry-border bg-gray-100 shadow-xl aspect-[4/5]">
-                  <Image
-                    src={heroContent.heroImage.src}
-                    alt={heroContent.heroImage.alt}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover"
-                  />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent"
-                    aria-hidden="true"
-                  />
-                  <figcaption className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 rounded-2xl bg-foundry-dark/85 backdrop-blur-md p-4 sm:p-5 text-white border border-white/10">
-                    <p className="font-display text-sm font-semibold text-white">
-                      {heroContent.heroImage.captionTitle}
-                    </p>
-                    <p className="mt-1 font-body text-xs text-gray-300 leading-relaxed">
-                      {heroContent.heroImage.captionBody}
-                    </p>
-                  </figcaption>
-                </figure>
+              {/* Right Column: Prominent Hero Portrait Cutout */}
+              <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end items-end self-end -mb-16 sm:-mb-20 lg:-mb-28">
+                <Image
+                  src="/images/brand/hero/hero-professional-woman.png"
+                  alt="Smiling African professional woman"
+                  width={1200}
+                  height={800}
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 720px"
+                  className="relative z-10 h-auto max-w-full sm:max-w-none w-[340px] sm:w-[420px] md:w-[480px] lg:max-w-none lg:w-[540px] xl:w-[580px] object-contain object-bottom select-none pointer-events-none"
+                />
               </div>
             </div>
           </Container>
         </Section>
 
         {/* Section 2 — The Execution Capacity Problem */}
-        <Section id="why-ops-foundry" tone="pure" spacing="lg" border="both">
+        <Section id="why-ops-foundry" tone="canvas" spacing="lg" border="both" className="bg-foundry-muted">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               {/* Left Column: Core Thesis & Documentary Image */}
@@ -114,7 +109,7 @@ export default function CorporateHomePage() {
                   </Text>
                 </div>
 
-                <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-foundry-canvas">
+                <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-xs">
                   <div className="relative aspect-[4/3] w-full bg-gray-100">
                     <Image
                       src={whyOpsFoundryContent.image.src}
@@ -148,7 +143,7 @@ export default function CorporateHomePage() {
                   ))}
                 </div>
 
-                <blockquote className="rounded-2xl bg-foundry-canvas border-l-4 border-foundry-orange p-6 sm:p-7">
+                <blockquote className="rounded-2xl bg-white border-l-4 border-foundry-dark p-6 sm:p-7 shadow-xs">
                   <p className="font-display text-base sm:text-lg font-bold text-foundry-dark leading-snug">
                     {whyOpsFoundryContent.editorialCallout}
                   </p>
@@ -159,7 +154,7 @@ export default function CorporateHomePage() {
         </Section>
 
         {/* Section 3 — Three Pillars */}
-        <Section id="operating-pillars" tone="canvas" spacing="lg">
+        <Section id="operating-pillars" tone="pure" spacing="lg">
           <Container>
             <div className="max-w-3xl mb-12">
               <Heading as="h2" size="xl">
@@ -171,10 +166,10 @@ export default function CorporateHomePage() {
               {operatingPillarsContent.pillars.map((pillar) => (
                 <article
                   key={pillar.number}
-                  className="rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border space-y-4"
+                  className="rounded-2xl bg-foundry-muted p-7 lg:p-8 border border-foundry-border space-y-4 shadow-xs"
                 >
                   <span
-                    className="block font-display text-2xl font-extrabold text-foundry-orange"
+                    className="block font-display text-2xl font-extrabold text-foundry-dark"
                     aria-hidden="true"
                   >
                     {pillar.number}
@@ -209,7 +204,7 @@ export default function CorporateHomePage() {
                 </p>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-dark hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark"
                 >
                   <span>View Services Overview</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -245,7 +240,7 @@ export default function CorporateHomePage() {
                             className="flex items-start gap-2.5 text-sm text-gray-700"
                           >
                             <CheckCircle2
-                              className="h-4 w-4 text-foundry-orange shrink-0 mt-0.5"
+                              className="h-4 w-4 text-foundry-dark shrink-0 mt-0.5"
                               aria-hidden="true"
                             />
                             <span>{area}</span>
@@ -255,7 +250,7 @@ export default function CorporateHomePage() {
                     </div>
 
                     <div className="pt-3 flex flex-wrap items-center gap-4">
-                      <Button asChild variant="secondary" size="md">
+                      <Button asChild variant="primary" size="md">
                         <Link href={service.ctaHref}>
                           <span>{service.ctaLabel}</span>
                           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -292,22 +287,23 @@ export default function CorporateHomePage() {
         </Section>
 
         {/* Section 5 — Final CTA (Explore a Pilot) */}
-        <Section id="explore-pilot" tone="canvas" spacing="lg" border="top">
+        <Section id="explore-pilot" tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="rounded-3xl bg-foundry-dark text-white p-8 sm:p-12 lg:p-16">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16">
+              <AbstractBrandGeometry variant="cta" />
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Left Column: Commercial Invitation */}
                 <div className="lg:col-span-7 space-y-6">
                   <div className="space-y-2">
-                    <Heading as="h2" size="xl" tone="inverse">
+                    <Heading as="h2" size="xl" tone="default">
                       {finalCtaContent.headline}
                     </Heading>
-                    <p className="font-display text-xl sm:text-2xl font-bold text-foundry-orange">
+                    <p className="font-display text-xl sm:text-2xl font-bold text-foundry-dark">
                       {finalCtaContent.subheadline}
                     </p>
                   </div>
 
-                  <Text size="base" tone="inverseMuted" className="max-w-xl">
+                  <Text size="base" tone="secondary" className="max-w-xl text-gray-600">
                     {finalCtaContent.body}
                   </Text>
 
@@ -315,7 +311,7 @@ export default function CorporateHomePage() {
                     <Button asChild variant="primary" size="lg">
                       <Link href={finalCtaContent.primaryCtaHref}>
                         <span>{finalCtaContent.primaryCtaLabel}</span>
-                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                       </Link>
                     </Button>
 
@@ -323,7 +319,7 @@ export default function CorporateHomePage() {
                       asChild
                       variant="outline"
                       size="lg"
-                      className="w-full sm:w-auto bg-white text-[#111215] border-[#E5E7EB] hover:bg-gray-50 hover:text-[#111215] hover:border-gray-300 active:bg-gray-100 focus-visible:outline-white shadow-sm"
+                      className="w-full sm:w-auto"
                     >
                       <Link href={finalCtaContent.secondaryCtaHref}>
                         {finalCtaContent.secondaryCtaLabel}
@@ -334,12 +330,12 @@ export default function CorporateHomePage() {
 
                 {/* Right Column: Pilot Scoping Preparation Summary */}
                 <div className="lg:col-span-5">
-                  <div className="rounded-2xl bg-foundry-dark-card border border-foundry-dark-border p-6 sm:p-8 space-y-6">
+                  <div className="rounded-2xl bg-white border border-foundry-border p-6 sm:p-8 space-y-6 shadow-xs">
                     <div className="space-y-1">
-                      <h3 className="font-display text-base font-bold text-white">
+                      <h3 className="font-display text-base font-bold text-foundry-dark">
                         What We Review in a Pilot Conversation
                       </h3>
-                      <p className="font-body text-xs text-gray-400">
+                      <p className="font-body text-xs text-foundry-secondary">
                         Each pilot begins by aligning on three practical questions:
                       </p>
                     </div>
@@ -347,14 +343,14 @@ export default function CorporateHomePage() {
                     <ol className="space-y-4">
                       {finalCtaContent.pilotPreparationItems.map((item, index) => (
                         <li key={item.label} className="flex items-start gap-3.5">
-                          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 font-display text-xs font-bold text-foundry-orange">
+                          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-foundry-dark font-display text-xs font-bold text-white">
                             {index + 1}
                           </span>
                           <div className="space-y-0.5">
-                            <p className="font-display text-sm font-semibold text-white">
+                            <p className="font-display text-sm font-semibold text-foundry-dark">
                               {item.label}
                             </p>
-                            <p className="font-body text-xs text-gray-300 leading-relaxed">
+                            <p className="font-body text-xs text-foundry-secondary leading-relaxed">
                               {item.detail}
                             </p>
                           </div>
@@ -362,7 +358,7 @@ export default function CorporateHomePage() {
                       ))}
                     </ol>
 
-                    <p className="pt-4 border-t border-white/10 font-body text-xs text-gray-400 leading-relaxed">
+                    <p className="pt-4 border-t border-gray-100 font-body text-xs text-foundry-secondary leading-relaxed">
                       {finalCtaContent.phaseNotice}
                     </p>
                   </div>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
+import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { aboutPageContent } from '../../content/supporting-pages';
 
 export const metadata: Metadata = {
@@ -36,9 +37,10 @@ export default function AboutPage() {
           tone="canvas"
           spacing="none"
           border="bottom"
-          className="pt-10 pb-14 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24"
+          className="relative pt-10 pb-14 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 overflow-hidden"
         >
-          <Container>
+          <AbstractBrandGeometry variant="subtle" />
+          <Container className="relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               <div className="lg:col-span-7">
                 <Heading
@@ -66,7 +68,7 @@ export default function AboutPage() {
                   <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
                     <Link href="/pilot">Explore a Pilot</Link>
                   </Button>
-                  <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                  <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                     <Link href="/how-we-work">See How We Work</Link>
                   </Button>
                 </div>
@@ -92,7 +94,7 @@ export default function AboutPage() {
         </Section>
 
         {/* 2. Why Ops Foundry Exists */}
-        <Section tone="pure" spacing="lg" border="bottom">
+        <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
               <div className="lg:col-span-5">
@@ -117,7 +119,7 @@ export default function AboutPage() {
         </Section>
 
         {/* 3. Our Human + AI Operational Philosophy */}
-        <Section tone="canvas" spacing="lg" border="bottom">
+        <Section tone="pure" spacing="lg" border="bottom">
           <Container>
             <div className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
@@ -132,9 +134,9 @@ export default function AboutPage() {
               {philosophy.principles.map((principle) => (
                 <article
                   key={principle.title}
-                  className="rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs"
+                  className="rounded-2xl bg-foundry-muted p-7 lg:p-8 border border-foundry-border shadow-xs"
                 >
-                  <span className="font-display text-xs font-bold text-foundry-orange tracking-wider uppercase block mb-2.5">
+                  <span className="font-display text-xs font-bold text-foundry-dark tracking-wider uppercase block mb-2.5">
                     {principle.number}
                   </span>
                   <Heading as="h3" size="sm" className="mb-3 text-foundry-dark">
@@ -148,7 +150,7 @@ export default function AboutPage() {
             </div>
 
             {/* Company Profile & Governance Note */}
-            <div className="rounded-2xl bg-white p-6 lg:p-8 border border-foundry-border shadow-xs">
+            <div className="rounded-2xl bg-foundry-muted p-6 lg:p-8 border border-foundry-border shadow-xs">
               <Heading as="h3" size="sm" className="mb-2 text-foundry-dark">
                 {companyProfileNotice.heading}
               </Heading>
@@ -160,31 +162,34 @@ export default function AboutPage() {
         </Section>
 
         {/* 4. Conversion CTA */}
-        <Section tone="dark" spacing="lg">
+        <Section tone="pure" spacing="lg">
           <Container>
-            <div className="rounded-3xl bg-[#181A1F] border border-white/10 p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
-              <Heading as="h2" size="xl" tone="inverse" className="mb-4">
-                {cta.heading}
-              </Heading>
-              <Text size="lg" tone="inverseMuted" className="mb-8 max-w-2xl mx-auto leading-relaxed">
-                {cta.body}
-              </Text>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-                <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href={cta.primaryHref}>
-                    {cta.primaryLabel}
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto bg-white text-[#111215] border-[#E5E7EB] hover:bg-gray-50 hover:text-[#111215] hover:border-gray-300 active:bg-gray-100 focus-visible:outline-white shadow-sm"
-                >
-                  <Link href={cta.secondaryHref}>
-                    {cta.secondaryLabel}
-                  </Link>
-                </Button>
+            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
+              <AbstractBrandGeometry variant="cta" />
+              <div className="relative z-10">
+                <Heading as="h2" size="xl" tone="default" className="mb-4">
+                  {cta.heading}
+                </Heading>
+                <Text size="lg" tone="secondary" className="mb-8 max-w-2xl mx-auto leading-relaxed text-gray-600">
+                  {cta.body}
+                </Text>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+                  <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
+                    <Link href={cta.primaryHref}>
+                      {cta.primaryLabel}
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
+                    <Link href={cta.secondaryHref}>
+                      {cta.secondaryLabel}
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </Container>

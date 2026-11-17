@@ -2,9 +2,29 @@
 @import "@opsfoundry/tokens/theme.css";
 @source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
+@theme {
+  /* Ops Foundry Official Brand Guidelines (v1.0, 2026) */
+  --color-deep-navy: #0B0F24;
+  --color-light-grey: #F5F6F8;
+  --color-brand-white: #FFFFFF;
+
+  /* Theme overrides for Corporate application */
+  --color-foundry-canvas: #FFFFFF;
+  --color-foundry-pure: #FFFFFF;
+  --color-foundry-muted: #F5F6F8;
+  --color-foundry-border: #E5E7EB;
+  --color-foundry-secondary: #4B5563;
+
+  /* Corporate Dark / Navy surfaces */
+  --color-foundry-dark: #0B0F24;
+  --color-foundry-dark-hover: #131938;
+  --color-foundry-dark-card: #0F1430;
+  --color-foundry-dark-border: #1C234D;
+}
+
 :root {
-  --background: #FBFBF9;
-  --foreground: #111215;
+  --background: #FFFFFF;
+  --foreground: #0B0F24;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20,6 +40,80 @@ body {
 }
 
 ::selection {
-  background-color: #FF5A1F;
+  background-color: #0B0F24;
   color: #FFFFFF;
+}
+
+/* Official Brand Guidelines Button Variants */
+/* Primary Buttons: Official Orange-to-Pink Brand Gradient (#FF8C56 → #FF4ADC) */
+.rounded-full.bg-foundry-orange,
+button.bg-foundry-orange,
+a.bg-foundry-orange {
+  background-image: linear-gradient(135deg, #FF8C56 0%, #FF4ADC 100%) !important;
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: opacity 0.2s ease, transform 0.15s ease !important;
+}
+
+.rounded-full.bg-foundry-orange:hover,
+button.bg-foundry-orange:hover,
+a.bg-foundry-orange:hover {
+  opacity: 0.92 !important;
+  color: #FFFFFF !important;
+}
+
+.rounded-full.bg-foundry-orange:focus-visible,
+button.bg-foundry-orange:focus-visible,
+a.bg-foundry-orange:focus-visible {
+  outline: 2px solid #FF8C56 !important;
+  outline-offset: 2px !important;
+}
+
+.rounded-full.bg-foundry-orange:disabled,
+button.bg-foundry-orange:disabled,
+a.bg-foundry-orange:disabled {
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+  background-image: linear-gradient(135deg, #FF8C56 0%, #FF4ADC 100%) !important;
+}
+
+/* Secondary Buttons: White background, Deep Navy text and subtle neutral border */
+.rounded-full.border-gray-300,
+button.rounded-full.border-gray-300,
+a.rounded-full.border-gray-300,
+.rounded-full.border-foundry-border,
+button.rounded-full.border-foundry-border,
+a.rounded-full.border-foundry-border,
+.rounded-full.border-white\/25,
+button.rounded-full.border-white\/25,
+a.rounded-full.border-white\/25 {
+  background-color: #FFFFFF !important;
+  color: #0B0F24 !important;
+  border: 1px solid #E5E7EB !important;
+}
+
+.rounded-full.border-gray-300:hover,
+button.rounded-full.border-gray-300:hover,
+a.rounded-full.border-gray-300:hover,
+.rounded-full.border-foundry-border:hover,
+button.rounded-full.border-foundry-border:hover,
+a.rounded-full.border-foundry-border:hover,
+.rounded-full.border-white\/25:hover,
+button.rounded-full.border-white\/25:hover,
+a.rounded-full.border-white\/25:hover {
+  background-color: #F5F6F8 !important;
+  color: #0B0F24 !important;
+  border-color: #D1D5DB !important;
+}
+
+.rounded-full.border-gray-300:focus-visible,
+button.rounded-full.border-gray-300:focus-visible,
+a.rounded-full.border-gray-300:focus-visible,
+.rounded-full.border-foundry-border:focus-visible,
+button.rounded-full.border-foundry-border:focus-visible,
+a.rounded-full.border-foundry-border:focus-visible {
+  outline: 2px solid #0B0F24 !important;
+  outline-offset: 2px !important;
 }

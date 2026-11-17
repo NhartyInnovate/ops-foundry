@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 200" width="180" height="200" role="img" aria-label="Ops Foundry Brand Symbol">
+  <defs>
+    <!-- Top Chevron Gradient: Orange (#FF8C56) to Pink (#FF4ADC) -->
+    <linearGradient id="ops-grad-top" x1="12" y1="54" x2="168" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF8C56" />
+      <stop offset="48%" stop-color="#FF6B99" />
+      <stop offset="100%" stop-color="#FF4ADC" />
+    </linearGradient>
+
+    <!-- Bottom-Left Segment Gradient: Pink (#FF4ADC) through Purple (#7847FF) to Blue (#0A8CFF) -->
+    <linearGradient id="ops-grad-left" x1="16" y1="84" x2="84" y2="192" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF4ADC" />
+      <stop offset="45%" stop-color="#7847FF" />
+      <stop offset="100%" stop-color="#0A8CFF" />
+    </linearGradient>
+
+    <!-- Bottom-Right Segment Gradient: Light/Bright Blue (#0A8CFF) to Deep Royal Blue (#7847FF / #0A8CFF) -->
+    <linearGradient id="ops-grad-right" x1="164" y1="84" x2="96" y2="192" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0A8CFF" stop-opacity="0.82" />
+      <stop offset="50%" stop-color="#0A8CFF" />
+      <stop offset="100%" stop-color="#4169FF" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" fill-rule="evenodd">
+    <!-- Top Segment (Rounded ends + rounded 120° apex) -->
+    <path fill="url(#ops-grad-top)" d="
+      M 81.5 6.8
+      Q 90 1.9 98.5 6.8
+      L 165.2 45.3
+      A 15.2 15.2 0 0 1 170.8 66.1
+      A 15.2 15.2 0 0 1 150.0 71.6
+      L 96.0 40.4
+      Q 90 36.9 84.0 40.4
+      L 30.0 71.6
+      A 15.2 15.2 0 0 1 9.2 66.1
+      A 15.2 15.2 0 0 1 14.8 45.3
+      Z" />
+
+    <!-- Bottom-Left Segment (Rounded top cap, rounded bottom-left corner, vertical-rounded bottom-right tip) -->
+    <path fill="url(#ops-grad-left)" d="
+      M 6.0 95.5
+      A 15.0 15.0 0 0 1 28.5 82.5
+      L 33.0 85.1
+      Q 36.0 86.8 36.0 90.3
+      L 36.0 131.5
+      Q 36.0 137.5 41.2 140.5
+      L 79.5 162.6
+      Q 85.5 166.1 85.5 173.0
+      L 85.5 186.5
+      A 10.5 10.5 0 0 1 69.8 195.6
+      L 15.0 164.0
+      Q 6.0 158.8 6.0 148.4
+      Z" />
+
+    <!-- Bottom-Right Segment (Mirrored geometry preserving bottom-center and top-right gaps) -->
+    <path fill="url(#ops-grad-right)" d="
+      M 174.0 95.5
+      A 15.0 15.0 0 0 0 151.5 82.5
+      L 147.0 85.1
+      Q 144.0 86.8 144.0 90.3
+      L 144.0 131.5
+      Q 144.0 137.5 138.8 140.5
+      L 100.5 162.6
+      Q 94.5 166.1 94.5 173.0
+      L 94.5 186.5
+      A 10.5 10.5 0 0 0 110.2 195.6
+      L 165.0 164.0
+      Q 174.0 158.8 174.0 148.4
+      Z" />
+  </g>
+</svg>

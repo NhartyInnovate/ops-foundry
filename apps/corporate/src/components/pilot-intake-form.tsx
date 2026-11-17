@@ -130,7 +130,7 @@ export function PilotIntakeForm() {
       <div
         role="status"
         aria-live="polite"
-        className="mb-8 rounded-xl border border-foundry-border bg-foundry-canvas px-5 py-4 text-xs sm:text-sm text-foundry-dark leading-relaxed"
+        className="mb-8 rounded-xl border border-foundry-border bg-foundry-muted px-5 py-4 text-xs sm:text-sm text-foundry-dark leading-relaxed"
       >
         <p className="font-semibold text-foundry-dark mb-1">
           Consultation Submissions
@@ -164,7 +164,7 @@ export function PilotIntakeForm() {
               htmlFor="pilot-full-name"
               className="block text-sm font-semibold text-foundry-dark mb-2"
             >
-              Full Name <span className="text-foundry-orange">*</span>
+              Full Name <span className="text-foundry-dark font-bold">*</span>
             </label>
             <Input
               id="pilot-full-name"
@@ -192,7 +192,7 @@ export function PilotIntakeForm() {
               htmlFor="pilot-email"
               className="block text-sm font-semibold text-foundry-dark mb-2"
             >
-              Business Email <span className="text-foundry-orange">*</span>
+              Business Email <span className="text-foundry-dark font-bold">*</span>
             </label>
             <Input
               id="pilot-email"
@@ -222,7 +222,7 @@ export function PilotIntakeForm() {
               htmlFor="pilot-organization"
               className="block text-sm font-semibold text-foundry-dark mb-2"
             >
-              Company or Organization <span className="text-foundry-orange">*</span>
+              Company or Organization <span className="text-foundry-dark font-bold">*</span>
             </label>
             <Input
               id="pilot-organization"
@@ -269,7 +269,7 @@ export function PilotIntakeForm() {
 
         <fieldset>
           <legend className="block text-sm font-semibold text-foundry-dark mb-3">
-            Primary Service Line for Scoping <span className="text-foundry-orange">*</span>
+            Primary Service Line for Scoping <span className="text-foundry-dark font-bold">*</span>
           </legend>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {SERVICE_OPTIONS.map((option) => {
@@ -280,7 +280,7 @@ export function PilotIntakeForm() {
                   htmlFor={`service-option-${option.value}`}
                   className={`flex items-start gap-3 rounded-xl border p-4 cursor-pointer transition-colors ${
                     isSelected
-                      ? 'border-foundry-orange bg-foundry-canvas'
+                      ? 'border-foundry-dark bg-foundry-muted font-medium'
                       : 'border-foundry-border bg-white hover:border-gray-300'
                   }`}
                 >
@@ -291,7 +291,7 @@ export function PilotIntakeForm() {
                     value={option.value}
                     checked={isSelected}
                     onChange={() => handleChange('serviceInterest', option.value)}
-                    className="mt-1 h-4 w-4 accent-[#FF5A1F]"
+                    className="mt-1 h-4 w-4 accent-[#0B0F24]"
                   />
                   <div>
                     <span className="block text-sm font-semibold text-foundry-dark">
@@ -312,7 +312,7 @@ export function PilotIntakeForm() {
             htmlFor="pilot-business-problem"
             className="block text-sm font-semibold text-foundry-dark mb-2"
           >
-            Business Problem &amp; Proposed Pilot Scope <span className="text-foundry-orange">*</span>
+            Business Problem &amp; Proposed Pilot Scope <span className="text-foundry-dark font-bold">*</span>
           </label>
           <p id="pilot-business-problem-hint" className="text-xs text-foundry-secondary mb-2">
             Describe the specific operational bottleneck you want to solve and what deliverables
@@ -365,10 +365,10 @@ export function PilotIntakeForm() {
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-foundry-border">
           <p className="text-xs text-foundry-secondary">
-            Fields marked with <span className="text-foundry-orange font-semibold">*</span> are required.
+            Fields marked with <span className="text-foundry-dark font-bold">*</span> are required.
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <Button type="button" variant="secondary" size="md" onClick={handleReset}>
+            <Button type="button" variant="outline" size="md" onClick={handleReset}>
               Clear Brief
             </Button>
             <Button
