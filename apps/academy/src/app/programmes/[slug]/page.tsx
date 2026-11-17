@@ -81,9 +81,9 @@ export default async function ProgrammeDetailPage({
             <div className="mb-8">
               <Link
                 href="/programmes"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-foundry-secondary hover:text-foundry-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-foundry-secondary hover:text-foundry-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
               >
-                <ArrowLeft className="h-3.5 w-3.5 text-foundry-orange" aria-hidden="true" />
+                <ArrowLeft className="h-3.5 w-3.5 text-academy-primary" aria-hidden="true" />
                 <span>Back to All Programmes</span>
               </Link>
             </div>
@@ -126,13 +126,13 @@ export default async function ProgrammeDetailPage({
 
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                   <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                    <Link href="/admissions">
-                      <span>Review Admissions Process</span>
+                    <Link href={`/apply?programme=${programme.slug}`}>
+                      <span>Apply Now</span>
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                    <Link href="/how-we-learn">See How We Learn</Link>
+                    <Link href="/admissions">Admissions Guide</Link>
                   </Button>
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default async function ProgrammeDetailPage({
                   key={principle.number}
                   className="rounded-2xl bg-foundry-slate-card border border-foundry-slate-border p-6 lg:p-7"
                 >
-                  <div className="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-foundry-orange/15 border border-foundry-orange/30 text-foundry-orange font-display font-bold text-xs">
+                  <div className="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-academy-primary/20 border border-academy-primary/40 text-purple-300 font-display font-bold text-xs">
                     {principle.number}
                   </div>
                   <Heading as="h3" size="sm" tone="inverse" className="mb-2">

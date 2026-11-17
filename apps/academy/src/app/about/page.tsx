@@ -191,7 +191,7 @@ export default function AboutAcademyPage() {
             <div
               role="note"
               aria-label="Platform distinction notice"
-              className="rounded-2xl border border-foundry-orange/30 bg-foundry-canvas p-6 lg:p-7 text-sm text-foundry-slate leading-relaxed mb-8"
+              className="rounded-2xl border border-academy-primary/30 bg-foundry-canvas p-6 lg:p-7 text-sm text-foundry-slate leading-relaxed mb-8"
             >
               {ecosystemRelationship.distinctionNotice}
             </div>

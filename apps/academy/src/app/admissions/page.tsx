@@ -66,13 +66,13 @@ export default function AdmissionsPage() {
               </Text>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">
-                    <span>Explore Programmes</span>
+                  <Link href="/apply">
+                    <span>Apply Now</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                  <Link href="/how-we-learn">How We Learn</Link>
+                  <Link href="/programmes">Explore Programmes</Link>
                 </Button>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function AdmissionsPage() {
             <div
               role="status"
               aria-label="Admissions status notice"
-              className="rounded-2xl border border-foundry-orange/30 bg-foundry-canvas p-7 lg:p-9 shadow-xs space-y-4"
+              className="rounded-2xl border border-academy-primary/30 bg-foundry-canvas p-7 lg:p-9 shadow-xs space-y-4"
             >
               <Badge variant="brand">{applicationStatusBanner.badge}</Badge>
               <Heading as="h2" size="lg" className="text-foundry-slate">

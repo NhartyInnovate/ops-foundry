@@ -33,7 +33,7 @@ export const academyNavigation = {
   ] satisfies AcademyNavItem[],
   primaryCta: {
     label: 'Apply Now',
-    href: '/admissions',
+    href: '/apply',
   },
   corporateCrossLink: getCorporateWebsiteLink(),
 } as const;
@@ -213,12 +213,12 @@ export const finalCtaContent = {
   supporting:
     'Explore how Ops Foundry Academy helps learners build practical capabilities, structured habits, and readiness for real-world work.',
   primaryCta: {
-    label: 'Explore the Academy',
-    href: '/programmes',
+    label: 'Apply Now',
+    href: '/apply',
   },
   secondaryCta: {
-    label: 'Explore Admissions',
-    href: '/admissions',
+    label: 'Explore Programmes',
+    href: '/programmes',
   },
 } as const;
 

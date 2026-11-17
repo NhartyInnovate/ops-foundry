@@ -251,11 +251,11 @@ export const programmesCataloguePageContent = {
     ],
   },
   cta: {
-    heading: 'Understand how Academy admissions will work.',
-    body: 'Review the admissions guide to learn how programme selection and cohort applications are structured, or explore our learning philosophy.',
-    primaryLabel: 'Explore Admissions',
-    primaryHref: '/admissions',
-    secondaryLabel: 'How We Learn',
-    secondaryHref: '/how-we-learn',
+    heading: 'Ready to build practical skills for modern work?',
+    body: 'Apply for OpsFoundry Fellowship Cohort 1 or review our structured admissions guide.',
+    primaryLabel: 'Apply Now',
+    primaryHref: '/apply',
+    secondaryLabel: 'Admissions Guide',
+    secondaryHref: '/admissions',
   },
 } as const;

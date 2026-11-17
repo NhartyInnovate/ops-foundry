@@ -195,12 +195,12 @@ export const admissionsPageContent = {
       'Note: Live form submission and database persistence are not active on this page today. No personal data is collected until cohort applications formally open.',
   },
   cta: {
-    heading: 'Review our programmes while applications are being prepared.',
-    body: 'Explore the three planned programme tracks in the Academy catalogue or read more about our six learning principles.',
-    primaryLabel: 'Browse Programmes',
-    primaryHref: '/programmes',
-    secondaryLabel: 'How We Learn',
-    secondaryHref: '/how-we-learn',
+    heading: 'Ready to take the next step in your operational career?',
+    body: 'Apply for OpsFoundry Fellowship Cohort 1 or explore our three planned programme tracks.',
+    primaryLabel: 'Apply Now',
+    primaryHref: '/apply',
+    secondaryLabel: 'Browse Programmes',
+    secondaryHref: '/programmes',
   },
 } as const;
 

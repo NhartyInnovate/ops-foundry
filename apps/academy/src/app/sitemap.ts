@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     { path: '', priority: 1.0 },
+    { path: '/apply', priority: 0.95 },
     { path: '/programmes', priority: 0.9 },
     { path: '/how-we-learn', priority: 0.85 },
     { path: '/admissions', priority: 0.9 },

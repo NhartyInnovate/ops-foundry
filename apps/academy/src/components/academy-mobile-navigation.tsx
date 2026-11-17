@@ -10,6 +10,8 @@ export interface AcademyMobileNavigationProps {
   isOpen: boolean;
   pathname: string;
   onClose: () => void;
+  items?: typeof academyNavigation.items;
+  corporateCrossLink?: typeof academyNavigation.corporateCrossLink;
 }
 
 export function AcademyMobileNavigation({
@@ -46,7 +48,7 @@ export function AcademyMobileNavigation({
                 aria-current={isActive ? 'page' : undefined}
                 className={`block rounded-xl px-3 py-2.5 text-base transition-colors ${
                   isActive
-                    ? 'bg-foundry-canvas font-semibold text-foundry-orange'
+                    ? 'bg-academy-light-purple font-semibold text-academy-primary'
                     : 'font-medium text-foundry-slate hover:bg-foundry-canvas'
                 }`}
               >
@@ -61,19 +63,19 @@ export function AcademyMobileNavigation({
             <a
               href={corporateCrossLink.href}
               onClick={onClose}
-              className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-xs font-semibold text-foundry-slate hover:border-foundry-slate transition-colors"
+              className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-academy-purple-border bg-white px-5 py-2.5 text-xs font-semibold text-academy-primary hover:bg-academy-light-purple hover:border-academy-primary transition-colors"
             >
               <span>{corporateCrossLink.label}</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange" aria-hidden="true" />
+              <ArrowUpRight className="h-3.5 w-3.5 text-academy-primary" aria-hidden="true" />
             </a>
           ) : (
             <Link
               href={corporateCrossLink.href}
               onClick={onClose}
-              className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-xs font-semibold text-foundry-slate hover:border-foundry-slate transition-colors"
+              className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-academy-purple-border bg-white px-5 py-2.5 text-xs font-semibold text-academy-primary hover:bg-academy-light-purple hover:border-academy-primary transition-colors"
             >
               <span>{corporateCrossLink.label}</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-foundry-orange" aria-hidden="true" />
+              <ArrowUpRight className="h-3.5 w-3.5 text-academy-primary" aria-hidden="true" />
             </Link>
           )}
 

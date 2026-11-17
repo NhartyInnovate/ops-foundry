@@ -35,7 +35,7 @@ export function ProgrammePreview() {
         <div
           role="note"
           aria-label="Programme publication status"
-          className="mb-10 rounded-2xl border border-foundry-orange/30 bg-white px-6 py-5 text-sm text-foundry-slate leading-relaxed shadow-xs"
+          className="mb-10 rounded-2xl border border-academy-primary/30 bg-white px-6 py-5 text-sm text-foundry-slate leading-relaxed shadow-xs"
         >
           {programmesPreviewContent.governanceNotice}
         </div>

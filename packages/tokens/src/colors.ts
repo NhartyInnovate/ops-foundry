@@ -28,7 +28,14 @@ export const colors = {
   },
 
   academy: {
-    slate: '#1E232E',      // Scholastic Deep Slate (Academic Ground)
+    primary: '#7C3AED',         // Primary Purple
+    primaryHover: '#6D28D9',    // Primary Hover
+    deepViolet: '#4C1D95',      // Deep Violet Accent
+    lightPurple: '#F3E8FF',     // Light Purple Background
+    purpleBorder: '#DDD6FE',    // Subtle Purple Border
+    mainText: '#1E232E',        // Scholastic Main Text / Headings
+    white: '#FFFFFF',           // Crisp White
+    slate: '#1E232E',           // Scholastic Deep Slate (Academic Ground)
     slateHover: '#151922',
     card: '#252B38',
     border: '#323B4C',

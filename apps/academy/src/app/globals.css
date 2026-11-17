@@ -2,6 +2,23 @@
 @import "@opsfoundry/tokens/theme.css";
 @source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
+@theme {
+  /* Override brand orange with Academy Purple for Academy app */
+  --color-foundry-orange: #7C3AED;
+  --color-foundry-orange-hover: #6D28D9;
+  --color-foundry-orange-light: #F3E8FF;
+  --color-foundry-orange-border: #DDD6FE;
+
+  /* Academy Core Tokens */
+  --color-academy-primary: #7C3AED;
+  --color-academy-primary-hover: #6D28D9;
+  --color-academy-deep-violet: #4C1D95;
+  --color-academy-light-purple: #F3E8FF;
+  --color-academy-purple-border: #DDD6FE;
+  --color-academy-main-text: #1E232E;
+  --color-academy-white: #FFFFFF;
+}
+
 :root {
   --background: #FBFBF9;
   --foreground: #1E232E;
@@ -20,6 +37,29 @@ body {
 }
 
 ::selection {
-  background-color: #FF5A1F;
+  background-color: #7C3AED;
   color: #FFFFFF;
+}
+
+/* Secondary / Outline Button Styling in Academy:
+   Clean white or transparent background with a subtle border and text reflecting the purple identity, shifting subtly on hover. */
+button.border-gray-300,
+a.border-gray-300 {
+  border-color: #DDD6FE !important;
+  color: #7C3AED !important;
+  background-color: #FFFFFF !important;
+}
+
+button.border-gray-300:hover,
+a.border-gray-300:hover {
+  border-color: #7C3AED !important;
+  background-color: #F3E8FF !important;
+  color: #6D28D9 !important;
+}
+
+/* Brand badge in Academy: purple accent rather than orange */
+span.bg-\[\#FFF4EE\] {
+  background-color: #F3E8FF !important;
+  color: #7C3AED !important;
+  border-color: #DDD6FE !important;
 }

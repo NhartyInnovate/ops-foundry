@@ -25,7 +25,14 @@
   --color-foundry-dark-card: #18191E;
   --color-foundry-dark-border: #282A30;
 
-  /* Academy Personality */
+  /* Academy Personality & Brand Identity */
+  --color-academy-primary: #7C3AED;
+  --color-academy-primary-hover: #6D28D9;
+  --color-academy-deep-violet: #4C1D95;
+  --color-academy-light-purple: #F3E8FF;
+  --color-academy-purple-border: #DDD6FE;
+  --color-academy-main-text: #1E232E;
+  --color-academy-white: #FFFFFF;
   --color-foundry-slate: #1E232E;
   --color-foundry-slate-hover: #151922;
   --color-foundry-slate-card: #252B38;

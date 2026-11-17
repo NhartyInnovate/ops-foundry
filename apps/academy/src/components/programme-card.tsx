@@ -66,10 +66,10 @@ export function ProgrammeCard({ programme }: ProgrammeCardProps) {
 
         <Link
           href={detailHref}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-foundry-slate hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-foundry-slate hover:text-academy-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
         >
           <span>View {programme.slotLabel} Status</span>
-          <ArrowRight className="h-4 w-4 text-foundry-orange" aria-hidden="true" />
+          <ArrowRight className="h-4 w-4 text-academy-primary" aria-hidden="true" />
         </Link>
       </div>
     </article>

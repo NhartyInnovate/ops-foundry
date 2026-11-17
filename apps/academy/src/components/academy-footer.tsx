@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Container, Badge } from '@opsfoundry/ui';
+import Image from 'next/image';
+import { Container } from '@opsfoundry/ui';
 import { ArrowUpRight } from 'lucide-react';
 import { academyNavigation, academyFooterContent } from '../content/homepage';
 import { plannedAcademyProgrammes } from '../content/programmes';
@@ -17,23 +18,27 @@ export function AcademyFooter() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-foundry-slate-border">
           {/* Column 1: Academy Identity & Purpose */}
           <div className="md:col-span-5 space-y-4">
+            {/* Academy Brand Lockup with TeleSoftas Endorsement */}
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foundry-orange"
+              aria-label="Ops Foundry Academy by TeleSoftas — Homepage"
+              className="inline-flex items-center gap-3 sm:gap-3.5 transition-opacity hover:opacity-90 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-academy-primary"
             >
+              <Image
+                src="/images/brand/academy/academy-logo-dark.svg"
+                alt="Ops Foundry Academy"
+                width={166}
+                height={48}
+                className="h-9 sm:h-10 w-auto object-contain select-none"
+              />
               <span
-                className="h-3 w-3 rounded-full bg-foundry-orange shrink-0"
+                className="h-6 sm:h-7 w-px bg-white/20"
                 aria-hidden="true"
               />
-              <span className="font-display text-xl font-bold tracking-tight text-white">
-                {academyNavigation.brandName}
+              <span className="font-body text-xs sm:text-sm tracking-tight text-white whitespace-nowrap select-none">
+                <span className="font-normal text-gray-400">by</span>{' '}
+                <span className="font-semibold text-white">TeleSoftas</span>
               </span>
-              <Badge
-                variant="brand"
-                className="text-[11px] font-semibold px-2.5 py-0.5"
-              >
-                {academyNavigation.brandSuffix}
-              </Badge>
             </Link>
 
             <p className="font-body text-sm text-gray-300 max-w-sm leading-relaxed">
@@ -55,7 +60,7 @@ export function AcademyFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -73,7 +78,7 @@ export function AcademyFooter() {
               <li>
                 <Link
                   href="/programmes"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
                   Programmes Overview
                 </Link>
@@ -82,7 +87,7 @@ export function AcademyFooter() {
                 <li key={programme.courseId}>
                   <Link
                     href={`/programmes/${programme.slug}`}
-                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                   >
                     {programme.slotLabel}
                   </Link>
@@ -100,7 +105,7 @@ export function AcademyFooter() {
               <li>
                 <Link
                   href="/admissions"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
                   Admissions Overview
                 </Link>
@@ -108,7 +113,7 @@ export function AcademyFooter() {
               <li>
                 <Link
                   href={academyNavigation.primaryCta.href}
-                  className="font-semibold text-foundry-orange hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                  className="font-semibold text-purple-300 hover:text-purple-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
                   {academyNavigation.primaryCta.label}
                 </Link>
@@ -117,22 +122,22 @@ export function AcademyFooter() {
                 {corporateCrossLink.isExternal ? (
                   <a
                     href={corporateCrossLink.href}
-                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                   >
                     <span>{corporateCrossLink.label}</span>
                     <ArrowUpRight
-                      className="h-3.5 w-3.5 text-foundry-orange"
+                      className="h-3.5 w-3.5 text-purple-400"
                       aria-hidden="true"
                     />
                   </a>
                 ) : (
                   <Link
                     href={corporateCrossLink.href}
-                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-foundry-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-orange transition-colors"
+                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                   >
                     <span>{corporateCrossLink.label}</span>
                     <ArrowUpRight
-                      className="h-3.5 w-3.5 text-foundry-orange"
+                      className="h-3.5 w-3.5 text-purple-400"
                       aria-hidden="true"
                     />
                   </Link>

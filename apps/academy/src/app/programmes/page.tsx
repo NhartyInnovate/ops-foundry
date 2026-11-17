@@ -63,13 +63,13 @@ export default function ProgrammesPage() {
               </Text>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href="/admissions">
-                    <span>Explore Admissions</span>
+                  <Link href="/apply">
+                    <span>Apply Now</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                  <Link href="/how-we-learn">How We Learn</Link>
+                  <Link href="/admissions">Admissions Guide</Link>
                 </Button>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function ProgrammesPage() {
             <div
               role="note"
               aria-label="Programme publication status"
-              className="mb-12 rounded-2xl border border-foundry-orange/30 bg-foundry-canvas p-6 lg:p-8 shadow-xs"
+              className="mb-12 rounded-2xl border border-academy-primary/30 bg-foundry-canvas p-6 lg:p-8 shadow-xs"
             >
               <Heading as="h2" size="sm" className="text-foundry-slate mb-2">
                 {publicationNotice.heading}

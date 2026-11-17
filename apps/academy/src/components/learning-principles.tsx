@@ -26,7 +26,7 @@ export function LearningPrinciples() {
               className="rounded-2xl bg-foundry-slate-card border border-foundry-slate-border p-7 lg:p-8 flex flex-col justify-between"
             >
               <div>
-                <div className="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-foundry-orange/15 border border-foundry-orange/30 text-foundry-orange font-display font-bold text-xs">
+                <div className="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-academy-primary/20 border border-academy-primary/40 text-purple-300 font-display font-bold text-xs">
                   {principle.number}
                 </div>
                 <Heading as="h3" size="sm" tone="inverse" className="mb-3">
