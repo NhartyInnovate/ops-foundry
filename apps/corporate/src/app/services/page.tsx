@@ -13,6 +13,7 @@ import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { AnimatedServiceCategories } from '../../components/animated-service-categories';
+import { ScrollReveal, ScrollRevealGroup } from '../../components/scroll-reveal';
 import { servicesOverviewContent } from '../../content/services';
 import { getCorporateSiteUrl } from '../../content/site-config';
 
@@ -74,14 +75,14 @@ export default function ServicesOverviewPage() {
         >
           <Container className="relative z-10">
             <div className="max-w-3xl space-y-6">
-              <Heading as="h1" size="display">
+              <Heading as="h1" size="display" className="animate-hero-1">
                 {hero.title}
               </Heading>
-              <Text size="lg" className="text-gray-700 font-medium leading-relaxed">
+              <Text size="lg" className="animate-hero-2 text-gray-700 font-medium leading-relaxed">
                 {hero.lead}
               </Text>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <div className="animate-hero-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <Button asChild variant="primary" size="lg">
                   <Link href={hero.primaryCta.href}>
                     <span>{hero.primaryCta.label}</span>
@@ -104,7 +105,7 @@ export default function ServicesOverviewPage() {
         {/* Closing Pilot CTA */}
         <Section tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16 text-center space-y-8 sm:space-y-10">
+            <ScrollReveal animation="fade-up" className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16 text-center space-y-8 sm:space-y-10">
               <AbstractBrandGeometry variant="cta" />
               <div className="relative z-10 space-y-8 sm:space-y-10">
                 {/* Heading & Intro Paragraph */}
@@ -123,12 +124,21 @@ export default function ServicesOverviewPage() {
                     {finalCta.processHeading}
                   </h3>
 
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
-                    {finalCta.stages.map((stage) => {
+                  <ScrollRevealGroup className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+                    {finalCta.stages.map((stage, idx) => {
                       const Icon = stageIcons[stage.slug as keyof typeof stageIcons];
                       return (
-                        <div
+                        <ScrollReveal
                           key={stage.slug}
+                          animation={
+                            idx === 0
+                              ? 'stagger-1'
+                              : idx === 1
+                              ? 'stagger-2'
+                              : idx === 2
+                              ? 'stagger-3'
+                              : 'stagger-4'
+                          }
                           className="h-full rounded-2xl bg-white border border-foundry-border p-4 sm:p-5 flex flex-col items-center text-center shadow-2xs transition-shadow hover:shadow-xs"
                         >
                           <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-foundry-muted border border-foundry-border flex items-center justify-center text-foundry-dark mb-3 shrink-0">
@@ -140,10 +150,10 @@ export default function ServicesOverviewPage() {
                           <p className="font-body text-xs sm:text-sm text-gray-600 leading-relaxed">
                             {stage.description}
                           </p>
-                        </div>
+                        </ScrollReveal>
                       );
                     })}
-                  </div>
+                  </ScrollRevealGroup>
                 </div>
 
                 {/* Action Buttons */}
@@ -161,7 +171,7 @@ export default function ServicesOverviewPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </main>

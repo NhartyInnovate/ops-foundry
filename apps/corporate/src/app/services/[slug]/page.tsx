@@ -8,6 +8,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../../../components/corporate-header';
 import { CorporateFooter } from '../../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../../components/abstract-brand-geometry';
+import { ScrollReveal, ScrollRevealGroup } from '../../../components/scroll-reveal';
 import { getCorporateSiteUrl } from '../../../content/site-config';
 import {
   serviceDetailsBySlug,
@@ -190,17 +191,17 @@ export default async function ServiceDetailPage({
           <Container className="relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <Heading as="h1" size="display">
+                <Heading as="h1" size="display" className="animate-hero-1">
                   {service.title}
                 </Heading>
-                <p className="font-display text-xl sm:text-2xl font-bold text-foundry-dark leading-snug">
+                <p className="font-display text-xl sm:text-2xl font-bold text-foundry-dark leading-snug animate-hero-2">
                   {service.lead}
                 </p>
-                <Text size="lg" className="text-gray-600 max-w-2xl leading-relaxed">
+                <Text size="lg" className="text-gray-600 max-w-2xl leading-relaxed animate-hero-3">
                   {service.heroSummary}
                 </Text>
 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 animate-hero-4">
                   <Button asChild variant="primary" size="lg">
                     <Link href={service.ctaHref}>
                       <span>{service.ctaButtonLabel}</span>
@@ -216,7 +217,7 @@ export default async function ServiceDetailPage({
               </div>
 
               <div className="lg:col-span-5">
-                <figure className="rounded-3xl overflow-hidden border border-foundry-border bg-white shadow-lg">
+                <figure className="rounded-3xl overflow-hidden border border-foundry-border bg-white shadow-lg animate-hero-image">
                   <div className="relative aspect-[4/3] w-full bg-gray-100">
                     <Image
                       src={service.heroImage.src}
@@ -241,17 +242,17 @@ export default async function ServiceDetailPage({
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
               {/* Left: The Business Problem */}
-              <div className="lg:col-span-6 space-y-4">
+              <ScrollReveal animation="fade-up" className="lg:col-span-6 space-y-4">
                 <Heading as="h2" size="xl">
                   {service.problemHeading}
                 </Heading>
                 <Text size="base" className="text-gray-700 leading-relaxed">
                   {service.problemSummary}
                 </Text>
-              </div>
+              </ScrollReveal>
 
               {/* Right: How Ops Foundry Helps */}
-              <div className="lg:col-span-6">
+              <ScrollReveal animation="fade-up" delayMs={100} className="lg:col-span-6">
                 <div className="rounded-2xl bg-foundry-muted border-l-4 border-foundry-dark p-6 sm:p-7 space-y-3">
                   <Heading as="h3" size="sm" className="text-foundry-dark">
                     {service.howWeHelpHeading}
@@ -260,7 +261,7 @@ export default async function ServiceDetailPage({
                     {service.howWeHelp}
                   </p>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -268,19 +269,26 @@ export default async function ServiceDetailPage({
         {/* Section 3 — Representative Activities & Deliverables */}
         <Section tone="canvas" spacing="lg" border="bottom">
           <Container>
-            <div className="max-w-3xl mb-8 sm:mb-10">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-8 sm:mb-10">
               <Heading as="h2" size="xl">
                 {service.activitiesHeading}
               </Heading>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {service.typicalActivities
                 .flatMap((group) => group.items)
-                .map((item) => (
-                  <div
+                .map((item, idx) => (
+                  <ScrollReveal
                     key={item}
-                    className="rounded-2xl border border-foundry-border bg-white p-5 sm:p-6 shadow-xs flex items-start gap-3.5 transition-all hover:border-foundry-dark/30 hover:shadow-sm"
+                    animation={
+                      idx % 3 === 0
+                        ? 'stagger-1'
+                        : idx % 3 === 1
+                        ? 'stagger-2'
+                        : 'stagger-3'
+                    }
+                    className="h-full rounded-2xl border border-foundry-border bg-white p-5 sm:p-6 shadow-xs flex items-start gap-3.5 transition-all hover:border-foundry-dark/30 hover:shadow-sm"
                   >
                     <CheckCircle2
                       className="h-5 w-5 text-foundry-dark shrink-0 mt-0.5"
@@ -290,9 +298,9 @@ export default async function ServiceDetailPage({
                     <h3 className="font-display font-semibold text-base sm:text-lg text-foundry-dark leading-snug">
                       {item}
                     </h3>
-                  </div>
+                  </ScrollReveal>
                 ))}
-            </div>
+            </ScrollRevealGroup>
           </Container>
         </Section>
 
@@ -301,7 +309,7 @@ export default async function ServiceDetailPage({
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
               {/* Left Column: Potential Engagement Model */}
-              <div className="lg:col-span-7 space-y-6">
+              <ScrollReveal animation="fade-up" className="lg:col-span-7 space-y-6">
                 <div className="space-y-2">
                   <Heading as="h2" size="lg">
                     What a Potential Engagement Could Look Like
@@ -341,10 +349,10 @@ export default async function ServiceDetailPage({
                     </div>
                   ) : null}
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right Column: Client Responsibilities & Dependencies */}
-              <div className="lg:col-span-5">
+              <ScrollReveal animation="fade-up" delayMs={100} className="lg:col-span-5">
                 <div className="rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-7 sm:p-8 space-y-5 shadow-xs">
                   <div className="space-y-2">
                     <Heading as="h2" size="sm" tone="default">
@@ -370,7 +378,7 @@ export default async function ServiceDetailPage({
                     ))}
                   </ul>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -378,7 +386,10 @@ export default async function ServiceDetailPage({
         {/* Section 5 — Clear Closing CTA */}
         <Section tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16 text-center space-y-6">
+            <ScrollReveal
+              animation="fade-up"
+              className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16 text-center space-y-6"
+            >
               <AbstractBrandGeometry variant="cta" />
               <div className="relative z-10 space-y-6">
                 <Heading as="h2" size="xl" tone="default" className="max-w-2xl mx-auto">
@@ -401,7 +412,7 @@ export default async function ServiceDetailPage({
                   </Button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </main>
