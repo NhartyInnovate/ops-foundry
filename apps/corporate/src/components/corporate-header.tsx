@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Container, Button } from '@opsfoundry/ui';
-import { ChevronDown, Menu, X, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import { corporateNavigation } from '../content/homepage';
 
 export function CorporateHeader() {
@@ -16,7 +16,6 @@ export function CorporateHeader() {
   const hoverOpenedAtRef = useRef<number>(0);
 
   const isServicesActive = pathname === '/services' || pathname.startsWith('/services/');
-  const isHomeActive = pathname === '/';
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -81,18 +80,6 @@ export function CorporateHeader() {
           aria-label="Primary navigation"
           className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium text-foundry-dark"
         >
-          <Link
-            href="/"
-            aria-current={isHomeActive ? 'page' : undefined}
-            className={`inline-flex min-h-[44px] shrink-0 whitespace-nowrap items-center rounded-lg px-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark ${
-              isHomeActive
-                ? 'font-bold text-foundry-dark'
-                : 'text-foundry-dark/80 hover:text-foundry-dark'
-            }`}
-          >
-            Home
-          </Link>
-
           {/* Services Accessible Dropdown */}
           <div
             ref={dropdownRef}
@@ -233,14 +220,6 @@ export function CorporateHeader() {
 
         {/* Desktop Actions */}
         <div className="hidden sm:flex shrink-0 items-center gap-3">
-          <a
-            href={corporateNavigation.academyBridge.href}
-            className="inline-flex min-h-[40px] shrink-0 whitespace-nowrap items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-foundry-dark hover:bg-foundry-muted hover:border-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark transition-colors"
-          >
-            <span>{corporateNavigation.academyBridge.label}</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-foundry-dark shrink-0" aria-hidden="true" />
-          </a>
-
           <Button
             asChild
             variant="primary"
@@ -280,22 +259,7 @@ export function CorporateHeader() {
           className="lg:hidden border-t border-foundry-border bg-white shadow-lg"
         >
           <Container className="py-6 space-y-6">
-            <div className="space-y-1">
-              <Link
-                href="/"
-                aria-current={isHomeActive ? 'page' : undefined}
-                onClick={closeMenus}
-                className={`flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-foundry-dark ${
-                  isHomeActive
-                    ? 'bg-foundry-muted font-bold text-foundry-dark'
-                    : 'text-foundry-dark hover:bg-foundry-muted'
-                }`}
-              >
-                Home
-              </Link>
-            </div>
-
-            <div className="space-y-2 border-t border-gray-100 pt-4">
+            <div className="space-y-2">
               <div className="px-3 pb-1 text-xs font-semibold text-foundry-secondary">
                 Services
               </div>
@@ -360,16 +324,7 @@ export function CorporateHeader() {
               })}
             </div>
 
-            <div className="border-t border-gray-100 pt-5 flex flex-col gap-3">
-              <a
-                href={corporateNavigation.academyBridge.href}
-                onClick={closeMenus}
-                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-foundry-dark hover:bg-foundry-muted hover:border-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-foundry-dark"
-              >
-                <span>{corporateNavigation.academyBridge.label}</span>
-                <ArrowUpRight className="h-4 w-4 text-foundry-dark" aria-hidden="true" />
-              </a>
-
+            <div className="border-t border-gray-100 pt-5">
               <Button asChild variant="primary" size="lg" className="w-full">
                 <Link href={corporateNavigation.primaryCta.href} onClick={closeMenus}>
                   {corporateNavigation.primaryCta.label}

@@ -5,15 +5,20 @@ import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { howWeWorkPageContent } from '../../content/supporting-pages';
+import { getCorporateSiteUrl } from '../../content/site-config';
 
 export const metadata: Metadata = {
-  title: 'How We Work — Ops Foundry',
+  title: 'How We Work — Ops Foundry | Human-AI Operating Model',
   description:
-    'Learn how Ops Foundry combines Managed Teams, Structured Workflows, and AI-Enabled Tools within a proposed four-stage operational framework.',
+    'Discover how Ops Foundry combines managed teams, structured workflows, and AI-enabled tools across Discover, Scope, Deliver, and Review engagement stages.',
+  alternates: {
+    canonical: '/how-we-work',
+  },
   openGraph: {
-    title: 'How We Work — Ops Foundry',
+    title: 'How We Work — Ops Foundry | Human-AI Operating Model',
     description:
-      'Learn how Ops Foundry combines Managed Teams, Structured Workflows, and AI-Enabled Tools within a proposed four-stage operational framework.',
+      'Discover how Ops Foundry combines managed teams, structured workflows, and AI-enabled tools across Discover, Scope, Deliver, and Review engagement stages.',
+    url: '/how-we-work',
     type: 'website',
   },
 };
@@ -21,9 +26,30 @@ export const metadata: Metadata = {
 export default function HowWeWorkPage() {
   const { hero, pillarsIntegration, operatingModel, governanceAgreements, cta } =
     howWeWorkPageContent;
+  const siteUrl = getCorporateSiteUrl();
+
+  const howWeWorkSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${siteUrl}/how-we-work#webpage`,
+    url: `${siteUrl}/how-we-work`,
+    name: 'How We Work — Ops Foundry | Human-AI Operating Model',
+    description:
+      'Discover how Ops Foundry combines managed teams, structured workflows, and AI-enabled tools across Discover, Scope, Deliver, and Review engagement stages.',
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Ops Foundry',
+      url: siteUrl,
+    },
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-foundry-canvas text-foundry-dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howWeWorkSchema) }}
+      />
       <CorporateHeader />
 
       <main id="main-content" className="flex-1">

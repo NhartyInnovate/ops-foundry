@@ -5,15 +5,20 @@ import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { aboutPageContent } from '../../content/supporting-pages';
+import { getCorporateSiteUrl } from '../../content/site-config';
 
 export const metadata: Metadata = {
-  title: 'About Ops Foundry — Human-AI Operational Infrastructure',
+  title: 'About Ops Foundry — Operational Philosophy & Infrastructure',
   description:
-    'Learn what Ops Foundry is, why it exists, and its human-plus-AI operational philosophy.',
+    'Learn what Ops Foundry is, why we exist, and our human-plus-AI operational philosophy bridging execution capacity gaps for ambitious businesses.',
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
-    title: 'About Ops Foundry — Human-AI Operational Infrastructure',
+    title: 'About Ops Foundry — Operational Philosophy & Infrastructure',
     description:
-      'Learn what Ops Foundry is, why it exists, and its human-plus-AI operational philosophy.',
+      'Learn what Ops Foundry is, why we exist, and our human-plus-AI operational philosophy bridging execution capacity gaps for ambitious businesses.',
+    url: '/about',
     type: 'website',
   },
 };
@@ -26,9 +31,30 @@ export default function AboutPage() {
     companyProfileNotice,
     cta,
   } = aboutPageContent;
+  const siteUrl = getCorporateSiteUrl();
+
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${siteUrl}/about#webpage`,
+    url: `${siteUrl}/about`,
+    name: 'About Ops Foundry — Operational Philosophy & Infrastructure',
+    description:
+      'Learn what Ops Foundry is, why we exist, and our human-plus-AI operational philosophy bridging execution capacity gaps for ambitious businesses.',
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Ops Foundry',
+      url: siteUrl,
+    },
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-foundry-canvas text-foundry-dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       <CorporateHeader />
 
       <main id="main-content" className="flex-1">

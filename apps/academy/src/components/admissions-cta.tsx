@@ -25,14 +25,14 @@ export function AdmissionsCta() {
 
               <div
                 role="note"
-                aria-label="Programme selection policy"
+                aria-label="Admissions review guidance"
                 className="rounded-2xl bg-white p-6 border border-foundry-border shadow-xs"
               >
                 <Heading as="h3" size="sm" className="text-foundry-slate mb-2">
-                  Learner-Selected Programme Preference
+                  Admissions Review &amp; Assessment
                 </Heading>
                 <Text size="sm" tone="secondary" className="leading-relaxed">
-                  {admissionsPreviewContent.admissionsNote}
+                  {admissionsPreviewContent.admissionsCopy}
                 </Text>
               </div>
 
@@ -47,24 +47,23 @@ export function AdmissionsCta() {
             </div>
 
             <div className="lg:col-span-7 space-y-4">
-              {admissionsPreviewContent.steps.map((item) => (
-                <article
-                  key={item.step}
-                  className="rounded-2xl bg-white p-7 border border-foundry-border shadow-xs flex flex-col sm:flex-row gap-4 sm:items-start"
-                >
-                  <span className="inline-flex items-center self-start rounded-full bg-foundry-slate px-3.5 py-1 text-xs font-semibold text-white shrink-0">
-                    {item.step}
-                  </span>
-                  <div>
-                    <Heading as="h3" size="sm" className="text-foundry-slate mb-2">
-                      {item.title}
-                    </Heading>
-                    <Text size="sm" tone="secondary" className="leading-relaxed">
-                      {item.description}
-                    </Text>
-                  </div>
-                </article>
-              ))}
+              <article className="rounded-2xl bg-white p-7 border border-foundry-border shadow-xs space-y-3">
+                <Heading as="h3" size="md" className="text-foundry-slate">
+                  Tuition Transparency
+                </Heading>
+                <Text size="sm" tone="secondary" className="leading-relaxed">
+                  {admissionsPreviewContent.tuitionCopy}
+                </Text>
+              </article>
+
+              <article className="rounded-2xl bg-white p-7 border border-foundry-border shadow-xs space-y-3">
+                <Heading as="h3" size="md" className="text-foundry-slate">
+                  Scholarships &amp; Funding Opportunities
+                </Heading>
+                <Text size="sm" tone="secondary" className="leading-relaxed">
+                  {admissionsPreviewContent.scholarshipCopy}
+                </Text>
+              </article>
             </div>
           </div>
         </Container>

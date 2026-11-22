@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ServiceInterestSchema } from './inquiry';
+import { ServiceInterestSchema } from './inquiry.js';
 
 export const ServiceDeliverableSchema = z.object({
   title: z.string(),

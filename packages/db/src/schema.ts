@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, text, timestamp, jsonb, index, integer, check } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, text, timestamp, jsonb, index, integer, check, boolean } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
 // 1. Academy Admissions Applications Table
@@ -88,15 +88,20 @@ export const notificationOutbox = pgTable('notification_outbox', {
   claimIdx: index('outbox_claim_idx').on(table.status, table.scheduledFor, table.leaseExpiresAt),
 }));
 
-// 4. Corporate Pilot Consultation Inquiries Table
+// 4. Corporate Pilot Consultation & Contact Inquiries Table
 export const corporateInquiries = pgTable('corporate_inquiries', {
   id: uuid('id').primaryKey().defaultRandom(),
   fullName: varchar('full_name', { length: 255 }).notNull(),
   email: varchar('email', { length: 255 }).notNull(),
   organization: varchar('organization', { length: 255 }).notNull(),
   phone: varchar('phone', { length: 50 }),
-  serviceInterest: varchar('service_interest', { length: 100 }), // 'get-online' | 'get-visible' | 'get-customers' | 'all'
+  serviceInterest: varchar('service_interest', { length: 100 }), // 'get-online' | 'get-visible' | 'get-customers' | 'all' | 'not-sure'
   message: text('message'),
+  website: varchar('website', { length: 255 }),
+  preferredStartTiming: varchar('preferred_start_timing', { length: 100 }),
+  privacyConsent: boolean('privacy_consent').default(false).notNull(),
+  privacyConsentAt: timestamp('privacy_consent_at', { withTimezone: true }),
+  formType: varchar('form_type', { length: 50 }).default('contact').notNull(),
   status: varchar('status', { length: 50 }).default('submitted').notNull(),
   idempotencyKey: varchar('idempotency_key', { length: 128 }).notNull().unique(),
   ipHash: varchar('ip_hash', { length: 64 }),
@@ -105,6 +110,10 @@ export const corporateInquiries = pgTable('corporate_inquiries', {
 }, (table) => ({
   corpStatusCheck: check('corp_status_check', 
     sql`${table.status} IN ('submitted', 'in_review', 'contacted', 'archived')`),
+  corpFormTypeCheck: check('corp_form_type_check',
+    sql`${table.formType} IN ('contact', 'pilot')`),
+  corpServiceInterestCheck: check('corp_service_interest_check',
+    sql`${table.serviceInterest} IS NULL OR ${table.serviceInterest} IN ('get-online', 'get-visible', 'get-customers', 'all', 'not-sure')`),
   emailIdx: index('corp_email_idx').on(table.email),
   createdIdx: index('corp_created_at_idx').on(table.createdAt),
 }));

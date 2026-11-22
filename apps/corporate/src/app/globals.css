@@ -117,3 +117,37 @@ a.rounded-full.border-foundry-border:focus-visible {
   outline: 2px solid #0B0F24 !important;
   outline-offset: 2px !important;
 }
+
+/* Staggered Slide-in Animations for Service Categories */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-card-1 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.animate-slide-in-card-2 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.animate-slide-in-card-3 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-in-card-1,
+  .animate-slide-in-card-2,
+  .animate-slide-in-card-3 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

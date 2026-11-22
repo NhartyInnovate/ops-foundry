@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Heading, Text, Badge } from '@opsfoundry/ui';
+import { Heading, Text } from '@opsfoundry/ui';
 import { ArrowRight } from 'lucide-react';
 import type { AcademyProgrammeSlot } from '../content/programmes';
+import { StatusBadge } from './status-badge';
 
 export interface ProgrammeCardProps {
   programme: AcademyProgrammeSlot;
@@ -18,9 +19,11 @@ export function ProgrammeCard({ programme }: ProgrammeCardProps) {
           <span className="text-xs font-semibold text-foundry-slate">
             {programme.slotLabel}
           </span>
-          <Badge variant="brand" className="text-[11px]">
-            {programme.statusLabel}
-          </Badge>
+          <StatusBadge
+            status={programme.programmeStatus || 'upcoming'}
+            label={programme.statusLabel}
+            size="sm"
+          />
         </div>
 
         <Heading as="h3" size="md" className="text-foundry-slate mb-3">

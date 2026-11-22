@@ -1,69 +1,197 @@
 import { getCorporateWebsiteLink } from './site-config';
 
+/**
+ * Ops Foundry Academy — Homepage Structured Content Module
+ *
+ * Source of Truth: Ops_Foundry_Academy_Website_Master_Brief.docx (Sections 01, 02, 03)
+ *
+ * Contains:
+ * 1. The 9 Master Brief Homepage Sections (exact approved working copy).
+ * 2. Backwards-compatible exports to keep existing components functioning
+ *    cleanly during Stage 1 prior to Stage 3 homepage component restructuring.
+ */
+
 export interface AcademyNavItem {
   label: string;
   href: string;
+  isPendingRoute?: boolean;
+}
+
+export interface AcademyNavDropdownGroup {
+  label: string;
+  items: AcademyNavItem[];
+}
+
+export interface AcademyMobileSection {
+  category: string;
+  items: AcademyNavItem[];
 }
 
 export const academyNavigation = {
   brandName: 'Ops Foundry',
   brandSuffix: 'Academy',
   fullBrandName: 'Ops Foundry Academy',
-  items: [
+  // Direct desktop primary link
+  primaryLinks: [
     {
-      label: 'Home',
-      href: '/',
-    },
-    {
-      label: 'Programmes',
-      href: '/programmes',
-    },
-    {
-      label: 'How We Learn',
+      label: 'How Learning Works',
       href: '/how-we-learn',
+      isPendingRoute: false,
+    },
+  ] satisfies AcademyNavItem[],
+  // Desktop dropdown groups for clean, uncluttered access without overflow
+  dropdownGroups: [
+    {
+      label: 'Pathways & Programmes',
+      items: [
+        {
+          label: 'Career Pathways',
+          href: '/pathways',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Programmes Overview',
+          href: '/programmes',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Growth Operations',
+          href: '/programmes/growth-operations',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Content Operations',
+          href: '/programmes/content-operations',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Web & Digital Operations',
+          href: '/programmes/web-digital-operations',
+          isPendingRoute: false,
+        },
+      ],
     },
     {
-      label: 'Admissions',
-      href: '/admissions',
+      label: 'Admissions & Funding',
+      items: [
+        {
+          label: 'Admissions Guide',
+          href: '/admissions',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Tuition & Scholarships',
+          href: '/tuition-scholarships',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Career Opportunities',
+          href: '/career-opportunities',
+          isPendingRoute: false,
+        },
+      ],
     },
     {
       label: 'About',
-      href: '/about',
+      items: [
+        {
+          label: 'About the Academy',
+          href: '/about',
+          isPendingRoute: false,
+        },
+        {
+          label: 'For Partners',
+          href: '/for-partners',
+          isPendingRoute: false,
+        },
+        {
+          label: 'FAQs',
+          href: '/faqs',
+          isPendingRoute: false,
+        },
+        {
+          label: 'Contact',
+          href: '/contact',
+          isPendingRoute: false,
+        },
+      ],
     },
+  ] satisfies AcademyNavDropdownGroup[],
+  // Mobile organized sections
+  mobileSections: [
+    {
+      category: 'Learning & Pathways',
+      items: [
+        { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
+        { label: 'Career Pathways', href: '/pathways', isPendingRoute: false },
+        { label: 'Programmes', href: '/programmes', isPendingRoute: false },
+      ],
+    },
+    {
+      category: 'Admissions & Opportunities',
+      items: [
+        { label: 'Admissions', href: '/admissions', isPendingRoute: false },
+        { label: 'Tuition & Scholarships', href: '/tuition-scholarships', isPendingRoute: false },
+        { label: 'Career Opportunities', href: '/career-opportunities', isPendingRoute: false },
+      ],
+    },
+    {
+      category: 'Institutional & Support',
+      items: [
+        { label: 'For Partners', href: '/for-partners', isPendingRoute: false },
+        { label: 'About', href: '/about', isPendingRoute: false },
+        { label: 'FAQs', href: '/faqs', isPendingRoute: false },
+        { label: 'Contact', href: '/contact', isPendingRoute: false },
+      ],
+    },
+  ] satisfies AcademyMobileSection[],
+  // All 10 required routes in canonical order for reference and footer
+  allRequiredDestinations: [
+    { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
+    { label: 'Career Pathways', href: '/pathways', isPendingRoute: false },
+    { label: 'Programmes', href: '/programmes', isPendingRoute: false },
+    { label: 'Career Opportunities', href: '/career-opportunities', isPendingRoute: false },
+    { label: 'Admissions', href: '/admissions', isPendingRoute: false },
+    { label: 'Tuition & Scholarships', href: '/tuition-scholarships', isPendingRoute: false },
+    { label: 'For Partners', href: '/for-partners', isPendingRoute: false },
+    { label: 'About', href: '/about', isPendingRoute: false },
+    { label: 'FAQs', href: '/faqs', isPendingRoute: false },
+    { label: 'Contact', href: '/contact', isPendingRoute: false },
+  ] satisfies AcademyNavItem[],
+  // Backwards-compatible items export for any existing consumer
+  items: [
+    { label: 'How Learning Works', href: '/how-we-learn' },
+    { label: 'Career Pathways', href: '/pathways' },
+    { label: 'Programmes', href: '/programmes' },
+    { label: 'Admissions', href: '/admissions' },
+    { label: 'About', href: '/about' },
   ] satisfies AcademyNavItem[],
   primaryCta: {
-    label: 'Apply Now',
+    label: 'Apply for an Intake',
     href: '/apply',
   },
   corporateCrossLink: getCorporateWebsiteLink(),
 } as const;
 
-export const academyHeroContent = {
-  headline: 'Build practical skills. Become ready for real work.',
-  supporting:
-    'Ops Foundry Academy helps people develop relevant, practical skills through structured learning, hands-on application and a focus on the demands of modern work.',
+// ============================================================================
+// THE 9 HOMEPAGE SECTIONS (EXACT MASTER BRIEF SECTION 03 COPY)
+// ============================================================================
+
+/** Section 1: Hero */
+export const homepageHeroSection = {
+  id: 'hero',
+  headline: 'Learn the skills. Prove what you can do. Build your career.',
+  body:
+    'Ops Foundry Academy prepares people for practical roles in modern business operations. Learn digital tools, AI-enabled workflows and specialist skills through hands-on training designed around the work done at Ops Foundry and across our partner ecosystem.',
   primaryCta: {
-    label: 'Explore Programmes',
-    href: '/programmes',
+    label: 'Explore Career Pathways',
+    href: '/pathways',
+    isPendingRoute: false,
   },
   secondaryCta: {
     label: 'How Learning Works',
     href: '/how-we-learn',
   },
-  highlights: [
-    {
-      title: 'Structured Learning',
-      detail: 'Clear progression built around practical capability.',
-    },
-    {
-      title: 'Hands-On Application',
-      detail: 'Practice applying concepts to realistic work tasks.',
-    },
-    {
-      title: 'Modern Work Readiness',
-      detail: 'Focused on disciplined execution and modern tools.',
-    },
-  ],
   visual: {
     imageSrc:
       'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1100&q=80',
@@ -75,18 +203,228 @@ export const academyHeroContent = {
   },
 } as const;
 
+/** Section 2: Why This Academy Exists */
+export const homepageWhyAcademyExistsSection = {
+  id: 'why-academy-exists',
+  headline: 'Training connected to real work.',
+  body:
+    'Ops Foundry helps businesses manage important digital and operational work. Our Academy develops the capabilities people need to contribute to that work. You learn how modern teams research, create, organize, communicate and deliver, then demonstrate what you can do through practical assignments and assessments.',
+  governanceCommitment: {
+    heading: 'Clear & Honest Expectations',
+    body:
+      'Training, certification, readiness and hiring are separate decisions. Completion of an Academy programme does not guarantee a job or automatic placement.',
+  },
+} as const;
+
+/** Section 3: Learning Pathway */
+export const homepageLearningPathwaySection = {
+  id: 'learning-pathway',
+  headline: 'A clear path from foundation to specialization.',
+  steps: [
+    {
+      stepNumber: '01',
+      title: 'Build your foundation.',
+      description:
+        'Develop essential skills in digital productivity, communication, structured workflows, responsible AI use and problem-solving through the Ops Foundry Core.',
+    },
+    {
+      stepNumber: '02',
+      title: 'Specialize.',
+      description:
+        'Progress into a career pathway according to your interests, performance, aptitude and available places. Build deeper skills through guided projects and realistic business tasks.',
+    },
+    {
+      stepNumber: '03',
+      title: 'Demonstrate your capability.',
+      description:
+        'Complete practical assessments and build evidence of your work. Successful learners may earn Academy-issued credentials for competencies they demonstrate.',
+    },
+    {
+      stepNumber: '04',
+      title: 'Be considered for opportunities.',
+      description:
+        'Graduates who meet role-specific readiness standards may be considered for available openings at Ops Foundry or with partner employers. Hiring depends on vacancies and employer selection.',
+    },
+  ],
+  cta: {
+    label: 'See How Learning Works',
+    href: '/how-we-learn',
+  },
+} as const;
+
+/** Section 4: Explore Career Pathways */
+export const homepageExplorePathwaysSection = {
+  id: 'career-pathways',
+  headline: 'Find the kind of work that fits you.',
+  intro:
+    'Not every digital career requires software engineering. Explore the work behind growing businesses, the skills each role requires and the qualities that can help you thrive.',
+  pathways: [
+    {
+      slug: 'growth-operations',
+      title: 'Growth Operations',
+      description:
+        'Help teams research markets, identify prospects, organize customer information and support pipeline processes.',
+      suitability:
+        'You may enjoy this pathway if you like research, organization, clear communication and commercial problem-solving.',
+      status: 'active' as const,
+      ctaLabel: 'Explore Growth Operations',
+      href: '/pathways/growth-operations',
+    },
+    {
+      slug: 'content-operations',
+      title: 'Content Operations',
+      description:
+        'Help businesses plan, create, organize and publish digital content.',
+      suitability:
+        'You may enjoy this pathway if you like writing, creativity, detail and communicating ideas clearly.',
+      status: 'active' as const,
+      ctaLabel: 'Explore Content Operations',
+      href: '/pathways/content-operations',
+    },
+    {
+      slug: 'web-digital-operations',
+      title: 'Web & Digital Operations',
+      description:
+        'Build and maintain websites, update content, test forms and support digital workflows.',
+      suitability:
+        'You may enjoy this pathway if you like technology, troubleshooting, structure and making things work.',
+      status: 'active' as const,
+      ctaLabel: 'Explore Web & Digital Operations',
+      href: '/pathways/web-digital-operations',
+    },
+    {
+      slug: 'customer-community-operations',
+      title: 'Customer & Community Operations',
+      description:
+        'Support enquiries, onboarding, customer experience and community engagement.',
+      suitability:
+        'You may enjoy this pathway if you like helping people, listening, solving problems and following through.',
+      status: 'upcoming' as const,
+      ctaLabel: 'Explore Pathway',
+      href: '/pathways/customer-community-operations',
+    },
+  ],
+  viewAllCta: {
+    label: 'View All Career Pathways',
+    href: '/pathways',
+  },
+} as const;
+
+/** Section 5: Career Opportunities */
+export const homepageCareerOpportunitiesSection = {
+  id: 'career-opportunities',
+  headline: 'Skills developed for work. Opportunities earned through readiness.',
+  body:
+    'The Academy is designed to build talent for Ops Foundry’s managed services operations. As roles become available, qualified graduates may be invited to apply or take part in further selection. We also work to connect suitable candidates with opportunities from partner organizations. Placement is not automatic: vacancies, competency standards, interviews and employer decisions determine hiring.',
+  cta: {
+    label: 'Understand Career Opportunities',
+    href: '/career-opportunities',
+  },
+} as const;
+
+/** Section 6: Admissions and Funding */
+export const homepageAdmissionsFundingSection = {
+  id: 'admissions-and-funding',
+  headline: 'Your next step starts with an application.',
+  body:
+    'Explore the available programmes, review the time commitment and eligibility requirements, and apply for an open intake. Tuition, payment options and scholarship opportunities are shown on each programme and funding page as they are confirmed.',
+  primaryCta: {
+    label: 'View Admissions',
+    href: '/admissions',
+  },
+  secondaryCta: {
+    label: 'Explore Scholarships',
+    href: '/tuition-scholarships',
+  },
+} as const;
+
+/** Section 7: About Ops Foundry */
+export const homepageAboutOpsFoundrySection = {
+  id: 'about-ops-foundry',
+  headline: 'Connected to the work businesses need done.',
+  body:
+    'Ops Foundry is a managed services business that helps growing companies execute digital and business operations through skilled teams, structured processes and AI-enabled tools. The Academy develops talent for this operating model and for related roles with partner employers.',
+  cta: {
+    label: 'Discover Ops Foundry',
+    href: getCorporateWebsiteLink().href,
+    isExternal: true,
+  },
+} as const;
+
+/** Section 8: Partnerships and final CTA */
+export const homepagePartnershipsSection = {
+  id: 'partnerships',
+  headline: 'Help create access to practical careers.',
+  body:
+    'We welcome organizations interested in sponsoring learners, providing computers or connectivity, supporting training, or opening pathways to employment. Tell us how you would like to collaborate.',
+  cta: {
+    label: 'Partner With the Academy',
+    href: '/for-partners',
+  },
+} as const;
+
+/** Section 9: Final CTA */
+export const homepageFinalCtaSection = {
+  id: 'final-cta',
+  headline: 'Explore a pathway. Take the next step.',
+  primaryCta: {
+    label: 'Explore Programmes',
+    href: '/programmes',
+  },
+  secondaryCta: {
+    label: 'Apply for an Open Intake',
+    href: '/apply',
+  },
+} as const;
+
+// ============================================================================
+// BACKWARDS-COMPATIBILITY EXPORTS FOR EXISTING COMPONENTS
+// (Ensures existing components in src/app/page.tsx, academy-hero.tsx, etc. compile cleanly)
+// ============================================================================
+
+export const academyHeroContent = {
+  headline: homepageHeroSection.headline,
+  supporting: homepageHeroSection.body,
+  primaryCta: {
+    label: 'Explore Career Pathways',
+    href: '/pathways',
+    isPendingRoute: false,
+  },
+  secondaryCta: {
+    label: 'How Learning Works',
+    href: '/how-we-learn',
+  },
+  highlights: [
+    {
+      title: 'Build Foundation',
+      detail: 'Develop essential skills in digital productivity, workflows and responsible AI through the Ops Foundry Core.',
+    },
+    {
+      title: 'Specialize',
+      detail: 'Progress into a chosen pathway through guided projects and realistic business tasks.',
+    },
+    {
+      title: 'Demonstrate Capability',
+      detail: 'Complete practical assessments and build verified evidence of what you can do.',
+    },
+    {
+      title: 'Be Considered for Opportunities',
+      detail: 'Earned readiness for potential roles with Ops Foundry and partner employers.',
+    },
+  ],
+  visual: homepageHeroSection.visual,
+} as const;
+
 export const academyIntroductionContent = {
   id: 'about',
-  heading: 'A Learning Environment Built Around Practical Capability',
-  lead: 'Ops Foundry Academy is the learning and professional development arm of the Ops Foundry ecosystem.',
+  heading: homepageWhyAcademyExistsSection.headline,
+  lead:
+    'Ops Foundry Academy develops people for practical digital and AI-enabled business operations.',
   paragraphs: [
-    'Many learning programmes stop at theory—leaving people with notes and terminology, but little practice in actually carrying work from start to finish. Ops Foundry Academy exists to bridge the gap between learning a concept and applying it reliably in a modern working environment.',
-    'Connected to Ops Foundry’s wider focus on structured workflows and human-plus-AI operational execution, the Academy is designed as a serious, encouraging place to build real capabilities. Learners focus on disciplined habits, clear communication, and practical execution.',
+    homepageWhyAcademyExistsSection.body,
+    'Training progresses from the foundational Ops Foundry Core—covering digital productivity, communication, structured workflows, responsible AI use and problem-solving—into specialized domain practice.',
   ],
-  commitmentCard: {
-    heading: 'Clear & Honest Expectations',
-    body: 'Ops Foundry Academy is dedicated to practical skill development and professional readiness. Participation or completion of an Academy programme does not constitute a guarantee of employment, automatic recruitment into Ops Foundry, or guaranteed external job placement.',
-  },
+  commitmentCard: homepageWhyAcademyExistsSection.governanceCommitment,
 } as const;
 
 export const learningPhilosophyContent = {
@@ -140,9 +478,9 @@ export const programmesPreviewContent = {
   id: 'programmes',
   heading: 'Academy Programmes',
   intro:
-    'Ops Foundry Academy is preparing three initial programmes designed around practical skill development and real-world application.',
+    'Ops Foundry Academy is preparing three initial programmes: Growth Operations, Content Operations, and Web & Digital Operations.',
   governanceNotice:
-    'Programme Publication Status: Three courses are planned for the Academy. Official course titles, detailed curricula, durations, prerequisites, tuition details, and schedules are currently undergoing final confirmation and will be published here once approved.',
+    'Programme Publication Status: Official start dates, curriculum modules, weekly schedules, and tuition details are undergoing final confirmation prior to opening public cohort applications.',
   cta: {
     label: 'View All Programmes',
     href: '/programmes',
@@ -177,54 +515,40 @@ export const whoAcademyIsForContent = {
 
 export const admissionsPreviewContent = {
   id: 'admissions',
-  heading: 'A Clear, Structured Path to Admissions',
-  intro:
-    'When cohort applications open, prospective learners will be able to review the confirmed programme options and apply through a straightforward admissions process.',
-  steps: [
-    {
-      step: 'Step 01',
-      title: 'Explore Available Programmes',
-      description:
-        'Review the published programme overviews, learning objectives, and commitment expectations to understand what each track covers.',
-    },
-    {
-      step: 'Step 02',
-      title: 'Select Your Preferred Programme',
-      description:
-        'During application, you will choose the specific programme you wish to pursue rather than being automatically assigned to a track.',
-    },
-    {
-      step: 'Step 03',
-      title: 'Submit Your Application Details',
-      description:
-        'Share your background, learning goals, and motivation through our structured admissions application for review by the Academy team.',
-    },
+  heading: homepageAdmissionsFundingSection.headline,
+  intro: homepageAdmissionsFundingSection.body,
+  admissionsCopy:
+    'Apply to build practical skills for modern business operations. We review eligibility, motivation and readiness, and may require an aptitude assessment or practical task. Admission decisions and scholarship decisions are separate.',
+  tuitionCopy:
+    'Understand the full cost before you enrol. Each published programme shows its total fee, what is included, available payment arrangements and applicable refund or deferral terms. Amounts will appear only when approved.',
+  scholarshipCopy:
+    'Explore funding opportunities from Ops Foundry Academy and approved partners. Each listing explains who is eligible, what the award covers, deadlines and how to apply. Scholarships may cover all or part of tuition, and admission is assessed separately.',
+  statuses: [
+    { name: 'Admitted', description: 'Offer of admission issued for an upcoming cohort intake.' },
+    { name: 'Conditional', description: 'Admission subject to completing prerequisite preparation.' },
+    { name: 'Waitlisted', description: 'Qualified applicant placed on the intake waiting list.' },
+    { name: 'Declined', description: 'Application not accepted for the current cohort window.' },
+    { name: 'Withdrawn', description: 'Application closed at applicant request or due to inactivity.' },
   ],
-  admissionsNote:
-    'Applicants choose their preferred programme directly during the application process. Any programme-specific admissions requirements will be clearly stated once final course details are published.',
+  governanceNotice:
+    'Transparent Review: Applicants receive status updates and an enquiry route. We do not use unvalidated scores for automatic final rejection.',
   cta: {
-    label: 'Explore Admissions',
+    label: 'View Admissions',
     href: '/admissions',
   },
 } as const;
 
 export const finalCtaContent = {
-  heading: 'Your next chapter starts with what you learn today.',
+  heading: homepageFinalCtaSection.headline,
   supporting:
     'Explore how Ops Foundry Academy helps learners build practical capabilities, structured habits, and readiness for real-world work.',
-  primaryCta: {
-    label: 'Apply Now',
-    href: '/apply',
-  },
-  secondaryCta: {
-    label: 'Explore Programmes',
-    href: '/programmes',
-  },
+  primaryCta: homepageFinalCtaSection.primaryCta,
+  secondaryCta: homepageFinalCtaSection.secondaryCta,
 } as const;
 
 export const academyFooterContent = {
   description:
-    'Ops Foundry Academy helps people develop relevant, practical skills through structured learning, hands-on application, and a focus on the demands of modern work.',
+    'Ops Foundry Academy develops people for practical digital and AI-enabled business operations.',
   ecosystemNote:
     'Part of the Ops Foundry ecosystem — connecting practical skill development with disciplined operational execution.',
   contactGovernanceNote:

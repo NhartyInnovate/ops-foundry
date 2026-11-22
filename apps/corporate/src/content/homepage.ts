@@ -1,5 +1,3 @@
-import { getAcademySiteUrl } from './site-config';
-
 export interface NavServiceItem {
   id: 'get-online' | 'get-visible' | 'get-customers';
   title: string;
@@ -29,6 +27,18 @@ export interface CorporateServiceLine {
   };
 }
 
+export interface SelectedWorkProject {
+  id: string;
+  title: string;
+  supportingCopy: string;
+  verified: boolean;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  link?: string;
+}
+
 export const corporateNavigation = {
   brandName: 'Ops Foundry',
   primaryLinks: [
@@ -45,26 +55,22 @@ export const corporateNavigation = {
     {
       id: 'get-online',
       title: 'Get Online',
-      summary: 'Establish or improve your digital presence and web foundations',
+      summary: 'Build and maintain a digital presence that works',
       href: '/services/get-online',
     },
     {
       id: 'get-visible',
       title: 'Get Visible',
-      summary: 'Create consistent content, communications, and search discoverability',
+      summary: 'Stay visible without adding to your team’s workload',
       href: '/services/get-visible',
     },
     {
       id: 'get-customers',
       title: 'Get Customers',
-      summary: 'Improve prospecting, lead handling, and pipeline operations',
+      summary: 'Bring structure to customer acquisition',
       href: '/services/get-customers',
     },
   ] satisfies NavServiceItem[],
-  academyBridge: {
-    label: 'Ops Foundry Academy',
-    href: getAcademySiteUrl(),
-  },
   primaryCta: {
     label: 'Explore a Pilot',
     href: '/pilot',
@@ -72,30 +78,31 @@ export const corporateNavigation = {
 } as const;
 
 export const heroContent = {
+  eyebrow: 'OPS FOUNDRY / MANAGED BUSINESS OPERATIONS',
   headlinePrimary: 'Your business has work to do.',
   headlineAccent: 'We help you get it done.',
   supportingCopy:
-    'Ops Foundry is a human-AI operational infrastructure partner. We combine managed teams, structured workflows, and AI-enabled tools so businesses can move important operational work from backlog to completion.',
+    'We help growing businesses build, manage and improve essential digital and business operations through skilled teams, structured workflows and AI-enabled tools.',
   primaryCta: {
     label: 'Explore a Pilot',
     href: '/pilot',
   },
   secondaryCta: {
-    label: 'See How We Work',
-    href: '/how-we-work',
+    label: 'Explore Our Services',
+    href: '/services',
   },
   highlights: [
     {
       title: 'Managed Teams',
-      description: 'Accountable operators coordinating day-to-day execution',
+      description: 'Operators who take responsibility for agreed work and deliverables',
     },
     {
       title: 'Structured Workflows',
-      description: 'Documented procedures and clear review checkpoints',
+      description: 'Clear workflows, quality reviews and reporting that keep execution consistent',
     },
     {
       title: 'AI-Enabled Tools',
-      description: 'Practical tooling integrated under human oversight',
+      description: 'Practical AI-enabled tools that support faster work under human oversight',
     },
   ],
   heroImage: {
@@ -107,29 +114,41 @@ export const heroContent = {
   },
 } as const;
 
-export const whyOpsFoundryContent = {
-  headline: "Most businesses don't lack ideas. They lack execution capacity.",
-  lead:
-    'Growing businesses often struggle to turn plans into consistent execution. Fragmented teams, disconnected tools and undocumented processes create operational bottlenecks.',
-  contrasts: [
+export const brandsWeSupportContent = {
+  heading: "Brands we've supported.",
+  statement:
+    'We work with forward-thinking businesses and partner organisations to strengthen day-to-day execution.',
+  organisations: [
     {
-      challenge: "Software alone doesn't execute work.",
-      resolution:
-        'Trained people and clear processes turn tools into completed work.',
+      name: 'TeleSoftas',
+      logo: '/images/brands/telesoftas-white.png',
+      logoDark: '/images/brands/telesoftas.png',
+      width: 252,
+      height: 61,
     },
     {
-      challenge: 'Fragmented teams slow execution.',
-      resolution:
-        'Managed operators bring coordination and accountability.',
+      name: 'Mintage Africa',
+      logo: '/images/brands/mintage-africa-white.png',
+      logoDark: '/images/brands/mintage-africa.png',
+      width: 1024,
+      height: 379,
     },
     {
-      challenge: 'Unstructured AI creates inconsistent output.',
-      resolution:
-        'Human oversight and documented workflows improve reliability.',
+      name: 'Roomkind',
+      logo: '/images/brands/roomkind-white.png',
+      logoDark: '/images/brands/roomkind.png',
+      width: 600,
+      height: 200,
     },
   ],
+} as const;
+
+export const challengeContent = {
+  headline: 'Growth brings opportunity. It also brings more work.',
+  lead:
+    'Your website needs attention. Content needs to be created and published. Potential customers need researching, engaging and following up. Yet building a separate in-house team for every function is not always practical.',
   editorialCallout:
-    'Ops Foundry brings people, processes and practical technology together to help businesses execute consistently.',
+    'Ops Foundry gives you a more structured way to get essential work done, with accountable delivery and clear visibility into progress.',
   image: {
     src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80',
     alt: 'Two colleagues reviewing operational documentation and workflow priorities at a desk',
@@ -138,29 +157,61 @@ export const whyOpsFoundryContent = {
   },
 } as const;
 
+// Backward-compatible alias for existing imports
+export const whyOpsFoundryContent = challengeContent;
+
+export const whyOpsFoundrySectionContent = {
+  heading: 'Why Ops Foundry',
+  headline: 'We take ownership of the work, not just the task list.',
+  supportingCopy:
+    'We help define the work, coordinate delivery, check quality and keep you informed. You get an accountable operating partner, not another collection of tasks to manage.',
+} as const;
+
+export const selectedWorkContent = {
+  heading: 'Selected Work',
+  headline: 'Practical work. Visible outcomes.',
+  // Publication control: active on homepage; verification tracks formal external authorization
+  published: true,
+  projects: [
+    {
+      id: 'status-event-management',
+      title: 'A digital home for Status Event Management Company.',
+      supportingCopy:
+        'Website and digital presence delivery within the Telesoftas ecosystem, helping the business present its services and give customers a clearer way to connect.',
+      verified: false,
+      image: {
+        src: '/images/selected-work/event-management-website-mockup.jpg',
+        alt: 'Illustrative event management website homepage mockup displayed inside a desktop browser frame',
+      },
+    },
+  ] as SelectedWorkProject[],
+} as const;
+
 export const operatingPillarsContent = {
-  headline: 'Three Pillars Working as One Operating System',
+  headline: 'Skilled people. Structured processes. Smarter execution.',
   pillars: [
     {
       number: '01',
-      title: 'Managed Teams',
-      summary: 'Skilled people accountable for getting work done.',
+      title: 'People',
+      summary: 'Operators who take responsibility for agreed work and deliverables.',
     },
     {
       number: '02',
-      title: 'Structured Workflows',
-      summary: 'Clear processes that make execution consistent.',
+      title: 'Process',
+      summary: 'Clear workflows, quality reviews and reporting that keep execution consistent.',
     },
     {
       number: '03',
-      title: 'AI-Enabled Tools',
-      summary: 'Practical technology that improves operational efficiency.',
+      title: 'Intelligence',
+      summary: 'Practical AI-enabled tools that support faster work under human oversight.',
     },
   ] satisfies OperatingPillar[],
+  ctaLabel: 'See How We Work',
+  ctaHref: '/how-we-work',
 } as const;
 
 export const servicesContent = {
-  headline: 'Three Ways We Help Businesses Execute',
+  headline: 'Three ways to move your business forward.',
   intro:
     'We help businesses strengthen their digital presence, improve visibility and build more consistent customer pipelines.',
   scopeNotice:
@@ -170,11 +221,14 @@ export const servicesContent = {
       id: 'get-online',
       anchorId: 'service-get-online',
       title: 'Get Online',
-      description: 'Build and maintain a professional digital presence.',
+      description:
+        'Build and maintain a digital presence that works. From business websites and landing pages to updates, forms and content management, we help keep your digital foundations useful and current.',
       focusAreas: [
-        'Business website development.',
-        'Clear service and company pages.',
-        'Website updates and maintenance.',
+        'Business websites and landing pages',
+        'Website structure, copy placement and content updates',
+        'Content management systems and routine publishing',
+        'Contact forms and enquiry pathways',
+        'Quality checks, basic analytics and ongoing maintenance',
       ],
       ctaLabel: 'Explore Get Online',
       ctaHref: '/services/get-online',
@@ -191,11 +245,14 @@ export const servicesContent = {
       anchorId: 'service-get-visible',
       title: 'Get Visible',
       description:
-        'Help the right audience discover and understand your business.',
+        'Stay visible without adding to your team’s workload. We help plan, create, repurpose, publish and track content that keeps your business communicating consistently.',
       focusAreas: [
-        'Consistent content and communication workflows.',
-        'Search-friendly page and profile structure.',
-        'Repeatable publishing and distribution processes.',
+        'Content planning and editorial calendars',
+        'Content drafting, editing and repurposing',
+        'Social media scheduling and publishing support',
+        'Website and profile content updates',
+        'Basic search-friendly content practices',
+        'Content performance reporting',
       ],
       ctaLabel: 'Explore Get Visible',
       ctaHref: '/services/get-visible',
@@ -212,11 +269,14 @@ export const servicesContent = {
       anchorId: 'service-get-customers',
       title: 'Get Customers',
       description:
-        'Create more structured customer acquisition and follow-up processes.',
+        'Bring structure to customer acquisition. We support prospect research, CRM operations, outreach coordination and pipeline follow-through so your team can focus on customer conversations.',
       focusAreas: [
-        'Structured prospect research and list preparation.',
-        'Inbound inquiry organization and routing.',
-        'Consistent pipeline tracking and follow-up coordination.',
+        'Ideal customer profile research and account targeting support',
+        'Prospect research and lead-list preparation',
+        'CRM setup support, data hygiene and updates',
+        'Outreach preparation and coordination within approved channels',
+        'Inbound enquiry organization and follow-up tracking',
+        'Pipeline dashboards and activity reporting',
       ],
       ctaLabel: 'Explore Get Customers',
       ctaHref: '/services/get-customers',
@@ -231,15 +291,24 @@ export const servicesContent = {
   ] satisfies CorporateServiceLine[],
 } as const;
 
+export const pilotOverviewContent = {
+  eyebrow: 'Pilot',
+  headline: 'Start with a specific need. Build from there.',
+  body:
+    'Tell us what needs attention. We will discuss the work, define a manageable scope and propose deliverables, timelines, fees and success criteria. A focused pilot lets us demonstrate how we work before you consider ongoing support.',
+  ctaLabel: 'Explore a Pilot',
+  ctaHref: '/pilot',
+} as const;
+
 export const finalCtaContent = {
-  headline: 'Ready to get important work done?',
+  headline: 'Let’s get the important work done.',
   subheadline: 'Start by exploring a focused operational pilot.',
   body:
-    'Whether your immediate priority is establishing a stronger digital presence (Get Online), building consistent content and communications (Get Visible), or organizing prospecting and pipeline workflows (Get Customers), a pilot allows us to scope a practical starting point together.',
+    'Whether you need a stronger digital presence, consistent content or better-organized customer acquisition, we can help you find a practical starting point.',
   primaryCtaLabel: 'Explore a Pilot',
   primaryCtaHref: '/pilot',
-  secondaryCtaLabel: 'Explore Our Services',
-  secondaryCtaHref: '/services',
+  secondaryCtaLabel: 'Contact Us',
+  secondaryCtaHref: '/contact',
   pilotPreparationItems: [
     {
       label: 'Primary Service Area',
@@ -258,5 +327,5 @@ export const finalCtaContent = {
     },
   ],
   phaseNotice:
-    'Review our full 10-point pilot scoping framework and prepare your consultation brief on the dedicated Explore a Pilot page.',
+    'Review our full scoping framework and prepare your consultation brief on the dedicated Explore a Pilot page.',
 } as const;

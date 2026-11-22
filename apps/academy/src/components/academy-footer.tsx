@@ -5,9 +5,10 @@ import { Container } from '@opsfoundry/ui';
 import { ArrowUpRight } from 'lucide-react';
 import { academyNavigation, academyFooterContent } from '../content/homepage';
 import { plannedAcademyProgrammes } from '../content/programmes';
+import { careerPathways } from '../content/pathways';
 
 export function AcademyFooter() {
-  const { corporateCrossLink } = academyNavigation;
+  const { corporateCrossLink, primaryCta } = academyNavigation;
 
   return (
     <footer
@@ -15,9 +16,9 @@ export function AcademyFooter() {
       className="bg-foundry-slate text-white border-t border-foundry-slate-border pt-16 pb-12"
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-foundry-slate-border">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-foundry-slate-border">
           {/* Column 1: Academy Identity & Purpose */}
-          <div className="md:col-span-5 space-y-4">
+          <div className="md:col-span-3 lg:col-span-3 space-y-4">
             {/* Academy Brand Lockup with TeleSoftas Endorsement */}
             <Link
               href="/"
@@ -31,10 +32,7 @@ export function AcademyFooter() {
                 height={48}
                 className="h-9 sm:h-10 w-auto object-contain select-none"
               />
-              <span
-                className="h-6 sm:h-7 w-px bg-white/20"
-                aria-hidden="true"
-              />
+              <span className="h-6 sm:h-7 w-px bg-white/20" aria-hidden="true" />
               <span className="font-body text-xs sm:text-sm tracking-tight text-white whitespace-nowrap select-none">
                 <span className="font-normal text-gray-400">by</span>{' '}
                 <span className="font-semibold text-white">TeleSoftas</span>
@@ -50,31 +48,47 @@ export function AcademyFooter() {
             </p>
           </div>
 
-          {/* Column 2: Academy Navigation */}
-          <div className="md:col-span-2 space-y-3">
-            <h2 className="font-display text-sm font-bold text-white">
-              Academy
+          {/* Column 2: Learning & Career Pathways */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-3">
+            <h2 className="font-display text-xs font-bold uppercase tracking-wider text-purple-300">
+              Pathways
             </h2>
-            <ul className="space-y-2.5 text-sm text-gray-300">
-              {academyNavigation.items.map((item) => (
-                <li key={item.label}>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
+              <li>
+                <Link
+                  href="/how-we-learn"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  How Learning Works
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pathways"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors font-medium text-white"
+                >
+                  Pathways Directory
+                </Link>
+              </li>
+              {careerPathways.map((pathway) => (
+                <li key={pathway.slug}>
                   <Link
-                    href={item.href}
-                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                    href={`/pathways/${pathway.slug}`}
+                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors text-xs text-gray-400 hover:text-gray-200"
                   >
-                    {item.label}
+                    {pathway.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Programmes */}
-          <div className="md:col-span-2 space-y-3">
-            <h2 className="font-display text-sm font-bold text-white">
-              Programmes
+          {/* Column 3: Programmes & Admissions */}
+          <div className="md:col-span-3 space-y-3">
+            <h2 className="font-display text-xs font-bold uppercase tracking-wider text-purple-300">
+              Programmes &amp; Funding
             </h2>
-            <ul className="space-y-2.5 text-sm text-gray-300">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
               <li>
                 <Link
                   href="/programmes"
@@ -84,62 +98,104 @@ export function AcademyFooter() {
                 </Link>
               </li>
               {plannedAcademyProgrammes.map((programme) => (
-                <li key={programme.courseId}>
+                <li key={programme.id}>
                   <Link
                     href={`/programmes/${programme.slug}`}
-                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors text-xs text-gray-400 hover:text-gray-200"
                   >
-                    {programme.slotLabel}
+                    {programme.slotLabel} Programme
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Admissions & Ecosystem */}
-          <div className="md:col-span-3 space-y-3">
-            <h2 className="font-display text-sm font-bold text-white">
-              Admissions &amp; Ecosystem
-            </h2>
-            <ul className="space-y-2.5 text-sm text-gray-300">
-              <li>
+              <li className="pt-2 border-t border-foundry-slate-border">
                 <Link
                   href="/admissions"
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
-                  Admissions Overview
+                  Admissions Guide
                 </Link>
               </li>
               <li>
                 <Link
-                  href={academyNavigation.primaryCta.href}
+                  href="/tuition-scholarships"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  Tuition &amp; Scholarships
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/career-opportunities"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  Career Opportunities
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Partners, Support & Ecosystem */}
+          <div className="md:col-span-3 space-y-3">
+            <h2 className="font-display text-xs font-bold uppercase tracking-wider text-purple-300">
+              Partners &amp; Academy
+            </h2>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
+              <li>
+                <Link
+                  href="/for-partners"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  For Partners
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  About the Academy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faqs"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li className="pt-2 border-t border-foundry-slate-border">
+                <Link
+                  href={primaryCta.href}
                   className="font-semibold text-purple-300 hover:text-purple-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
-                  {academyNavigation.primaryCta.label}
+                  {primaryCta.label}
                 </Link>
               </li>
               <li>
                 {corporateCrossLink.isExternal ? (
                   <a
                     href={corporateCrossLink.href}
-                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                    className="inline-flex items-center gap-1.5 text-gray-300 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors text-xs"
                   >
                     <span>{corporateCrossLink.label}</span>
-                    <ArrowUpRight
-                      className="h-3.5 w-3.5 text-purple-400"
-                      aria-hidden="true"
-                    />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-purple-400" aria-hidden="true" />
                   </a>
                 ) : (
                   <Link
                     href={corporateCrossLink.href}
-                    className="inline-flex items-center gap-1.5 text-gray-200 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
+                    className="inline-flex items-center gap-1.5 text-gray-300 hover:text-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors text-xs"
                   >
                     <span>{corporateCrossLink.label}</span>
-                    <ArrowUpRight
-                      className="h-3.5 w-3.5 text-purple-400"
-                      aria-hidden="true"
-                    />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-purple-400" aria-hidden="true" />
                   </Link>
                 )}
               </li>

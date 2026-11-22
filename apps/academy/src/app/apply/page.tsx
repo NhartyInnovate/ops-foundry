@@ -8,16 +8,16 @@ import { FellowshipApplicationForm } from '../../components/fellowship-applicati
 import { fellowshipCohortOneApplication } from '../../content/fellowship-application';
 
 export const metadata: Metadata = {
-  title: 'Apply — OpsFoundry Fellowship Cohort 1',
+  title: 'Apply for an Open Intake — Ops Foundry Academy',
   description:
-    'Apply for the OpsFoundry Fellowship (Cohort 1). Training high-potential talent in B2B Outbound Sales and Digital Presence Operations with direct client retainers.',
+    'Apply to build practical skills for modern business operations. We review eligibility, motivation and readiness, and may require an aptitude assessment or practical task. Admission decisions and scholarship decisions are separate.',
   alternates: {
     canonical: '/apply',
   },
   openGraph: {
-    title: 'Apply — OpsFoundry Fellowship Cohort 1',
+    title: 'Apply for an Open Intake — Ops Foundry Academy',
     description:
-      'Apply for the OpsFoundry Fellowship (Cohort 1). Training high-potential talent in B2B Outbound Sales and Digital Presence Operations with direct client retainers.',
+      'Apply to build practical skills for modern business operations. We review eligibility, motivation and readiness, and may require an aptitude assessment or practical task. Admission decisions and scholarship decisions are separate.',
     type: 'website',
   },
 };
@@ -58,7 +58,7 @@ export default async function ApplyPage({ searchParams }: ApplyPageProps) {
               </li>
               <li aria-hidden="true">/</li>
               <li aria-current="page" className="font-semibold text-foundry-slate">
-                Fellowship Application
+                Apply for an Intake
               </li>
             </ol>
           </nav>

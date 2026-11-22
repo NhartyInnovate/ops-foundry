@@ -12,10 +12,11 @@ const CORPORATE_ROUTES = [
   { path: '/how-we-work', priority: 0.85 },
   { path: '/about', priority: 0.8 },
   { path: '/pilot', priority: 0.9 },
+  { path: '/contact', priority: 0.8 },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-04-06T00:00:00.000Z');
+  const lastModified = new Date('2026-11-22T00:00:00.000Z');
 
   return CORPORATE_ROUTES.map((route) => ({
     url: `${BASE_URL}${route.path}`,

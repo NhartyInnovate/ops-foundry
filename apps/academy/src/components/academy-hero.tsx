@@ -47,8 +47,8 @@ export function AcademyHero() {
               </Button>
             </div>
 
-            {/* Three Grounded Learning Pillars */}
-            <div className="pt-8 border-t border-foundry-border grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {/* Four Approved Learning Journey Highlights */}
+            <div className="pt-8 border-t border-foundry-border grid grid-cols-2 lg:grid-cols-4 gap-5">
               {academyHeroContent.highlights.map((item) => (
                 <div key={item.title} className="space-y-1">
                   <p className="font-display text-sm font-bold text-foundry-slate">

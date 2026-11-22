@@ -1,9 +1,9 @@
 export const howWeWorkPageContent = {
   hero: {
     title: 'How We Work',
-    lead: 'Practical operational execution depends on how people, workflows, and tools are organized together.',
+    lead: 'A clear process. Accountable execution.',
     supporting:
-      'Ops Foundry combines managed teams, documented workflows, and AI-enabled tools so business priorities can move from discussion to finished work without adding daily management burden to your leadership team.',
+      'We make it easier to hand over essential work without losing visibility or control. Every engagement begins with an agreed scope and a clear way to measure delivery.',
     image: {
       src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1100&q=80',
       alt: 'Operations team coordinating workflow stages and reviewing project deliverables around a table',
@@ -16,68 +16,68 @@ export const howWeWorkPageContent = {
       'Effective execution requires people, processes and technology working together. Each supports a different part of the work.',
     items: [
       {
-        title: 'Managed Teams',
-        body: 'People accountable for coordinating and completing assigned work.',
+        title: 'People',
+        body: 'Operators who take responsibility for agreed work and deliverables.',
       },
       {
-        title: 'Structured Workflows',
-        body: 'Clear processes, responsibilities and quality checks that keep work consistent.',
+        title: 'Process',
+        body: 'Clear workflows, quality reviews and reporting that keep execution consistent.',
       },
       {
-        title: 'AI-Enabled Tools',
-        body: 'Practical tools that support research, organization and everyday execution.',
+        title: 'Intelligence',
+        body: 'Practical AI-enabled tools that support faster work under human oversight.',
       },
     ],
   },
   operatingModel: {
-    heading: 'Proposed Four-Stage Operating Model',
+    heading: 'A Clear Process — Four Execution Steps',
     intro:
-      "We organize engagements around four stages, adapting the process to each client's needs, scope and priorities.",
+      'Every engagement begins with an agreed scope and a clear way to measure delivery.',
     disclaimer:
-      'This is an indicative framework. Each engagement is scoped according to its specific requirements.',
+      'Quality promise: Clear ownership. Practical reporting. Human review. No unsupported guarantees.',
     stages: [
       {
-        number: 'Stage 1',
-        title: 'Intake & Scoping',
+        number: 'Step 1',
+        title: 'Understand',
         description:
-          'Understand the business need, identify the priority and agree on the scope of work.',
+          'We discuss your priorities, current processes, tools and constraints to identify the work that needs attention.',
         typicalOutputs: [
-          'Agreed scope and priorities.',
-          'Defined responsibilities and dependencies.',
-          'Initial execution plan.',
+          'Review of current operational bottlenecks and priorities',
+          'Identification of relevant tools, data, and constraints',
+          'Agreed focus area across digital, visibility, or customer operations',
         ],
       },
       {
-        number: 'Stage 2',
-        title: 'Workflow Architecture',
+        number: 'Step 2',
+        title: 'Define',
         description:
-          'Define how the work will be completed, reviewed and supported by the right tools.',
+          'We agree on deliverables, responsibilities, timeline, fees, review points and success criteria for a focused pilot.',
         typicalOutputs: [
-          'Documented workflows.',
-          'Assigned responsibilities and checkpoints.',
-          'Supporting tools and templates.',
+          'Documented scope, timeline, and commercial terms',
+          'Clear client dependencies and deliverable boundaries',
+          'Agreed review checkpoints and acceptance criteria',
         ],
       },
       {
-        number: 'Stage 3',
-        title: 'Pod Deployment',
+        number: 'Step 3',
+        title: 'Execute',
         description:
-          'Deploy the agreed team and workflows to carry out the work.',
+          'Our team works through documented processes, using appropriate tools and human quality checks to deliver the agreed outputs.',
         typicalOutputs: [
-          'Execution of agreed activities.',
-          'Ongoing quality checks.',
-          'Progress updates.',
+          'Hands-on operational delivery against agreed scope',
+          'Human review and quality control across all outputs',
+          'Transparent milestone updates and progress reporting',
         ],
       },
       {
-        number: 'Stage 4',
-        title: 'Review & Handover',
+        number: 'Step 4',
+        title: 'Review and Improve',
         description:
-          'Review completed work, confirm deliverables and agree on the next steps.',
+          'We share progress, review results against the agreed scope and discuss improvements or ongoing support where useful.',
         typicalOutputs: [
-          'Reviewed deliverables.',
-          'Relevant documentation and updates.',
-          'Handover or continuation plan.',
+          'Formal deliverable review against agreed criteria',
+          'Operational handover and documentation delivery',
+          'Discussion of ongoing managed operational support',
         ],
       },
     ],
@@ -129,9 +129,9 @@ export const howWeWorkPageContent = {
 export const aboutPageContent = {
   hero: {
     title: 'About Ops Foundry',
-    lead: 'Ops Foundry is a human-AI operational infrastructure company helping businesses move important work from backlog to completion.',
+    lead: 'Built to make business operations work better.',
     supporting:
-      'We bring together accountable people, structured workflows and practical technology to help businesses execute consistently.',
+      'Ops Foundry helps growing businesses access reliable operational support without having to build every capability internally. We bring together skilled people, structured workflows and practical AI-enabled tools to turn important work into consistent execution.',
     image: {
       src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=80',
       alt: 'Two business operators reviewing workflow documentation and project priorities in an office workspace',
@@ -139,53 +139,57 @@ export const aboutPageContent = {
     },
   },
   whatWeAreAndWhyWeExist: {
-    heading: 'Why Ops Foundry Exists',
+    heading: 'Why We Exist',
     paragraphs: [
-      'Growing businesses often have important work that remains unfinished because people, processes and tools are not properly coordinated.',
-      'Buying more software or hiring disconnected contractors does not always solve the problem.',
-      'Ops Foundry exists to bridge that execution gap by bringing together accountable human operators, documented workflows and practical AI-enabled tools.',
+      'Good businesses can lose momentum when essential work sits between teams, tools and competing priorities. We created Ops Foundry to make that work easier to organize, deliver and improve.',
     ],
   },
+  howWeOperate: {
+    heading: 'How We Operate',
+    body:
+      'We combine clear scopes, accountable teams, documented workflows and quality oversight. We focus on practical delivery rather than technology for its own sake.',
+  },
+  ourConnection: {
+    heading: 'Our Connection',
+    body:
+      'Ops Foundry is developed within the Telesoftas ecosystem, drawing on technology and operational expertise.',
+  },
   philosophy: {
-    heading: 'Our Human + AI Operational Philosophy',
+    heading: 'Our Operational Philosophy',
     intro:
-      'We use AI to improve operational efficiency, while keeping people accountable for decisions, quality and delivery.',
+      'We combine clear scopes, accountable teams, documented workflows and quality oversight. We focus on practical delivery rather than technology for its own sake.',
     principles: [
       {
         number: '01',
-        title: 'Process Before Automation',
+        title: 'Process Before Tooling',
         description:
-          'Clear workflows come first. Automation supports processes that are already understood.',
+          'Clear workflows come first. Tooling supports processes that are already understood.',
       },
       {
         number: '02',
-        title: 'Human-in-the-Loop Accountability',
+        title: 'Human Accountability',
         description:
           'People remain responsible for reviewing outputs, making decisions and maintaining quality.',
       },
       {
         number: '03',
-        title: 'Scoped, Transparent Execution',
+        title: 'Clear Scopes and Ownership',
         description:
           'Every engagement begins with agreed expectations, deliverables and responsibilities.',
-      },
-      {
-        number: '04',
-        title: 'Connected to Talent Development',
-        description:
-          'Through Ops Foundry Academy, we support practical skills development and professional growth.',
       },
     ],
   },
   companyProfileNotice: {
-    heading: 'Company Profile & Governance Note',
-    body: 'Ops Foundry is committed to accurate, verifiable corporate information. We do not publish fabricated client logos, performance statistics, awards or unverified partnerships. Official company information and approved public claims are published only after verification.',
+    heading: 'Our Connection',
+    body:
+      'Ops Foundry is developed within the Telesoftas ecosystem, drawing on technology and operational expertise.',
   },
   cta: {
-    heading: 'Have operational work that needs to get done?',
-    body: 'Explore a scoped pilot with Ops Foundry or review how our services are structured.',
-    primaryLabel: 'Explore a Pilot',
-    primaryHref: '/pilot',
+    heading: 'Let’s Talk About Your Operations',
+    body:
+      'Tell us where your business needs support. We will discuss the work, define a manageable scope and propose a practical starting point.',
+    primaryLabel: 'Let’s Talk About Your Operations',
+    primaryHref: '/contact',
     secondaryLabel: 'Explore Our Services',
     secondaryHref: '/services',
   },
@@ -194,15 +198,41 @@ export const aboutPageContent = {
 export const pilotPageContent = {
   hero: {
     title: 'Explore a Pilot',
-    lead: 'A pilot is a scoped engagement designed around a defined business problem.',
+    lead: 'Start with the work that matters most.',
     supporting:
-      'Rather than asking your business to commit to a vague, open-ended retainer, Ops Foundry starts with a structured pilot. Together, we define a specific operational problem across Get Online, Get Visible, or Get Customers and agree on clear parameters before work begins.',
+      'Tell us where your business needs support. We will explore the challenge with you and, where there is a fit, prepare a focused proposal with clear deliverables, timing and fees.',
+  },
+  howPilotBegins: {
+    heading: 'How a Pilot Begins',
+    intro:
+      'A structured, low-risk way to experience managed operations before considering ongoing support.',
+    steps: [
+      {
+        number: '1',
+        title: 'Tell us your priority',
+        description:
+          'Choose Get Online, Get Visible, Get Customers or describe another related operational need.',
+      },
+      {
+        number: '2',
+        title: 'We discuss the scope',
+        description:
+          'We clarify the work, expected outputs, dependencies and timing.',
+      },
+      {
+        number: '3',
+        title: 'We propose a pilot',
+        description:
+          'You receive a defined scope, commercial terms, quality expectations and review plan.',
+      },
+    ],
   },
   whyStartWithPilot: {
     heading: 'Why We Start With a Scoped Pilot',
-    body: 'Every business has its own existing tools, communication habits, and bottlenecks. Starting with a focused pilot lets both teams validate working rhythm, documentation standards, communication cadence, and deliverable quality on a well-defined piece of work before considering longer-term operational support.',
+    body:
+      'A focused pilot lets us demonstrate how we work before you consider ongoing support. Every engagement begins with an agreed scope, fixed deliverables, defined fees, and clear success criteria.',
     disclaimer:
-      'Ops Foundry focuses on disciplined operational execution. We do not promise guaranteed revenue, guaranteed customer acquisition numbers, guaranteed conversion rates, or unverified commercial outcomes.',
+      'Ops Foundry focuses on disciplined operational execution. We do not promise guaranteed revenue, guaranteed customer acquisition numbers, or unverified commercial outcomes.',
   },
   tenGovernanceDimensions: {
     heading: 'What to Understand Before Engaging in a Pilot',
@@ -272,10 +302,36 @@ export const pilotPageContent = {
     ],
   },
   formSection: {
-    heading: 'Prepare Your Pilot Consultation Brief',
+    heading: 'Request a Pilot Conversation',
     intro:
-      'Use the form below to structure your pilot brief across the key scoping areas.',
+      'Tell us where your business needs support. We will explore the challenge with you and, where there is a fit, prepare a focused proposal with clear deliverables, timing and fees.',
     statusNotice:
-      'Pilot consultation submissions are not yet open. Please check back soon.',
+      'Pilot consultation submissions are being prepared for public launch.',
+  },
+} as const;
+
+export const contactPageContent = {
+  hero: {
+    title: 'Let’s talk about the work you need done.',
+    lead:
+      'Have a question about Ops Foundry or want to explore a service? Tell us a little about your business and we’ll help you identify the right next step.',
+    primaryCta: {
+      label: 'Explore a Pilot',
+      href: '/pilot',
+    },
+  },
+  pilotCallout: {
+    heading: 'Looking to start with a focused engagement?',
+    body:
+      'If you already know the specific area where you need operational support, skip the general enquiry and request a pilot conversation directly.',
+    ctaLabel: 'Explore a Pilot',
+    ctaHref: '/pilot',
+  },
+  formSection: {
+    heading: 'General Enquiry Form',
+    intro:
+      'Tell us a little about your business and what you would like to discuss. We will help you identify the right next step.',
+    statusNotice:
+      'General enquiry submissions are being prepared for public launch. Public data collection will be activated upon approval of the privacy policy.',
   },
 } as const;

@@ -12,6 +12,7 @@ export type OutboxStatus = z.infer<typeof OutboxStatusSchema>;
 export const OutboxChannelSchema = z.enum([
   'applicant_email',
   'operational_triage_webhook',
+  'corporate_notification_email',
 ]);
 export type OutboxChannel = z.infer<typeof OutboxChannelSchema>;
 

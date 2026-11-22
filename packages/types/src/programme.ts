@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CourseCodeSchema } from './admissions';
+import { CourseCodeSchema } from './admissions.js';
 
 export const ProgrammeFrontmatterSchema = z.object({
   courseId: CourseCodeSchema,

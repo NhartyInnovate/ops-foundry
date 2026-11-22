@@ -1,18 +1,39 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { CorporateHeader } from '../components/corporate-header';
 import { CorporateFooter } from '../components/corporate-footer';
 import { AbstractBrandGeometry } from '../components/abstract-brand-geometry';
+import { EventWebsiteMockup } from '../components/event-website-mockup';
 import {
   heroContent,
-  whyOpsFoundryContent,
+  brandsWeSupportContent,
+  challengeContent,
   operatingPillarsContent,
   servicesContent,
+  whyOpsFoundrySectionContent,
+  selectedWorkContent,
+  pilotOverviewContent,
   finalCtaContent,
 } from '../content/homepage';
+
+export const metadata: Metadata = {
+  title: 'Ops Foundry — Human-AI Operational Infrastructure',
+  description:
+    'Your business has work to do. We help you get it done. Ops Foundry combines managed teams, structured workflows, and AI-enabled tools to help businesses execute.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Ops Foundry — Human-AI Operational Infrastructure',
+    description:
+      'Your business has work to do. We help you get it done. Ops Foundry combines managed teams, structured workflows, and AI-enabled tools to help businesses execute.',
+    url: '/',
+  },
+};
 
 export default function CorporateHomePage() {
   return (
@@ -37,12 +58,19 @@ export default function CorporateHomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column: Core Positioning & CTAs */}
               <div className="lg:col-span-7 space-y-8">
-                <Heading as="h1" size="display">
-                  {heroContent.headlinePrimary}{' '}
-                  <span className="block mt-1 text-foundry-dark">
-                    {heroContent.headlineAccent}
-                  </span>
-                </Heading>
+                <div className="space-y-3">
+                  {'eyebrow' in heroContent && heroContent.eyebrow ? (
+                    <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
+                      {heroContent.eyebrow}
+                    </span>
+                  ) : null}
+                  <Heading as="h1" size="display">
+                    {heroContent.headlinePrimary}{' '}
+                    <span className="block mt-1 text-foundry-dark">
+                      {heroContent.headlineAccent}
+                    </span>
+                  </Heading>
+                </div>
 
                 <Text size="xl" className="max-w-2xl text-gray-600">
                   {heroContent.supportingCopy}
@@ -63,26 +91,13 @@ export default function CorporateHomePage() {
                   </Button>
                 </div>
 
-                {/* Grounded Execution Summary */}
-                <dl className="pt-8 border-t border-foundry-border grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  {heroContent.highlights.map((item) => (
-                    <div key={item.title} className="space-y-1">
-                      <dt className="font-display text-base font-bold text-foundry-dark">
-                        {item.title}
-                      </dt>
-                      <dd className="font-body text-xs text-foundry-secondary leading-relaxed">
-                        {item.description}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
               </div>
 
               {/* Right Column: Prominent Hero Portrait Cutout */}
               <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end items-end self-end -mb-16 sm:-mb-20 lg:-mb-28">
                 <Image
                   src="/images/brand/hero/hero-professional-woman.png"
-                  alt="Smiling African professional woman"
+                  alt="Smiling professional woman in business attire"
                   width={1200}
                   height={800}
                   priority
@@ -94,66 +109,89 @@ export default function CorporateHomePage() {
           </Container>
         </Section>
 
-        {/* Section 2 — The Execution Capacity Problem */}
-        <Section id="why-ops-foundry" tone="canvas" spacing="lg" border="both" className="bg-foundry-muted">
+        {/* Social Proof Strip — Brands We've Supported */}
+        <Section
+          id="brands-supported"
+          tone="dark"
+          spacing="none"
+          border="both"
+          className="py-8 sm:py-10 bg-foundry-dark border-foundry-dark-border"
+        >
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              {/* Left Column: Core Thesis & Documentary Image */}
-              <div className="lg:col-span-5 space-y-8">
-                <div className="space-y-4">
-                  <Heading as="h2" size="xl">
-                    {whyOpsFoundryContent.headline}
-                  </Heading>
-                  <Text size="base" className="text-gray-600">
-                    {whyOpsFoundryContent.lead}
-                  </Text>
-                </div>
-
-                <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-xs">
-                  <div className="relative aspect-[4/3] w-full bg-gray-100">
-                    <Image
-                      src={whyOpsFoundryContent.image.src}
-                      alt={whyOpsFoundryContent.image.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 38vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="p-4 text-xs text-foundry-secondary leading-relaxed border-t border-foundry-border">
-                    {whyOpsFoundryContent.image.caption}
-                  </figcaption>
-                </figure>
-              </div>
-
-              {/* Right Column: Three Concise Problem/Solution Statements & Concluding Statement */}
-              <div className="lg:col-span-7 space-y-8">
-                <div className="border-t border-foundry-border divide-y divide-foundry-border">
-                  {whyOpsFoundryContent.contrasts.map((item) => (
-                    <div
-                      key={item.challenge}
-                      className="py-6 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6 items-baseline"
-                    >
-                      <h3 className="sm:col-span-5 font-display text-base font-bold text-foundry-dark">
-                        {item.challenge}
-                      </h3>
-                      <p className="sm:col-span-7 font-body text-sm text-foundry-secondary leading-relaxed">
-                        {item.resolution}
-                      </p>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-12">
+              <p className="font-display text-xs font-bold tracking-widest uppercase text-gray-400 shrink-0">
+                {brandsWeSupportContent.heading}
+              </p>
+              <div className="flex flex-wrap items-center gap-8 sm:gap-12 lg:gap-16">
+                {brandsWeSupportContent.organisations.map((org) => {
+                  const hasLogo = Boolean(org.logo);
+                  return (
+                    <div key={org.name} className="flex items-center">
+                      {hasLogo ? (
+                        <Image
+                          src={org.logo}
+                          alt={org.name}
+                          width={org.width}
+                          height={org.height}
+                          className="h-7 sm:h-8 w-auto object-contain opacity-85 hover:opacity-100 transition-opacity"
+                        />
+                      ) : (
+                        <span className="font-display text-base sm:text-lg font-medium tracking-tight text-slate-200/90 hover:text-white transition-colors select-none">
+                          {org.name}
+                        </span>
+                      )}
                     </div>
-                  ))}
-                </div>
-
-                <blockquote className="rounded-2xl bg-white border-l-4 border-foundry-dark p-6 sm:p-7 shadow-xs">
-                  <p className="font-display text-base sm:text-lg font-bold text-foundry-dark leading-snug">
-                    {whyOpsFoundryContent.editorialCallout}
-                  </p>
-                </blockquote>
+                  );
+                })}
               </div>
             </div>
           </Container>
         </Section>
 
-        {/* Section 3 — Three Pillars */}
+        {/* Section 2 — The Challenge */}
+        <Section id="challenge" tone="canvas" spacing="lg" border="both" className="bg-foundry-muted">
+          <Container>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Column: Core Thesis & Callout Card */}
+              <div className="lg:col-span-7 space-y-8">
+                <div className="space-y-4">
+                  <Heading as="h2" size="xl">
+                    {challengeContent.headline}
+                  </Heading>
+                  <Text size="base" className="text-gray-600">
+                    {challengeContent.lead}
+                  </Text>
+                </div>
+
+                <blockquote className="rounded-2xl bg-white border-l-4 border-foundry-dark p-6 sm:p-7 shadow-xs">
+                  <p className="font-display text-base sm:text-lg font-bold text-foundry-dark leading-snug">
+                    {challengeContent.editorialCallout}
+                  </p>
+                </blockquote>
+              </div>
+
+              {/* Right Column: Preserved Documentary Image */}
+              <div className="lg:col-span-5">
+                <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-xs">
+                  <div className="relative aspect-[4/3] w-full bg-gray-100">
+                    <Image
+                      src={challengeContent.image.src}
+                      alt={challengeContent.image.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="p-4 text-xs text-foundry-secondary leading-relaxed border-t border-foundry-border">
+                    {challengeContent.image.caption}
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Section 3 — Operating Model (Three Pillars) */}
         <Section id="operating-pillars" tone="pure" spacing="lg">
           <Container>
             <div className="max-w-3xl mb-12">
@@ -183,33 +221,25 @@ export default function CorporateHomePage() {
                 </article>
               ))}
             </div>
+
+            <div className="mt-10 sm:mt-12 flex items-center justify-start">
+              <Button asChild variant="primary" size="lg">
+                <Link href={operatingPillarsContent.ctaHref}>
+                  <span>{operatingPillarsContent.ctaLabel}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
           </Container>
         </Section>
 
-        {/* Section 4 — Three Service Lines */}
+        {/* Section 4 — Services (Three Service Lines) */}
         <Section id="services" tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-foundry-border">
-              <div className="max-w-2xl space-y-3">
-                <Heading as="h2" size="xl">
-                  {servicesContent.headline}
-                </Heading>
-                <Text size="lg" className="text-gray-600">
-                  {servicesContent.intro}
-                </Text>
-              </div>
-              <div className="flex flex-col lg:items-end gap-3 shrink-0">
-                <p className="font-body text-xs text-foundry-secondary max-w-xs lg:text-right">
-                  {servicesContent.scopeNotice}
-                </p>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-foundry-dark hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foundry-dark"
-                >
-                  <span>View Services Overview</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
+            <div className="max-w-3xl mb-12">
+              <Heading as="h2" size="xl">
+                {servicesContent.headline}
+              </Heading>
             </div>
 
             <div className="divide-y divide-foundry-border">
@@ -217,39 +247,19 @@ export default function CorporateHomePage() {
                 <article
                   key={service.id}
                   id={service.anchorId}
-                  className="py-12 sm:py-14 first:pt-12 last:pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-mt-24"
+                  className="py-12 sm:py-14 first:pt-4 last:pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-mt-24"
                 >
-                  <div className="lg:col-span-7 space-y-5">
-                    <div className="space-y-2">
+                  <div className="lg:col-span-7 space-y-6">
+                    <div className="space-y-3">
                       <Heading as="h3" size="lg">
                         {service.title}
                       </Heading>
-                      <Text size="lg" className="text-gray-700 font-medium">
+                      <Text size="lg" className="text-gray-700 font-medium leading-relaxed">
                         {service.description}
                       </Text>
                     </div>
 
-                    <div className="space-y-2.5 pt-1">
-                      <p className="font-display text-xs font-bold text-foundry-dark">
-                        Representative Focus Areas (Indicative Scope):
-                      </p>
-                      <ul className="space-y-2">
-                        {service.focusAreas.map((area) => (
-                          <li
-                            key={area}
-                            className="flex items-start gap-2.5 text-sm text-gray-700"
-                          >
-                            <CheckCircle2
-                              className="h-4 w-4 text-foundry-dark shrink-0 mt-0.5"
-                              aria-hidden="true"
-                            />
-                            <span>{area}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-3 flex flex-wrap items-center gap-4">
+                    <div className="pt-2 flex flex-wrap items-center gap-4">
                       <Button asChild variant="primary" size="md">
                         <Link href={service.ctaHref}>
                           <span>{service.ctaLabel}</span>
@@ -286,7 +296,82 @@ export default function CorporateHomePage() {
           </Container>
         </Section>
 
-        {/* Section 5 — Final CTA (Explore a Pilot) */}
+        {/* Section 5 — Why Ops Foundry */}
+        <Section id="why-ops-foundry" tone="canvas" spacing="lg" border="top" className="bg-foundry-muted">
+          <Container>
+            <div className="rounded-3xl bg-white border border-foundry-border p-8 sm:p-12 lg:p-16 shadow-xs">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <div className="lg:col-span-7 space-y-4">
+                  <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
+                    {whyOpsFoundrySectionContent.heading}
+                  </span>
+                  <Heading as="h2" size="xl" className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foundry-dark leading-snug">
+                    {whyOpsFoundrySectionContent.headline}
+                  </Heading>
+                </div>
+                <div className="lg:col-span-5 lg:border-l lg:border-foundry-border lg:pl-10">
+                  <Text size="lg" className="text-gray-600 leading-relaxed font-medium">
+                    {whyOpsFoundrySectionContent.supportingCopy}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Section 6 — Selected Work */}
+        {selectedWorkContent.published && selectedWorkContent.projects.length > 0 ? (
+          <Section id="selected-work" tone="pure" spacing="lg" border="top" className="scroll-mt-24">
+            <Container>
+              <div className="max-w-3xl mb-10 sm:mb-14 space-y-3">
+                <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
+                  {selectedWorkContent.heading}
+                </span>
+                <Heading as="h2" size="xl">
+                  {selectedWorkContent.headline}
+                </Heading>
+              </div>
+
+              <div className="space-y-12">
+                {selectedWorkContent.projects.map((project) => (
+                  <article
+                    key={project.id}
+                    className="rounded-3xl bg-foundry-muted/50 border border-foundry-border p-5 sm:p-10 lg:p-12 shadow-xs transition-all duration-300 hover:border-slate-300"
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
+                      {/* Visual Mockup Column (Occupies ~58% width on desktop: lg:col-span-7) */}
+                      <div className="lg:col-span-7 w-full">
+                        <EventWebsiteMockup
+                          imageSrc={project.image?.src}
+                          imageAlt={project.image?.alt}
+                        />
+                      </div>
+
+                      {/* Content Column (Occupies ~42% width on desktop: lg:col-span-5) */}
+                      <div className="lg:col-span-5 space-y-6">
+                        <div className="space-y-4">
+                          <Heading as="h3" size="lg" className="text-2xl sm:text-3xl font-bold text-foundry-dark leading-snug">
+                            {project.title}
+                          </Heading>
+                          <Text size="lg" className="text-gray-600 leading-relaxed font-normal">
+                            {project.supportingCopy}
+                          </Text>
+                        </div>
+
+                        <div className="pt-4 border-t border-foundry-border flex flex-wrap items-center justify-between gap-3 text-xs text-foundry-secondary">
+                          <span className="font-medium text-foundry-dark/80">Telesoftas Ecosystem</span>
+                          <span className="text-[11px] text-gray-500">Illustrative concept preview</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </Container>
+          </Section>
+        ) : null}
+
+        {/* Section 7 — Final CTA (Explore a Pilot) */}
         <Section id="explore-pilot" tone="pure" spacing="lg" border="top">
           <Container>
             <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16">
@@ -328,39 +413,18 @@ export default function CorporateHomePage() {
                   </div>
                 </div>
 
-                {/* Right Column: Pilot Scoping Preparation Summary */}
+                {/* Right Column: Pilot Focus Card */}
                 <div className="lg:col-span-5">
-                  <div className="rounded-2xl bg-white border border-foundry-border p-6 sm:p-8 space-y-6 shadow-xs">
-                    <div className="space-y-1">
-                      <h3 className="font-display text-base font-bold text-foundry-dark">
-                        What We Review in a Pilot Conversation
-                      </h3>
-                      <p className="font-body text-xs text-foundry-secondary">
-                        Each pilot begins by aligning on three practical questions:
-                      </p>
-                    </div>
-
-                    <ol className="space-y-4">
-                      {finalCtaContent.pilotPreparationItems.map((item, index) => (
-                        <li key={item.label} className="flex items-start gap-3.5">
-                          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-foundry-dark font-display text-xs font-bold text-white">
-                            {index + 1}
-                          </span>
-                          <div className="space-y-0.5">
-                            <p className="font-display text-sm font-semibold text-foundry-dark">
-                              {item.label}
-                            </p>
-                            <p className="font-body text-xs text-foundry-secondary leading-relaxed">
-                              {item.detail}
-                            </p>
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-
-                    <p className="pt-4 border-t border-gray-100 font-body text-xs text-foundry-secondary leading-relaxed">
-                      {finalCtaContent.phaseNotice}
-                    </p>
+                  <div className="rounded-2xl bg-white border border-foundry-border p-6 sm:p-8 space-y-4 shadow-xs">
+                    <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
+                      {pilotOverviewContent.eyebrow}
+                    </span>
+                    <Heading as="h3" size="md" className="text-xl sm:text-2xl font-bold text-foundry-dark leading-snug">
+                      {pilotOverviewContent.headline}
+                    </Heading>
+                    <Text size="base" className="text-gray-600 leading-relaxed font-normal">
+                      {pilotOverviewContent.body}
+                    </Text>
                   </div>
                 </div>
               </div>

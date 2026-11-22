@@ -8,11 +8,30 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { CorporateHeader } from '../../../components/corporate-header';
 import { CorporateFooter } from '../../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../../components/abstract-brand-geometry';
+import { getCorporateSiteUrl } from '../../../content/site-config';
 import {
   serviceDetailsBySlug,
   allServiceSlugs,
   type ServiceSlug,
 } from '../../../content/services';
+
+const serviceSeoData: Record<ServiceSlug, { title: string; description: string }> = {
+  'get-online': {
+    title: 'Get Online — Website & Digital Presence Operations | Ops Foundry',
+    description:
+      'Managed website launches, landing pages, CMS publishing, and routine digital upkeep powered by human specialists and structured operational workflows.',
+  },
+  'get-visible': {
+    title: 'Get Visible — Content & Digital Marketing Operations | Ops Foundry',
+    description:
+      'Consistent multi-channel content operations, publishing calendars, asset repurposing, and distribution reporting for growing businesses.',
+  },
+  'get-customers': {
+    title: 'Get Customers — Prospecting & Pipeline Operations | Ops Foundry',
+    description:
+      'Structured B2B prospect research, CRM hygiene, outreach coordination, and pipeline tracking delivered by dedicated operational support teams.',
+  },
+};
 
 export const dynamicParams = false;
 
@@ -26,7 +45,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = serviceDetailsBySlug[slug as ServiceSlug];
+  const typedSlug = slug as ServiceSlug;
+  const service = serviceDetailsBySlug[typedSlug];
 
   if (!service) {
     return {
@@ -34,12 +54,21 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  const seo = serviceSeoData[typedSlug] || {
     title: `${service.title} — Ops Foundry Services`,
     description: `${service.lead} ${service.heroSummary}`,
+  };
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: `/services/${slug}`,
+    },
     openGraph: {
-      title: `${service.title} — Ops Foundry Services`,
-      description: `${service.lead} ${service.heroSummary}`,
+      title: seo.title,
+      description: seo.description,
+      url: `/services/${slug}`,
       type: 'website',
     },
   };
@@ -51,14 +80,70 @@ export default async function ServiceDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const service = serviceDetailsBySlug[slug as ServiceSlug];
+  const typedSlug = slug as ServiceSlug;
+  const service = serviceDetailsBySlug[typedSlug];
 
   if (!service) {
     notFound();
   }
 
+  const siteUrl = getCorporateSiteUrl();
+  const seo = serviceSeoData[typedSlug] || {
+    title: service.title,
+    description: `${service.lead} ${service.heroSummary}`,
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteUrl}/services/${slug}#service`,
+    name: service.title,
+    description: seo.description,
+    provider: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Ops Foundry',
+      url: siteUrl,
+    },
+    serviceType: service.title,
+    url: `${siteUrl}/services/${slug}`,
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${siteUrl}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: `${siteUrl}/services`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.title,
+        item: `${siteUrl}/services/${slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-foundry-canvas text-foundry-dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <CorporateHeader />
 
       <main id="main-content" className="flex-1">
@@ -183,40 +268,30 @@ export default async function ServiceDetailPage({
         {/* Section 3 — Representative Activities & Deliverables */}
         <Section tone="canvas" spacing="lg" border="bottom">
           <Container>
-            <div className="max-w-3xl space-y-4 mb-10">
+            <div className="max-w-3xl mb-8 sm:mb-10">
               <Heading as="h2" size="xl">
                 {service.activitiesHeading}
               </Heading>
-              <p className="rounded-xl border border-foundry-border bg-white px-4 py-3 text-xs text-gray-700 leading-relaxed">
-                {service.activitiesDisclaimer}
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {service.typicalActivities.map((group) => (
-                <div
-                  key={group.category}
-                  className="rounded-2xl border border-foundry-border bg-white p-7 space-y-4 shadow-xs"
-                >
-                  <h3 className="font-display text-base font-bold text-foundry-dark">
-                    {group.category}
-                  </h3>
-                  <ul className="space-y-3">
-                    {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed"
-                      >
-                        <CheckCircle2
-                          className="h-4 w-4 text-foundry-dark shrink-0 mt-0.5"
-                          aria-hidden="true"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {service.typicalActivities
+                .flatMap((group) => group.items)
+                .map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-foundry-border bg-white p-5 sm:p-6 shadow-xs flex items-start gap-3.5 transition-all hover:border-foundry-dark/30 hover:shadow-sm"
+                  >
+                    <CheckCircle2
+                      className="h-5 w-5 text-foundry-dark shrink-0 mt-0.5"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                    <h3 className="font-display font-semibold text-base sm:text-lg text-foundry-dark leading-snug">
+                      {item}
+                    </h3>
+                  </div>
+                ))}
             </div>
           </Container>
         </Section>
@@ -236,7 +311,7 @@ export default async function ServiceDetailPage({
                   </Text>
                 </div>
 
-                <div className="rounded-2xl border border-foundry-border bg-foundry-muted p-6 sm:p-7 space-y-3.5">
+                <div className="rounded-2xl border border-foundry-border bg-foundry-muted p-6 sm:p-7 space-y-4">
                   <div className="flex items-center gap-2.5">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-foundry-dark font-display text-xs font-bold text-white">
                       01
@@ -245,15 +320,26 @@ export default async function ServiceDetailPage({
                       {service.potentialEngagement.title}
                     </h3>
                   </div>
+
                   <p className="font-body text-sm text-gray-700 leading-relaxed">
-                    {service.potentialEngagement.summary}
+                    {service.potentialEngagement.content}
                   </p>
-                  <p className="font-body text-xs text-foundry-secondary">
-                    {service.potentialEngagement.suitableWhen}
-                  </p>
-                  <p className="font-body text-xs text-foundry-secondary italic border-t border-foundry-border pt-3">
-                    {service.potentialEngagement.disclaimer}
-                  </p>
+
+                  {service.potentialEngagement.relevantWork ? (
+                    <div className="text-xs sm:text-sm text-gray-700 leading-relaxed pt-0.5">
+                      <span className="font-semibold text-foundry-dark">Relevant work: </span>
+                      <span>{service.potentialEngagement.relevantWork}</span>
+                    </div>
+                  ) : null}
+
+                  {service.potentialEngagement.scopeBoundary ? (
+                    <div className="border-t border-foundry-border pt-3.5">
+                      <p className="font-body text-xs sm:text-sm text-foundry-secondary leading-relaxed">
+                        <span className="font-semibold text-foundry-dark">Scope boundary: </span>
+                        {service.potentialEngagement.scopeBoundary}
+                      </p>
+                    </div>
+                  ) : null}
                 </div>
               </div>
 

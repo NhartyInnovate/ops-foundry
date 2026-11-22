@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@opsfoundry/ui';
-import { ArrowUpRight } from 'lucide-react';
 import { corporateNavigation } from '../content/homepage';
 
 export function CorporateFooter() {
@@ -52,14 +51,6 @@ export function CorporateFooter() {
               Services
             </h2>
             <ul className="space-y-2.5 text-sm text-gray-300">
-              <li>
-                <Link
-                  href={corporateNavigation.servicesOverview.href}
-                  className="inline-flex items-center gap-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
-                >
-                  <span>Services Overview</span>
-                </Link>
-              </li>
               {corporateNavigation.serviceItems.map((service) => (
                 <li key={service.id}>
                   <Link
@@ -73,10 +64,10 @@ export function CorporateFooter() {
             </ul>
           </div>
 
-          {/* Column 3: Corporate Navigation & Ecosystem */}
+          {/* Column 3: Company */}
           <div className="md:col-span-4 space-y-3">
             <h2 className="font-display text-sm font-bold text-white">
-              Company &amp; Ecosystem
+              Company
             </h2>
             <ul className="space-y-2.5 text-sm text-gray-300">
               <li>
@@ -92,24 +83,15 @@ export function CorporateFooter() {
                   href="/about"
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
-                  About Ops Foundry
+                  About
                 </Link>
               </li>
               <li>
-                <a
-                  href={corporateNavigation.academyBridge.href}
-                  className="inline-flex items-center gap-1.5 text-gray-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
-                >
-                  <span>{corporateNavigation.academyBridge.label}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-gray-300" aria-hidden="true" />
-                </a>
-              </li>
-              <li>
                 <Link
-                  href="/pilot"
-                  className="inline-flex items-center gap-2 text-white font-semibold underline underline-offset-4 hover:text-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                  href="/contact"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
                 >
-                  <span>Explore a Pilot</span>
+                  Contact
                 </Link>
               </li>
             </ul>
