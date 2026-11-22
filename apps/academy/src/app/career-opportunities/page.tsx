@@ -233,7 +233,7 @@ export default function CareerOpportunitiesPage() {
                   </Link>
                 </Button>
                 <Button asChild variant="inverseOutline" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">Explore Programmes</Link>
+                  <Link href="/how-we-learn">How Learning Works</Link>
                 </Button>
               </div>
             </div>

@@ -72,7 +72,7 @@ export default function AdmissionsPage() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">Explore Programmes</Link>
+                  <Link href="/pathways">Explore Career Pathways</Link>
                 </Button>
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function AdmissionsPage() {
                 ))}
                 <div className="pt-2">
                   <Button asChild variant="outline" size="md">
-                    <Link href="/programmes">Compare Planned Programme Tracks</Link>
+                    <Link href="/pathways">Explore Career Pathways</Link>
                   </Button>
                 </div>
               </div>

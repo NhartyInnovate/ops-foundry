@@ -1,15 +1,41 @@
 import type { ProgrammeFrontmatter } from '@opsfoundry/types';
 
 /**
- * Ops Foundry Academy — Programme Catalogue Content Module
+ * Ops Foundry Academy — Programme Architecture & Content Module
  *
- * Source of Truth: Ops_Foundry_Academy_Website_Master_Brief.docx (Sections 02, 05, 11)
+ * Source of Truth: Ops_Foundry_Academy_Website_Master_Brief.docx (Sections 01, 02, 05, 06, 07, 11)
  *
- * Architectural Boundary:
- * A Programme describes the actual training offer: schedule, tuition, delivery format,
- * core/specialization structure, and cohort intake status.
- * It is distinct from a Career Pathway, which describes the professional domain and role fit.
+ * Architectural Boundary (Master Brief Section 05):
+ * A Career Pathway describes the kind of work a learner may pursue, the skills
+ * required, and the operational domains behind modern businesses.
+ * A Training Programme describes the actual training offer, including its structure,
+ * schedule, price, delivery mode, and cohort intake once approved.
+ *
+ * Publication Governance (Master Brief Section 11):
+ * "Keep programmes, scholarship listings and fees unpublished until approved;
+ * allow site to launch with pathways and registration of interest."
+ *
+ * All launch programmes are held in:
+ * - programmeStatus: 'upcoming'
+ * - publicationStatus: 'pending_approval'
+ * - ctaMode: 'register_interest'
+ *
+ * Internal Draft vs. Public Content Separation (Stage 5.1):
+ * Unsupported programme-specific details (specific software vendors, unapproved
+ * prerequisites, detailed module rubrics, and provisional hours) remain internal
+ * draft data structures only and are NOT exposed on public pages.
  */
+
+/**
+ * Master Brief Section 11 Publication Switch (Stage 5.3):
+ * "Keep programmes, scholarship listings and fees unpublished until approved;
+ * allow site to launch with pathways and registration of interest."
+ *
+ * Set to `false` (Decision B — Strict Public Launch Boundary).
+ * Routes `/programmes` and `/programmes/[slug]` return 404 until leadership
+ * formally approves publication.
+ */
+export const IS_PROGRAMMES_PUBLIC_APPROVED = false;
 
 export type ProgrammeLifecycleStatus =
   | 'draft'
@@ -20,6 +46,11 @@ export type ProgrammeLifecycleStatus =
   | 'closed'
   | 'archived';
 
+export type ProgrammePublicationStatus =
+  | 'draft'
+  | 'pending_approval'
+  | 'published';
+
 export type ProgrammeCtaMode = 'apply' | 'join_waitlist' | 'register_interest';
 
 export type ProgrammeSlug =
@@ -27,23 +58,44 @@ export type ProgrammeSlug =
   | 'content-operations'
   | 'web-digital-operations';
 
+export interface ProgrammeSpecificationArea {
+  area: string;
+  status: 'Under review' | 'Pending approval' | 'Pending partner confirmation' | 'Confirmed';
+  explanation: string;
+}
+
 export interface AcademyProgrammeSlot extends ProgrammeFrontmatter {
   id: string;
+  courseId: 'COURSE_01' | 'COURSE_02' | 'COURSE_03';
   slug: ProgrammeSlug;
   trackNumber: '01' | '02' | '03';
   slotLabel: string;
+  title: string;
+  provisionalTitle: string | null;
+  isOfficialTitle: boolean;
   statusLabel: string;
   programmeStatus: ProgrammeLifecycleStatus;
+  publicationStatus: ProgrammePublicationStatus;
   ctaMode: ProgrammeCtaMode;
+  cta: {
+    label: string;
+    href: string;
+    note: string;
+  };
   linkedPathwaySlug: string;
+  linkedPathway: {
+    slug: string;
+    title: string;
+    href: string;
+    relationshipNote: string;
+  };
   readinessNote: string;
   overviewParagraphs: string[];
-  pendingSpecificationItems: {
-    area: string;
-    status: string;
-    explanation: string;
-  }[];
-  // Operational Governance fields (Section 05 & 11)
+
+  // Reusable tracking of specification areas undergoing sign-off
+  pendingSpecificationItems: ProgrammeSpecificationArea[];
+
+  // Legacy compatibility fields
   scheduleGovernance: {
     durationNote: string;
     provisionalModelNote: string;
@@ -63,11 +115,10 @@ export interface AcademyProgrammeSlot extends ProgrammeFrontmatter {
  * Three launch programmes are confirmed: Growth Operations, Content Operations,
  * and Web & Digital Operations.
  *
- * All three programmes are currently set to 'upcoming' with 'register_interest' CTA mode.
- * In keeping with strict publication controls, no programme is marked 'open' prior to
- * verified leadership sign-off on cohort dates, capacity, format, and fees.
- * The provisional 8-week Core + 8-week specialization model remains a planning
- * assumption and is explicitly not published as an approved public schedule.
+ * Customer & Community Operations is an upcoming career pathway and is
+ * explicitly NOT a launch programme or open for first-cohort admissions.
+ *
+ * All three programmes remain in 'upcoming' / 'pending_approval' status.
  */
 export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
   {
@@ -81,8 +132,21 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
     isOfficialTitle: true,
     statusLabel: 'Upcoming (Register Interest)',
     programmeStatus: 'upcoming',
+    publicationStatus: 'pending_approval',
     ctaMode: 'register_interest',
+    cta: {
+      label: 'Register Interest',
+      href: '/apply?programme=growth-operations',
+      note: 'Cohort applications open formally upon curriculum and schedule sign-off. Prospective learners can register interest today.',
+    },
     linkedPathwaySlug: 'growth-operations',
+    linkedPathway: {
+      slug: 'growth-operations',
+      title: 'Growth Operations',
+      href: '/pathways/growth-operations',
+      relationshipNote:
+        'This training programme develops practical capability for the Growth Operations career pathway. The pathway describes typical commercial operations responsibilities and workplace roles.',
+    },
     summary:
       'Practical training in market research, prospect data verification, CRM organization, and commercial pipeline workflows designed around modern business operations.',
     duration: 'Schedule being finalised prior to cohort opening',
@@ -103,23 +167,6 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
       'The Growth Operations Programme prepares learners for practical commercial operations. Connected to Ops Foundry’s managed services model, this course focuses on how high-performing teams research target accounts, maintain CRM hygiene, and manage pipeline cadences.',
       'Training progresses from the foundational Ops Foundry Core—covering digital productivity, clear communication, structured workflows, and responsible AI use—into specialized commercial execution, realistic pipeline tasks, and supervised project assignments.',
     ],
-    scheduleGovernance: {
-      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
-      provisionalModelNote:
-        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
-      isConfirmed: false,
-    },
-    tuitionGovernance: {
-      isConfirmed: false,
-      policyNote:
-        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
-    },
-    outcomes: [
-      'Conduct rigorous desk research to identify and qualify target commercial prospects.',
-      'Organize and maintain clean, audit-ready data in modern CRM platforms.',
-      'Execute outbound pipeline workflows and track commercial responses accurately.',
-      'Synthesize operational pipeline reports for commercial leaders with clarity and precision.',
-    ],
     pendingSpecificationItems: [
       {
         area: 'Cohort Schedule & Dates',
@@ -137,7 +184,7 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
         area: 'Curriculum Modules & Assessment Rules',
         status: 'Under review',
         explanation:
-          'Detailed module syllabi, practical assignments, and credential criteria are in final editorial preparation.',
+          'Detailed module syllabi, practical assignments, and credential criteria are undergoing curriculum sign-off.',
       },
       {
         area: 'Tuition & Payment Installments',
@@ -152,6 +199,18 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
           'Approved funding opportunities and application guidelines will appear here once partner agreements are finalized.',
       },
     ],
+    scheduleGovernance: {
+      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
+      provisionalModelNote:
+        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
+      isConfirmed: false,
+    },
+    tuitionGovernance: {
+      isConfirmed: false,
+      policyNote:
+        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
+    },
+    outcomes: [],
   },
   {
     id: 'prog-content-ops',
@@ -164,8 +223,21 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
     isOfficialTitle: true,
     statusLabel: 'Upcoming (Register Interest)',
     programmeStatus: 'upcoming',
+    publicationStatus: 'pending_approval',
     ctaMode: 'register_interest',
+    cta: {
+      label: 'Register Interest',
+      href: '/apply?programme=content-operations',
+      note: 'Cohort applications open formally upon curriculum and schedule sign-off. Prospective learners can register interest today.',
+    },
     linkedPathwaySlug: 'content-operations',
+    linkedPathway: {
+      slug: 'content-operations',
+      title: 'Content Operations',
+      href: '/pathways/content-operations',
+      relationshipNote:
+        'This training programme develops practical capability for the Content Operations career pathway. The pathway describes typical digital editorial responsibilities and publishing workflows.',
+    },
     summary:
       'Practical training in digital copywriting, editorial calendar management, CMS staging, and structured asset workflows.',
     duration: 'Schedule being finalised prior to cohort opening',
@@ -186,23 +258,6 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
       'The Content Operations Programme equips learners to organize, draft, proofread, and stage digital content across modern publishing platforms. Grounded in actual operational workflows, learners develop the discipline required for dependable digital publishing.',
       'Learners begin with the shared Ops Foundry Core before focusing on editorial review cycles, brand consistency, multi-channel scheduling, and responsible human-in-the-loop AI assistance.',
     ],
-    scheduleGovernance: {
-      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
-      provisionalModelNote:
-        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
-      isConfirmed: false,
-    },
-    tuitionGovernance: {
-      isConfirmed: false,
-      policyNote:
-        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
-    },
-    outcomes: [
-      'Draft clear, concise written copy aligned with specific brand and editorial guidelines.',
-      'Stage, format, and schedule digital assets accurately across content management systems.',
-      'Manage editorial calendars and coordinate cross-functional publication deadlines.',
-      'Apply responsible AI tools for drafting and editing while maintaining rigorous human fact-checking.',
-    ],
     pendingSpecificationItems: [
       {
         area: 'Cohort Schedule & Dates',
@@ -220,7 +275,7 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
         area: 'Curriculum Modules & Assessment Rules',
         status: 'Under review',
         explanation:
-          'Detailed module syllabi, practical assignments, and credential criteria are in final editorial preparation.',
+          'Detailed module syllabi, practical assignments, and credential criteria are undergoing curriculum sign-off.',
       },
       {
         area: 'Tuition & Payment Installments',
@@ -235,6 +290,18 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
           'Approved funding opportunities and application guidelines will appear here once partner agreements are finalized.',
       },
     ],
+    scheduleGovernance: {
+      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
+      provisionalModelNote:
+        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
+      isConfirmed: false,
+    },
+    tuitionGovernance: {
+      isConfirmed: false,
+      policyNote:
+        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
+    },
+    outcomes: [],
   },
   {
     id: 'prog-web-digital-ops',
@@ -247,8 +314,21 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
     isOfficialTitle: true,
     statusLabel: 'Upcoming (Register Interest)',
     programmeStatus: 'upcoming',
+    publicationStatus: 'pending_approval',
     ctaMode: 'register_interest',
+    cta: {
+      label: 'Register Interest',
+      href: '/apply?programme=web-digital-operations',
+      note: 'Cohort applications open formally upon curriculum and schedule sign-off. Prospective learners can register interest today.',
+    },
     linkedPathwaySlug: 'web-digital-operations',
+    linkedPathway: {
+      slug: 'web-digital-operations',
+      title: 'Web & Digital Operations',
+      href: '/pathways/web-digital-operations',
+      relationshipNote:
+        'This training programme develops practical capability for the Web & Digital Operations career pathway. The pathway describes typical website maintenance tasks, QA procedures, and digital operations.',
+    },
     summary:
       'Hands-on training in website page construction, CMS management, quality assurance testing, and form integration workflows.',
     duration: 'Schedule being finalised prior to cohort opening',
@@ -269,23 +349,6 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
       'The Web & Digital Operations Programme trains individuals to maintain and troubleshoot modern digital touchpoints. Learners practice building responsive pages, testing forms, auditing site performance, and resolving routine operational glitches.',
       'Starting with foundational digital workflow principles in the Ops Foundry Core, learners move into hands-on web tasks, quality assurance testing, and digital maintenance scenarios.',
     ],
-    scheduleGovernance: {
-      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
-      provisionalModelNote:
-        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
-      isConfirmed: false,
-    },
-    tuitionGovernance: {
-      isConfirmed: false,
-      policyNote:
-        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
-    },
-    outcomes: [
-      'Build and update web pages reliably using modern CMS platforms and layout builders.',
-      'Execute structured QA checklists covering form submissions, broken links, and responsive layouts.',
-      'Verify digital integrations between site forms and operational CRM/email platforms.',
-      'Document troubleshooting steps clearly to maintain technical continuity across teams.',
-    ],
     pendingSpecificationItems: [
       {
         area: 'Cohort Schedule & Dates',
@@ -303,7 +366,7 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
         area: 'Curriculum Modules & Assessment Rules',
         status: 'Under review',
         explanation:
-          'Detailed module syllabi, practical assignments, and credential criteria are in final editorial preparation.',
+          'Detailed module syllabi, practical assignments, and credential criteria are undergoing curriculum sign-off.',
       },
       {
         area: 'Tuition & Payment Installments',
@@ -318,6 +381,18 @@ export const plannedAcademyProgrammes: AcademyProgrammeSlot[] = [
           'Approved funding opportunities and application guidelines will appear here once partner agreements are finalized.',
       },
     ],
+    scheduleGovernance: {
+      durationNote: 'Official programme duration and weekly schedule are undergoing sign-off.',
+      provisionalModelNote:
+        'A multi-week model with shared foundation core and domain specialization is under review. Exact dates will be published upon curriculum approval.',
+      isConfirmed: false,
+    },
+    tuitionGovernance: {
+      isConfirmed: false,
+      policyNote:
+        'Tuition amounts, inclusions, installment arrangements, and refund policies will appear only when formally approved by leadership.',
+    },
+    outcomes: [],
   },
 ];
 
@@ -338,7 +413,15 @@ export const programmesCataloguePageContent = {
   },
   publicationNotice: {
     heading: 'Programme Specification & Intake Status',
-    body: 'Three launch programmes are planned for the Academy catalogue. In keeping with strict publication controls, official start dates, curriculum modules, weekly schedules, and tuition details are undergoing final confirmation prior to opening public applications. Prospective learners can review the programme focus areas and register their interest below.',
+    body: 'Three launch programmes are planned for the Academy catalogue. In keeping with strict publication controls (Master Brief Section 11), official start dates, curriculum modules, weekly schedules, and tuition details are undergoing final confirmation prior to opening public applications. Prospective learners can review the programme focus areas and register their interest below.',
+  },
+  pathwayDistinction: {
+    heading: 'Understanding Programmes and Career Pathways',
+    body: 'Ops Foundry Academy maintains a clear distinction between career pathways and training programmes:',
+    pathwayDefinition:
+      'A Career Pathway describes the kind of work a professional performs, the qualities that help practitioners thrive, and the operational roles behind growing businesses.',
+    programmeDefinition:
+      'A Training Programme describes the structured training offer—including curriculum modules, schedule, tuition, delivery mode, and cohort intake once approved.',
   },
   sharedStandards: {
     heading: 'What Every Academy Programme Is Built Around',

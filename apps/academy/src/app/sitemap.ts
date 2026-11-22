@@ -1,17 +1,22 @@
 import type { MetadataRoute } from 'next';
 import { getAcademySitemapOrigin } from '../content/site-config';
-import { plannedAcademyProgrammes } from '../content/programmes';
+import {
+  plannedAcademyProgrammes,
+  IS_PROGRAMMES_PUBLIC_APPROVED,
+} from '../content/programmes';
 import { careerPathways } from '../content/pathways';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getAcademySitemapOrigin();
   const lastModified = new Date('2026-04-06T00:00:00.000Z');
 
+  // Master Brief Section 11:
+  // "Keep programmes, scholarship listings and fees unpublished until approved;
+  // allow site to launch with pathways and registration of interest."
   const staticRoutes = [
     { path: '', priority: 1.0 },
     { path: '/apply', priority: 0.95 },
     { path: '/pathways', priority: 0.9 },
-    { path: '/programmes', priority: 0.9 },
     { path: '/how-we-learn', priority: 0.85 },
     { path: '/admissions', priority: 0.9 },
     { path: '/career-opportunities', priority: 0.85 },
@@ -22,14 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.75 },
   ];
 
-  const programmeRoutes = plannedAcademyProgrammes.map((programme) => ({
-    path: `/programmes/${programme.slug}`,
-    priority: 0.8,
-  }));
+  // Programme routes remain excluded from sitemap until explicit publication approval
+  const programmeRoutes = IS_PROGRAMMES_PUBLIC_APPROVED
+    ? [
+        { path: '/programmes', priority: 0.85 },
+        ...plannedAcademyProgrammes.map((programme) => ({
+          path: `/programmes/${programme.slug}`,
+          priority: 0.8,
+        })),
+      ]
+    : [];
 
   const pathwayRoutes = careerPathways.map((pathway) => ({
     path: `/pathways/${pathway.slug}`,
-    priority: 0.8,
+    priority: 0.85,
   }));
 
   return [...staticRoutes, ...programmeRoutes, ...pathwayRoutes].map((route) => ({

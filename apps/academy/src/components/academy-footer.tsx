@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { Container } from '@opsfoundry/ui';
 import { ArrowUpRight } from 'lucide-react';
 import { academyNavigation, academyFooterContent } from '../content/homepage';
-import { plannedAcademyProgrammes } from '../content/programmes';
 import { careerPathways } from '../content/pathways';
 
 export function AcademyFooter() {
@@ -83,31 +82,13 @@ export function AcademyFooter() {
             </ul>
           </div>
 
-          {/* Column 3: Programmes & Admissions */}
+          {/* Column 3: Admissions & Opportunities */}
           <div className="md:col-span-3 space-y-3">
             <h2 className="font-display text-xs font-bold uppercase tracking-wider text-purple-300">
-              Programmes &amp; Funding
+              Admissions &amp; Opportunities
             </h2>
             <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
               <li>
-                <Link
-                  href="/programmes"
-                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
-                >
-                  Programmes Overview
-                </Link>
-              </li>
-              {plannedAcademyProgrammes.map((programme) => (
-                <li key={programme.id}>
-                  <Link
-                    href={`/programmes/${programme.slug}`}
-                    className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors text-xs text-gray-400 hover:text-gray-200"
-                  >
-                    {programme.slotLabel} Programme
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-2 border-t border-foundry-slate-border">
                 <Link
                   href="/admissions"
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
@@ -129,6 +110,14 @@ export function AcademyFooter() {
                   className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors"
                 >
                   Career Opportunities
+                </Link>
+              </li>
+              <li className="pt-2 border-t border-foundry-slate-border">
+                <Link
+                  href="/apply"
+                  className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-academy-primary transition-colors font-medium text-white"
+                >
+                  Register Interest
                 </Link>
               </li>
             </ul>

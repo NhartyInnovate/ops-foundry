@@ -148,10 +148,10 @@ export default async function PathwayDetailPage({
                 </Text>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                  {!isUpcoming && relatedProgramme ? (
+                  {!isUpcoming ? (
                     <Button asChild variant="primary" size="md" className="w-full sm:w-auto text-center">
-                      <Link href={`/programmes/${relatedProgramme.slug}`}>
-                        <span>Explore Aligned Programme</span>
+                      <Link href={`/apply?pathway=${pathway.slug}`}>
+                        <span>Register Interest</span>
                         <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                       </Link>
                     </Button>
@@ -493,12 +493,12 @@ export default async function PathwayDetailPage({
                     tone="inverseMuted"
                     className="max-w-2xl mx-auto leading-relaxed"
                   >
-                    Explore our aligned launch programme: {relatedProgramme.slotLabel}. Review the curriculum focus, foundational Core modules, and admissions criteria.
+                    Training connected to {pathway.title} is currently in curriculum scoping for upcoming intakes. Register your interest to receive announcements when cohort applications formally open.
                   </Text>
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2">
                     <Button asChild variant="primary" size="lg" className="w-full sm:w-auto text-center">
-                      <Link href={`/programmes/${relatedProgramme.slug}`}>
-                        <span>Explore Aligned Programme</span>
+                      <Link href={`/apply?pathway=${pathway.slug}`}>
+                        <span>Register Interest for Intakes</span>
                         <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                       </Link>
                     </Button>

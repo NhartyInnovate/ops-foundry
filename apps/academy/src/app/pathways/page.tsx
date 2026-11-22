@@ -66,8 +66,8 @@ export default function PathwaysDirectoryPage() {
               </Text>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">
-                    <span>Explore Training Programmes</span>
+                  <Link href="/apply">
+                    <span>Register Interest</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
@@ -102,18 +102,18 @@ export default function PathwaysDirectoryPage() {
                 <div className="flex items-center gap-2">
                   <GraduationCap className="h-4 w-4 text-foundry-slate" aria-hidden="true" />
                   <p className="font-display text-xs font-bold text-foundry-slate">
-                    Ready to enrol in a cohort?
+                    Upcoming Cohort Preparation
                   </p>
                 </div>
                 <p className="text-xs text-foundry-secondary leading-relaxed">
-                  Review our 3 launch programmes in Growth Operations, Content Operations, and Web &amp; Digital Operations to compare curricula and admissions requirements.
+                  Curriculum specifications and schedules for upcoming cohort intakes are currently undergoing final confirmation. Register your interest to receive announcements.
                 </p>
                 <div className="pt-1">
                   <Link
-                    href="/programmes"
+                    href="/apply"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-academy-primary hover:underline"
                   >
-                    <span>View Programmes Overview</span>
+                    <span>Register Interest for Cohorts</span>
                     <ArrowRight className="h-3 w-3" aria-hidden="true" />
                   </Link>
                 </div>
@@ -187,8 +187,8 @@ export default function PathwaysDirectoryPage() {
               </Text>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">
-                    <span>Explore Programmes</span>
+                  <Link href="/apply">
+                    <span>Register Interest</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>

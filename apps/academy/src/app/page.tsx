@@ -196,15 +196,15 @@ export default function AcademyHomePage() {
             <div className="mt-12 rounded-2xl bg-foundry-canvas p-6 lg:p-8 border border-foundry-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div className="space-y-1 max-w-2xl">
                 <p className="font-display text-sm font-bold text-foundry-slate">
-                  Pathway Training Offers &amp; Cohort Schedules
+                  Upcoming Cohort Intakes &amp; Scoping
                 </p>
                 <p className="text-xs sm:text-sm text-foundry-secondary leading-relaxed">
-                  Each career pathway aligns to structured programmes. Explore our current programme offerings in Growth Operations, Content Operations, and Web &amp; Digital Operations.
+                  Curriculum specifications and cohort schedules for our launch pathways are currently undergoing operational confirmation. Register your interest to receive announcements when cohort applications formally open.
                 </p>
               </div>
               <Button asChild variant="primary" size="md" className="shrink-0">
-                <Link href="/programmes">
-                  <span>Explore Programmes Overview</span>
+                <Link href="/apply">
+                  <span>Register Interest</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

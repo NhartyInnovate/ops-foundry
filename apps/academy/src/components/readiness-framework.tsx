@@ -131,14 +131,8 @@ export function ReadinessFramework({
           aria-hidden="true"
         />
         <div className="space-y-1">
-          <p className="font-display text-xs font-bold uppercase tracking-wider text-academy-primary">
-            Clear Distinction: Training vs. Employment
-          </p>
           <p className="text-xs sm:text-sm font-semibold leading-relaxed">
             {supportingLine}
-          </p>
-          <p className="text-xs leading-relaxed text-foundry-secondary">
-            Training, certification, readiness and hiring are separate decisions. Vacancies, competency benchmarks, interviews and employer selection determine hiring.
           </p>
         </div>
       </div>

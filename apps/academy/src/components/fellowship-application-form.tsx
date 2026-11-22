@@ -444,7 +444,7 @@ export function FellowshipApplicationForm({ programmeParam }: ApplicationFormPro
               Frontend demonstration • Submissions are not transmitted
             </span>
             <Button type="submit" variant="primary" size="lg" className="w-full sm:w-auto">
-              <span>Submit Application Demonstration</span>
+              <span>Register Interest (Demonstration)</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>

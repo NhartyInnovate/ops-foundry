@@ -291,8 +291,8 @@ export const admissionsPageContent = {
     body: 'Review the skills required for modern operations roles or register interest for upcoming intakes.',
     primaryLabel: 'Explore Career Pathways',
     primaryHref: '/pathways',
-    secondaryLabel: 'Browse Programmes',
-    secondaryHref: '/programmes',
+    secondaryLabel: 'How Learning Works',
+    secondaryHref: '/how-we-learn',
   },
 } as const;
 
@@ -313,7 +313,7 @@ export const careerOpportunitiesPageContent = {
   supportingLine:
     'Academy admission, certification and deployment readiness do not guarantee employment or paid placement.',
   howItWorks: {
-    heading: 'The 5-Step Career Opportunity Process',
+    heading: 'How it works',
     intro:
       'How learners transition from practical training to potential recruitment consideration:',
     steps: [
@@ -364,8 +364,8 @@ export const careerOpportunitiesPageContent = {
     body: 'Discover the work done across our career pathways or explore our upcoming training programmes.',
     primaryLabel: 'Explore Career Pathways',
     primaryHref: '/pathways',
-    secondaryLabel: 'Explore Programmes',
-    secondaryHref: '/programmes',
+    secondaryLabel: 'How Learning Works',
+    secondaryHref: '/how-we-learn',
   },
 } as const;
 

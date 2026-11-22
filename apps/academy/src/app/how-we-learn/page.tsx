@@ -69,8 +69,8 @@ export default function HowWeLearnPage() {
                 </Text>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
                   <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
-                    <Link href="/programmes">
-                      <span>Explore Programmes</span>
+                    <Link href="/pathways">
+                      <span>Explore Career Pathways</span>
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                   </Button>

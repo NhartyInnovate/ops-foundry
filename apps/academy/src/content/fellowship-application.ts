@@ -31,11 +31,11 @@ export interface AcademyApplicationConfig {
 export const academyApplicationConfig: AcademyApplicationConfig = {
   id: 'academy-intake-application',
   slug: 'apply',
-  title: 'Apply for an Open Intake',
-  shortTitle: 'Cohort Admissions',
+  title: 'Register Interest for Upcoming Intakes',
+  shortTitle: 'Register Interest',
   badge: 'Intake Preparation Mode',
   description:
-    'Apply to build practical skills for modern business operations. We review eligibility, motivation and readiness, and may require an aptitude assessment or practical task. Admission decisions and scholarship decisions are separate.',
+    'Register interest to build practical skills for modern business operations. We review eligibility, motivation and readiness, and may require an aptitude assessment or practical task. Admission decisions and scholarship decisions are separate.',
   governanceNotice:
     'Publication Control: In accordance with institutional publication standards, official cohort dates, formats, durations, and tuition fees remain subject to formal approval before launch. This application interface operates in demonstration and scoping mode.',
   statusBanner: {

@@ -88,7 +88,7 @@ export default function TuitionAndScholarshipsPage() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                  <Link href="/programmes">Explore Programmes</Link>
+                  <Link href="/pathways">Explore Career Pathways</Link>
                 </Button>
               </div>
             </div>
@@ -221,10 +221,10 @@ export default function TuitionAndScholarshipsPage() {
                     </div>
                     <div className="pt-1">
                       <Link
-                        href={`/programmes/${prog.slug}`}
+                        href={`/pathways/${prog.slug}`}
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-academy-primary hover:underline"
                       >
-                        <span>View Programme Track</span>
+                        <span>View Aligned Career Pathway</span>
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>
                     </div>

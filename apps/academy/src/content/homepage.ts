@@ -31,8 +31,13 @@ export const academyNavigation = {
   brandName: 'Ops Foundry',
   brandSuffix: 'Academy',
   fullBrandName: 'Ops Foundry Academy',
-  // Direct desktop primary link
+  // Direct desktop primary links
   primaryLinks: [
+    {
+      label: 'Career Pathways',
+      href: '/pathways',
+      isPendingRoute: false,
+    },
     {
       label: 'How Learning Works',
       href: '/how-we-learn',
@@ -41,36 +46,6 @@ export const academyNavigation = {
   ] satisfies AcademyNavItem[],
   // Desktop dropdown groups for clean, uncluttered access without overflow
   dropdownGroups: [
-    {
-      label: 'Pathways & Programmes',
-      items: [
-        {
-          label: 'Career Pathways',
-          href: '/pathways',
-          isPendingRoute: false,
-        },
-        {
-          label: 'Programmes Overview',
-          href: '/programmes',
-          isPendingRoute: false,
-        },
-        {
-          label: 'Growth Operations',
-          href: '/programmes/growth-operations',
-          isPendingRoute: false,
-        },
-        {
-          label: 'Content Operations',
-          href: '/programmes/content-operations',
-          isPendingRoute: false,
-        },
-        {
-          label: 'Web & Digital Operations',
-          href: '/programmes/web-digital-operations',
-          isPendingRoute: false,
-        },
-      ],
-    },
     {
       label: 'Admissions & Funding',
       items: [
@@ -122,9 +97,8 @@ export const academyNavigation = {
     {
       category: 'Learning & Pathways',
       items: [
-        { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
         { label: 'Career Pathways', href: '/pathways', isPendingRoute: false },
-        { label: 'Programmes', href: '/programmes', isPendingRoute: false },
+        { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
       ],
     },
     {
@@ -145,11 +119,10 @@ export const academyNavigation = {
       ],
     },
   ] satisfies AcademyMobileSection[],
-  // All 10 required routes in canonical order for reference and footer
+  // All required active public destinations
   allRequiredDestinations: [
-    { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
     { label: 'Career Pathways', href: '/pathways', isPendingRoute: false },
-    { label: 'Programmes', href: '/programmes', isPendingRoute: false },
+    { label: 'How Learning Works', href: '/how-we-learn', isPendingRoute: false },
     { label: 'Career Opportunities', href: '/career-opportunities', isPendingRoute: false },
     { label: 'Admissions', href: '/admissions', isPendingRoute: false },
     { label: 'Tuition & Scholarships', href: '/tuition-scholarships', isPendingRoute: false },
@@ -160,14 +133,13 @@ export const academyNavigation = {
   ] satisfies AcademyNavItem[],
   // Backwards-compatible items export for any existing consumer
   items: [
-    { label: 'How Learning Works', href: '/how-we-learn' },
     { label: 'Career Pathways', href: '/pathways' },
-    { label: 'Programmes', href: '/programmes' },
+    { label: 'How Learning Works', href: '/how-we-learn' },
     { label: 'Admissions', href: '/admissions' },
     { label: 'About', href: '/about' },
   ] satisfies AcademyNavItem[],
   primaryCta: {
-    label: 'Apply for an Intake',
+    label: 'Register Interest',
     href: '/apply',
   },
   corporateCrossLink: getCorporateWebsiteLink(),
@@ -368,11 +340,11 @@ export const homepageFinalCtaSection = {
   id: 'final-cta',
   headline: 'Explore a pathway. Take the next step.',
   primaryCta: {
-    label: 'Explore Programmes',
-    href: '/programmes',
+    label: 'Explore Career Pathways',
+    href: '/pathways',
   },
   secondaryCta: {
-    label: 'Apply for an Open Intake',
+    label: 'Register Interest',
     href: '/apply',
   },
 } as const;
@@ -482,8 +454,8 @@ export const programmesPreviewContent = {
   governanceNotice:
     'Programme Publication Status: Official start dates, curriculum modules, weekly schedules, and tuition details are undergoing final confirmation prior to opening public cohort applications.',
   cta: {
-    label: 'View All Programmes',
-    href: '/programmes',
+    label: 'Explore Career Pathways',
+    href: '/pathways',
   },
 } as const;
 
