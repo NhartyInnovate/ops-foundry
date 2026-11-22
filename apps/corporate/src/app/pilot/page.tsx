@@ -5,6 +5,7 @@ import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { PilotIntakeForm } from '../../components/pilot-intake-form';
+import { ScrollReveal, ScrollRevealGroup } from '../../components/scroll-reveal';
 import { pilotPageContent } from '../../content/supporting-pages';
 import { getCorporateSiteUrl } from '../../content/site-config';
 
@@ -64,24 +65,24 @@ export default function PilotPage() {
           <AbstractBrandGeometry variant="subtle" />
           <Container className="relative z-10">
             <div className="max-w-3xl">
-              <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase mb-3">
+              <span className="animate-hero-1 inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase mb-3">
                 Ops Foundry / Pilot Engagement
               </span>
               <Heading
                 as="h1"
                 size="display"
-                className="mb-6 text-foundry-dark tracking-tight leading-[1.08]"
+                className="animate-hero-2 mb-6 text-foundry-dark tracking-tight leading-[1.08]"
               >
                 {hero.lead}
               </Heading>
               <Text
                 size="lg"
                 tone="default"
-                className="mb-8 font-medium leading-relaxed max-w-2xl text-gray-700"
+                className="animate-hero-3 mb-8 font-medium leading-relaxed max-w-2xl text-gray-700"
               >
                 {hero.supporting}
               </Text>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <div className="animate-hero-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
                   <a href="#pilot-brief-form">Request a Pilot Conversation</a>
                 </Button>
@@ -96,19 +97,21 @@ export default function PilotPage() {
         {/* 2. How a Pilot Begins */}
         <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
-            <div className="max-w-3xl mb-10">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-10">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                 {howPilotBegins.heading}
               </Heading>
               <Text size="base" tone="secondary" className="leading-relaxed">
                 {howPilotBegins.intro}
               </Text>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {howPilotBegins.steps.map((step) => (
-                <article
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {howPilotBegins.steps.map((step, idx) => (
+                <ScrollReveal
                   key={step.number}
+                  as="article"
+                  animation={idx === 0 ? 'stagger-1' : idx === 1 ? 'stagger-2' : 'stagger-3'}
                   className="rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs space-y-4"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-foundry-dark text-white font-display font-bold text-sm">
@@ -120,9 +123,9 @@ export default function PilotPage() {
                   <Text size="sm" tone="secondary" className="leading-relaxed">
                     {step.description}
                   </Text>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
           </Container>
         </Section>
 
@@ -130,16 +133,18 @@ export default function PilotPage() {
         <Section id="pilot-brief-form" tone="pure" spacing="lg" border="bottom">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="mb-10 text-center sm:text-left">
+              <ScrollReveal animation="fade-up" className="mb-10 text-center sm:text-left">
                 <Heading as="h2" size="xl" className="mb-3 text-foundry-dark">
                   {formSection.heading}
                 </Heading>
                 <Text size="base" tone="secondary" className="max-w-2xl leading-relaxed">
                   {formSection.intro}
                 </Text>
-              </div>
+              </ScrollReveal>
 
-              <PilotIntakeForm />
+              <ScrollReveal animation="fade-up" delayMs={100}>
+                <PilotIntakeForm />
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -148,12 +153,12 @@ export default function PilotPage() {
         <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <div className="lg:col-span-5">
+              <ScrollReveal animation="fade-up" className="lg:col-span-5">
                 <Heading as="h2" size="xl" className="text-foundry-dark">
                   {whyStartWithPilot.heading}
                 </Heading>
-              </div>
-              <div className="lg:col-span-7 space-y-6">
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delayMs={100} className="lg:col-span-7 space-y-6">
                 <Text size="base" tone="secondary" className="leading-relaxed">
                   {whyStartWithPilot.body}
                 </Text>
@@ -164,7 +169,7 @@ export default function PilotPage() {
                 >
                   {whyStartWithPilot.disclaimer}
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -172,19 +177,21 @@ export default function PilotPage() {
         {/* 5. Ten Required Governance Dimensions */}
         <Section tone="pure" spacing="lg">
           <Container>
-            <div className="max-w-3xl mb-12">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                 {tenGovernanceDimensions.heading}
               </Heading>
               <Text size="lg" tone="secondary" className="leading-relaxed">
                 {tenGovernanceDimensions.intro}
               </Text>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
-              {tenGovernanceDimensions.dimensions.map((item) => (
-                <article
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+              {tenGovernanceDimensions.dimensions.map((item, idx) => (
+                <ScrollReveal
                   key={item.number}
+                  as="article"
+                  animation={idx % 2 === 0 ? 'stagger-1' : 'stagger-2'}
                   className="rounded-2xl bg-foundry-muted p-6 lg:p-7 border border-foundry-border shadow-xs flex items-start gap-4"
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-foundry-dark text-white font-display font-bold text-xs">
@@ -198,9 +205,9 @@ export default function PilotPage() {
                       {item.description}
                     </Text>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
           </Container>
         </Section>
       </main>

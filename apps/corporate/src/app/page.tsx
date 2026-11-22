@@ -8,6 +8,7 @@ import { CorporateHeader } from '../components/corporate-header';
 import { CorporateFooter } from '../components/corporate-footer';
 import { AbstractBrandGeometry } from '../components/abstract-brand-geometry';
 import { EventWebsiteMockup } from '../components/event-website-mockup';
+import { ScrollReveal, ScrollRevealGroup } from '../components/scroll-reveal';
 import {
   heroContent,
   brandsWeSupportContent,
@@ -60,11 +61,11 @@ export default function CorporateHomePage() {
               <div className="lg:col-span-7 space-y-8">
                 <div className="space-y-3">
                   {'eyebrow' in heroContent && heroContent.eyebrow ? (
-                    <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
+                    <span className="animate-hero-1 inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
                       {heroContent.eyebrow}
                     </span>
                   ) : null}
-                  <Heading as="h1" size="display">
+                  <Heading as="h1" size="display" className="animate-hero-2">
                     {heroContent.headlinePrimary}{' '}
                     <span className="block mt-1 text-foundry-dark">
                       {heroContent.headlineAccent}
@@ -72,11 +73,11 @@ export default function CorporateHomePage() {
                   </Heading>
                 </div>
 
-                <Text size="xl" className="max-w-2xl text-gray-600">
+                <Text size="xl" className="animate-hero-3 max-w-2xl text-gray-600">
                   {heroContent.supportingCopy}
                 </Text>
 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+                <div className="animate-hero-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
                   <Button asChild variant="primary" size="lg">
                     <Link href={heroContent.primaryCta.href}>
                       <span>{heroContent.primaryCta.label}</span>
@@ -102,7 +103,7 @@ export default function CorporateHomePage() {
                   height={800}
                   priority
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 720px"
-                  className="relative z-10 h-auto max-w-full sm:max-w-none w-[340px] sm:w-[420px] md:w-[480px] lg:max-w-none lg:w-[540px] xl:w-[580px] object-contain object-bottom select-none pointer-events-none"
+                  className="animate-hero-image relative z-10 h-auto max-w-full sm:max-w-none w-[340px] sm:w-[420px] md:w-[480px] lg:max-w-none lg:w-[540px] xl:w-[580px] object-contain object-bottom select-none pointer-events-none"
                 />
               </div>
             </div>
@@ -118,33 +119,35 @@ export default function CorporateHomePage() {
           className="py-8 sm:py-10 bg-foundry-dark border-foundry-dark-border"
         >
           <Container>
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-12">
-              <p className="font-display text-xs font-bold tracking-widest uppercase text-gray-400 shrink-0">
-                {brandsWeSupportContent.heading}
-              </p>
-              <div className="flex flex-wrap items-center gap-8 sm:gap-12 lg:gap-16">
-                {brandsWeSupportContent.organisations.map((org) => {
-                  const hasLogo = Boolean(org.logo);
-                  return (
-                    <div key={org.name} className="flex items-center">
-                      {hasLogo ? (
-                        <Image
-                          src={org.logo}
-                          alt={org.name}
-                          width={org.width}
-                          height={org.height}
-                          className="h-7 sm:h-8 w-auto object-contain opacity-85 hover:opacity-100 transition-opacity"
-                        />
-                      ) : (
-                        <span className="font-display text-base sm:text-lg font-medium tracking-tight text-slate-200/90 hover:text-white transition-colors select-none">
-                          {org.name}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
+            <ScrollReveal animation="fade-up">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-12">
+                <p className="font-display text-xs font-bold tracking-widest uppercase text-gray-400 shrink-0">
+                  {brandsWeSupportContent.heading}
+                </p>
+                <div className="flex flex-wrap items-center gap-8 sm:gap-12 lg:gap-16">
+                  {brandsWeSupportContent.organisations.map((org) => {
+                    const hasLogo = Boolean(org.logo);
+                    return (
+                      <div key={org.name} className="flex items-center">
+                        {hasLogo ? (
+                          <Image
+                            src={org.logo}
+                            alt={org.name}
+                            width={org.width}
+                            height={org.height}
+                            className="h-7 sm:h-8 w-auto object-contain opacity-85 hover:opacity-100 transition-opacity"
+                          />
+                        ) : (
+                          <span className="font-display text-base sm:text-lg font-medium tracking-tight text-slate-200/90 hover:text-white transition-colors select-none">
+                            {org.name}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
 
@@ -153,7 +156,7 @@ export default function CorporateHomePage() {
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column: Core Thesis & Callout Card */}
-              <div className="lg:col-span-7 space-y-8">
+              <ScrollReveal animation="fade-up" className="lg:col-span-7 space-y-8">
                 <div className="space-y-4">
                   <Heading as="h2" size="xl">
                     {challengeContent.headline}
@@ -168,10 +171,10 @@ export default function CorporateHomePage() {
                     {challengeContent.editorialCallout}
                   </p>
                 </blockquote>
-              </div>
+              </ScrollReveal>
 
               {/* Right Column: Preserved Documentary Image */}
-              <div className="lg:col-span-5">
+              <ScrollReveal animation="fade-up" delayMs={150} className="lg:col-span-5">
                 <figure className="rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-xs">
                   <div className="relative aspect-[4/3] w-full bg-gray-100">
                     <Image
@@ -186,7 +189,7 @@ export default function CorporateHomePage() {
                     {challengeContent.image.caption}
                   </figcaption>
                 </figure>
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -194,16 +197,18 @@ export default function CorporateHomePage() {
         {/* Section 3 — Operating Model (Three Pillars) */}
         <Section id="operating-pillars" tone="pure" spacing="lg">
           <Container>
-            <div className="max-w-3xl mb-12">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-12">
               <Heading as="h2" size="xl">
                 {operatingPillarsContent.headline}
               </Heading>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {operatingPillarsContent.pillars.map((pillar) => (
-                <article
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {operatingPillarsContent.pillars.map((pillar, idx) => (
+                <ScrollReveal
                   key={pillar.number}
+                  as="article"
+                  animation={idx === 0 ? 'stagger-1' : idx === 1 ? 'stagger-2' : 'stagger-3'}
                   className="rounded-2xl bg-foundry-muted p-7 lg:p-8 border border-foundry-border space-y-4 shadow-xs"
                 >
                   <span
@@ -218,35 +223,37 @@ export default function CorporateHomePage() {
                   <Text size="base" className="text-gray-600">
                     {pillar.summary}
                   </Text>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
 
-            <div className="mt-10 sm:mt-12 flex items-center justify-start">
+            <ScrollReveal animation="fade-up" className="mt-10 sm:mt-12 flex items-center justify-start">
               <Button asChild variant="primary" size="lg">
                 <Link href={operatingPillarsContent.ctaHref}>
                   <span>{operatingPillarsContent.ctaLabel}</span>
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                 </Link>
               </Button>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
 
         {/* Section 4 — Services (Three Service Lines) */}
         <Section id="services" tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="max-w-3xl mb-12">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-12">
               <Heading as="h2" size="xl">
                 {servicesContent.headline}
               </Heading>
-            </div>
+            </ScrollReveal>
 
             <div className="divide-y divide-foundry-border">
               {servicesContent.services.map((service) => (
-                <article
+                <ScrollReveal
                   key={service.id}
                   id={service.anchorId}
+                  as="article"
+                  animation="fade-up"
                   className="py-12 sm:py-14 first:pt-4 last:pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-mt-24"
                 >
                   <div className="lg:col-span-7 space-y-6">
@@ -290,7 +297,7 @@ export default function CorporateHomePage() {
                       </figcaption>
                     </figure>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
             </div>
           </Container>
@@ -299,7 +306,7 @@ export default function CorporateHomePage() {
         {/* Section 5 — Why Ops Foundry */}
         <Section id="why-ops-foundry" tone="canvas" spacing="lg" border="top" className="bg-foundry-muted">
           <Container>
-            <div className="rounded-3xl bg-white border border-foundry-border p-8 sm:p-12 lg:p-16 shadow-xs">
+            <ScrollReveal animation="fade-up" className="rounded-3xl bg-white border border-foundry-border p-8 sm:p-12 lg:p-16 shadow-xs">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-7 space-y-4">
                   <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
@@ -315,7 +322,7 @@ export default function CorporateHomePage() {
                   </Text>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
 
@@ -323,19 +330,21 @@ export default function CorporateHomePage() {
         {selectedWorkContent.published && selectedWorkContent.projects.length > 0 ? (
           <Section id="selected-work" tone="pure" spacing="lg" border="top" className="scroll-mt-24">
             <Container>
-              <div className="max-w-3xl mb-10 sm:mb-14 space-y-3">
+              <ScrollReveal animation="fade-up" className="max-w-3xl mb-10 sm:mb-14 space-y-3">
                 <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase">
                   {selectedWorkContent.heading}
                 </span>
                 <Heading as="h2" size="xl">
                   {selectedWorkContent.headline}
                 </Heading>
-              </div>
+              </ScrollReveal>
 
               <div className="space-y-12">
                 {selectedWorkContent.projects.map((project) => (
-                  <article
+                  <ScrollReveal
                     key={project.id}
+                    as="article"
+                    animation="fade-up"
                     className="rounded-3xl bg-foundry-muted/50 border border-foundry-border p-5 sm:p-10 lg:p-12 shadow-xs transition-all duration-300 hover:border-slate-300"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
@@ -364,7 +373,7 @@ export default function CorporateHomePage() {
                         </div>
                       </div>
                     </div>
-                  </article>
+                  </ScrollReveal>
                 ))}
               </div>
             </Container>
@@ -374,7 +383,7 @@ export default function CorporateHomePage() {
         {/* Section 7 — Final CTA (Explore a Pilot) */}
         <Section id="explore-pilot" tone="pure" spacing="lg" border="top">
           <Container>
-            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16">
+            <ScrollReveal animation="fade-up" className="relative overflow-hidden rounded-3xl bg-foundry-muted text-foundry-dark border border-foundry-border p-8 sm:p-12 lg:p-16">
               <AbstractBrandGeometry variant="cta" />
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Left Column: Commercial Invitation */}
@@ -428,7 +437,7 @@ export default function CorporateHomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </main>

@@ -4,6 +4,7 @@ import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
+import { ScrollReveal, ScrollRevealGroup } from '../../components/scroll-reveal';
 import { aboutPageContent } from '../../content/supporting-pages';
 import { getCorporateSiteUrl } from '../../content/site-config';
 
@@ -72,25 +73,25 @@ export default function AboutPage() {
                 <Heading
                   as="h1"
                   size="display"
-                  className="mb-6 text-foundry-dark tracking-tight leading-[1.08]"
+                  className="animate-hero-1 mb-6 text-foundry-dark tracking-tight leading-[1.08]"
                 >
                   {hero.title}
                 </Heading>
                 <Text
                   size="lg"
                   tone="default"
-                  className="mb-5 font-medium leading-relaxed max-w-2xl"
+                  className="animate-hero-2 mb-5 font-medium leading-relaxed max-w-2xl"
                 >
                   {hero.lead}
                 </Text>
                 <Text
                   size="base"
                   tone="secondary"
-                  className="mb-8 max-w-2xl leading-relaxed"
+                  className="animate-hero-3 mb-8 max-w-2xl leading-relaxed"
                 >
                   {hero.supporting}
                 </Text>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <div className="animate-hero-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                   <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
                     <Link href="/pilot">Explore a Pilot</Link>
                   </Button>
@@ -101,7 +102,7 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-5">
-                <figure className="relative rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-sm">
+                <figure className="animate-hero-image relative rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-sm">
                   <div className="aspect-[16/11] w-full overflow-hidden bg-foundry-surface-alt">
                     <img
                       src={hero.image.src}
@@ -123,12 +124,12 @@ export default function AboutPage() {
         <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-              <div className="lg:col-span-5">
+              <ScrollReveal animation="fade-up" className="lg:col-span-5">
                 <Heading as="h2" size="xl" className="text-foundry-dark">
                   {whatWeAreAndWhyWeExist.heading}
                 </Heading>
-              </div>
-              <div className="lg:col-span-7 space-y-5">
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delayMs={100} className="lg:col-span-7 space-y-5">
                 {whatWeAreAndWhyWeExist.paragraphs.map((paragraph) => (
                   <Text
                     key={paragraph}
@@ -139,7 +140,7 @@ export default function AboutPage() {
                     {paragraph}
                   </Text>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -147,19 +148,21 @@ export default function AboutPage() {
         {/* 3. Our Human + AI Operational Philosophy */}
         <Section tone="pure" spacing="lg" border="bottom">
           <Container>
-            <div className="max-w-3xl mb-12">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                 {philosophy.heading}
               </Heading>
               <Text size="lg" tone="secondary" className="leading-relaxed">
                 {philosophy.intro}
               </Text>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-              {philosophy.principles.map((principle) => (
-                <article
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
+              {philosophy.principles.map((principle, idx) => (
+                <ScrollReveal
                   key={principle.title}
+                  as="article"
+                  animation={idx % 2 === 0 ? 'stagger-1' : 'stagger-2'}
                   className="rounded-2xl bg-foundry-muted p-7 lg:p-8 border border-foundry-border shadow-xs"
                 >
                   <span className="font-display text-xs font-bold text-foundry-dark tracking-wider uppercase block mb-2.5">
@@ -171,26 +174,26 @@ export default function AboutPage() {
                   <Text size="sm" tone="secondary" className="leading-relaxed">
                     {principle.description}
                   </Text>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
 
             {/* Company Profile & Governance Note */}
-            <div className="rounded-2xl bg-foundry-muted p-6 lg:p-8 border border-foundry-border shadow-xs">
+            <ScrollReveal animation="fade-up" className="rounded-2xl bg-foundry-muted p-6 lg:p-8 border border-foundry-border shadow-xs">
               <Heading as="h3" size="sm" className="mb-2 text-foundry-dark">
                 {companyProfileNotice.heading}
               </Heading>
               <Text size="sm" tone="secondary" className="leading-relaxed">
                 {companyProfileNotice.body}
               </Text>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
 
         {/* 4. Conversion CTA */}
         <Section tone="pure" spacing="lg">
           <Container>
-            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
+            <ScrollReveal animation="fade-up" className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
               <AbstractBrandGeometry variant="cta" />
               <div className="relative z-10">
                 <Heading as="h2" size="xl" tone="default" className="mb-4">
@@ -217,7 +220,7 @@ export default function AboutPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </main>

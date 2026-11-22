@@ -4,6 +4,7 @@ import { Container, Section, Heading, Text, Button } from '@opsfoundry/ui';
 import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
+import { ScrollReveal, ScrollRevealGroup } from '../../components/scroll-reveal';
 import { howWeWorkPageContent } from '../../content/supporting-pages';
 import { getCorporateSiteUrl } from '../../content/site-config';
 
@@ -67,25 +68,25 @@ export default function HowWeWorkPage() {
                 <Heading
                   as="h1"
                   size="display"
-                  className="mb-6 text-foundry-dark tracking-tight leading-[1.08]"
+                  className="animate-hero-1 mb-6 text-foundry-dark tracking-tight leading-[1.08]"
                 >
                   {hero.title}
                 </Heading>
                 <Text
                   size="lg"
                   tone="default"
-                  className="mb-5 font-medium leading-relaxed max-w-2xl"
+                  className="animate-hero-2 mb-5 font-medium leading-relaxed max-w-2xl"
                 >
                   {hero.lead}
                 </Text>
                 <Text
                   size="base"
                   tone="secondary"
-                  className="mb-8 max-w-2xl leading-relaxed"
+                  className="animate-hero-3 mb-8 max-w-2xl leading-relaxed"
                 >
                   {hero.supporting}
                 </Text>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <div className="animate-hero-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                   <Link href="/pilot" className="inline-flex">
                     <Button variant="primary" size="lg" className="w-full sm:w-auto">
                       Explore a Pilot
@@ -100,7 +101,7 @@ export default function HowWeWorkPage() {
               </div>
 
               <div className="lg:col-span-5">
-                <figure className="relative rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-sm">
+                <figure className="animate-hero-image relative rounded-2xl overflow-hidden border border-foundry-border bg-white shadow-sm">
                   <div className="aspect-[16/11] w-full overflow-hidden bg-foundry-surface-alt">
                     <img
                       src={hero.image.src}
@@ -121,19 +122,21 @@ export default function HowWeWorkPage() {
         {/* 2. Combining Managed Teams, Structured Workflows, and AI-Enabled Tools */}
         <Section tone="canvas" spacing="lg" border="bottom" className="bg-foundry-muted">
           <Container>
-            <div className="max-w-3xl mb-12">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-12">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                 {pillarsIntegration.heading}
               </Heading>
               <Text size="lg" tone="secondary" className="leading-relaxed">
                 {pillarsIntegration.intro}
               </Text>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {pillarsIntegration.items.map((item, idx) => (
-                <article
+                <ScrollReveal
                   key={item.title}
+                  as="article"
+                  animation={idx === 0 ? 'stagger-1' : idx === 1 ? 'stagger-2' : 'stagger-3'}
                   className="flex flex-col justify-between rounded-2xl bg-white p-7 lg:p-8 border border-foundry-border shadow-xs"
                 >
                   <div>
@@ -147,37 +150,48 @@ export default function HowWeWorkPage() {
                       {item.body}
                     </Text>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
           </Container>
         </Section>
 
         {/* 3. Proposed Four-Stage Operating Model */}
         <Section tone="pure" spacing="lg" border="bottom">
           <Container>
-            <div className="max-w-3xl mb-8">
+            <ScrollReveal animation="fade-up" className="max-w-3xl mb-8">
               <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                 {operatingModel.heading}
               </Heading>
               <Text size="lg" tone="secondary" className="leading-relaxed">
                 {operatingModel.intro}
               </Text>
-            </div>
+            </ScrollReveal>
 
             {/* Required Governance Notice: Proposed / Indicative Operating Model */}
-            <div
+            <ScrollReveal
+              animation="fade-up"
               role="note"
               aria-label="Operating model scope notice"
               className="mb-10 rounded-xl border border-foundry-border bg-foundry-muted px-6 py-4 text-sm text-foundry-dark leading-relaxed shadow-xs"
             >
               {operatingModel.disclaimer}
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {operatingModel.stages.map((stage) => (
-                <article
+            <ScrollRevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {operatingModel.stages.map((stage, idx) => (
+                <ScrollReveal
                   key={stage.title}
+                  as="article"
+                  animation={
+                    idx === 0
+                      ? 'stagger-1'
+                      : idx === 1
+                      ? 'stagger-2'
+                      : idx === 2
+                      ? 'stagger-3'
+                      : 'stagger-4'
+                  }
                   className="flex flex-col justify-between rounded-2xl bg-foundry-muted p-7 lg:p-9 border border-foundry-border shadow-xs"
                 >
                   <div>
@@ -214,9 +228,9 @@ export default function HowWeWorkPage() {
                       ))}
                     </ul>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollRevealGroup>
           </Container>
         </Section>
 
@@ -224,7 +238,7 @@ export default function HowWeWorkPage() {
         <Section tone="pure" spacing="lg" border="bottom">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-              <div className="lg:col-span-5">
+              <ScrollReveal animation="fade-up" className="lg:col-span-5">
                 <Heading as="h2" size="xl" className="mb-4 text-foundry-dark">
                   {governanceAgreements.heading}
                 </Heading>
@@ -244,9 +258,9 @@ export default function HowWeWorkPage() {
                     </Button>
                   </Link>
                 </div>
-              </div>
+              </ScrollReveal>
 
-              <div className="lg:col-span-7 space-y-4">
+              <ScrollReveal animation="fade-up" delayMs={100} className="lg:col-span-7 space-y-4">
                 {governanceAgreements.agreements.map((agreement, index) => (
                   <div
                     key={agreement.topic}
@@ -265,7 +279,7 @@ export default function HowWeWorkPage() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
@@ -273,7 +287,7 @@ export default function HowWeWorkPage() {
         {/* 5. Conversion CTA */}
         <Section tone="pure" spacing="lg">
           <Container>
-            <div className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
+            <ScrollReveal animation="fade-up" className="relative overflow-hidden rounded-3xl bg-foundry-muted border border-foundry-border p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto">
               <AbstractBrandGeometry variant="cta" />
               <div className="relative z-10">
                 <Heading as="h2" size="xl" tone="default" className="mb-4">
@@ -300,7 +314,7 @@ export default function HowWeWorkPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </main>

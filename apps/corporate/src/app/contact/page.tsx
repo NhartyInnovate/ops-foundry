@@ -5,6 +5,7 @@ import { CorporateHeader } from '../../components/corporate-header';
 import { CorporateFooter } from '../../components/corporate-footer';
 import { AbstractBrandGeometry } from '../../components/abstract-brand-geometry';
 import { ContactEnquiryForm } from '../../components/contact-enquiry-form';
+import { ScrollReveal } from '../../components/scroll-reveal';
 import { contactPageContent } from '../../content/supporting-pages';
 import { getCorporateSiteUrl } from '../../content/site-config';
 
@@ -63,24 +64,24 @@ export default function ContactPage() {
           <AbstractBrandGeometry variant="subtle" />
           <Container className="relative z-10">
             <div className="max-w-3xl">
-              <span className="inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase mb-3">
+              <span className="animate-hero-1 inline-block font-display text-xs font-bold tracking-widest text-foundry-secondary uppercase mb-3">
                 Ops Foundry / Contact &amp; Enquiries
               </span>
               <Heading
                 as="h1"
                 size="display"
-                className="mb-6 text-foundry-dark tracking-tight leading-[1.08]"
+                className="animate-hero-2 mb-6 text-foundry-dark tracking-tight leading-[1.08]"
               >
                 {hero.title}
               </Heading>
               <Text
                 size="lg"
                 tone="default"
-                className="mb-8 font-medium leading-relaxed max-w-2xl text-gray-700"
+                className="animate-hero-3 mb-8 font-medium leading-relaxed max-w-2xl text-gray-700"
               >
                 {hero.lead}
               </Text>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <div className="animate-hero-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                 <Button asChild variant="primary" size="lg" className="w-full sm:w-auto">
                   <Link href={hero.primaryCta.href}>
                     {hero.primaryCta.label}
@@ -101,7 +102,7 @@ export default function ContactPage() {
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
               {/* Left Column: Direct Pilot Callout & Channels Notice */}
-              <div className="lg:col-span-5 space-y-8">
+              <ScrollReveal animation="fade-up" className="lg:col-span-5 space-y-8">
                 {/* Structured Pilot Direct Link Card */}
                 <div className="rounded-3xl bg-foundry-muted border border-foundry-border p-7 sm:p-8 space-y-5 shadow-xs">
                   <div className="space-y-2">
@@ -132,10 +133,10 @@ export default function ContactPage() {
                     In the interim, please use this general enquiry form or our structured pilot intake form.
                   </p>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right Column: General Enquiry Form */}
-              <div className="lg:col-span-7">
+              <ScrollReveal animation="fade-up" className="lg:col-span-7">
                 <div className="mb-8">
                   <Heading as="h2" size="xl" className="mb-2 text-foundry-dark">
                     {formSection.heading}
@@ -146,7 +147,7 @@ export default function ContactPage() {
                 </div>
 
                 <ContactEnquiryForm />
-              </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>

@@ -118,7 +118,76 @@ a.rounded-full.border-foundry-border:focus-visible {
   outline-offset: 2px !important;
 }
 
-/* Staggered Slide-in Animations for Service Categories */
+/* ==============================================================================
+   Ops Foundry Unified Animation System
+   Subtle, performant 60fps GPU transforms with prefers-reduced-motion support
+   ============================================================================== */
+
+/* 1. Hero Page-Load Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 {
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.animate-hero-2 {
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.animate-hero-3 {
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.animate-hero-4 {
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.animate-hero-image {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* 2. Scroll-Triggered Reveal Animations */
+@keyframes revealFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: revealFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-reveal-stagger-1 {
+  animation: revealFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.animate-reveal-stagger-2 {
+  animation: revealFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+}
+
+.animate-reveal-stagger-3 {
+  animation: revealFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.animate-reveal-stagger-4 {
+  animation: revealFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+}
+
+/* 3. Slide-in from Left Animations */
 @keyframes slideInFromLeft {
   0% {
     opacity: 0;
@@ -130,22 +199,39 @@ a.rounded-full.border-foundry-border:focus-visible {
   }
 }
 
-.animate-slide-in-card-1 {
-  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+.animate-slide-in-card-1,
+.animate-slide-left-1 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
-.animate-slide-in-card-2 {
-  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+.animate-slide-in-card-2,
+.animate-slide-left-2 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
 }
 
-.animate-slide-in-card-3 {
-  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+.animate-slide-in-card-3,
+.animate-slide-left-3 {
+  animation: slideInFromLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
 }
 
+/* 4. Accessibility: Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-hero-4,
+  .animate-hero-image,
+  .animate-reveal,
+  .animate-reveal-stagger-1,
+  .animate-reveal-stagger-2,
+  .animate-reveal-stagger-3,
+  .animate-reveal-stagger-4,
   .animate-slide-in-card-1,
   .animate-slide-in-card-2,
-  .animate-slide-in-card-3 {
+  .animate-slide-in-card-3,
+  .animate-slide-left-1,
+  .animate-slide-left-2,
+  .animate-slide-left-3 {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
