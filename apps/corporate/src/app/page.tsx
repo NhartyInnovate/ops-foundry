@@ -124,21 +124,21 @@ export default function CorporateHomePage() {
                 <p className="font-display text-xs font-bold tracking-widest uppercase text-gray-400 shrink-0">
                   {brandsWeSupportContent.heading}
                 </p>
-                <div className="flex flex-wrap items-center gap-8 sm:gap-12 lg:gap-16">
+                <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-12 lg:gap-16 w-full md:w-auto">
                   {brandsWeSupportContent.organisations.map((org) => {
                     const hasLogo = Boolean(org.logo);
                     return (
-                      <div key={org.name} className="flex items-center">
+                      <div key={org.name} className="flex items-center justify-center shrink-0">
                         {hasLogo ? (
                           <Image
                             src={org.logo}
                             alt={org.name}
                             width={org.width}
                             height={org.height}
-                            className="h-7 sm:h-8 w-auto object-contain opacity-85 hover:opacity-100 transition-opacity"
+                            className="h-5.5 sm:h-7 md:h-8 w-auto max-w-[105px] sm:max-w-none object-contain opacity-85 hover:opacity-100 transition-opacity"
                           />
                         ) : (
-                          <span className="font-display text-base sm:text-lg font-medium tracking-tight text-slate-200/90 hover:text-white transition-colors select-none">
+                          <span className="font-display text-xs sm:text-base md:text-lg font-medium tracking-tight text-slate-200/90 hover:text-white transition-colors select-none">
                             {org.name}
                           </span>
                         )}
